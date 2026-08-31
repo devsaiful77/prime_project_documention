@@ -13,6 +13,46 @@ use Illuminate\Support\Str;
 
 class CIWFormRequest extends FormRequest
 {
+
+    protected function prepareForValidation()
+    {
+        if ($this->has('treasury_type') && !is_null($this->treasury_type)) {
+            $this->merge([
+                'treasury_type' => strtolower(trim($this->treasury_type)),
+            ]);
+        }
+        $this->clearIrrelevantTreasuryFields();
+    }
+
+    protected function clearIrrelevantTreasuryFields()
+    {
+        $fieldMap = [
+            'bill'  => 'treasury_bills',
+            'sukuk' => 'treasury_sukuk',
+            'bond'  => 'treasury_bonds',
+            'frtb'  => 'treasury_frtb',
+        ];
+
+        $treasuryType = strtolower(trim((string) $this->input('treasury_type')));
+
+        if (!array_key_exists($treasuryType, $fieldMap)) {
+            return;
+        }
+
+        $keepField = $fieldMap[$treasuryType];
+
+        $nullify = [];
+        foreach ($fieldMap as $type => $field) {
+            if ($field !== $keepField) {
+                $nullify[$field] = null;
+            }
+        }
+
+        if (!empty($nullify)) {
+            $this->merge($nullify);
+        }
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -176,7 +216,7 @@ class CIWFormRequest extends FormRequest
 
         // Treasury type + amount validation
         if (!empty($this->treasury_type)) {
-            $rules['treasury_type'] = 'required|in:Bill,sukuk,Bond,frtb';
+            $rules['treasury_type'] = 'required|in:bill,sukuk,bond,frtb';
             $rules['bidding_amount'] = 'required|numeric|treasury_amount_multiple';
         }
 

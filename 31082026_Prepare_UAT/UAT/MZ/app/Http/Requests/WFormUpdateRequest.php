@@ -1,3 +1,457 @@
 <?php
-bolt_decrypt( __FILE__ , 'K5bQZ3'); return 0;
-##!!!##zcrNyi4hLSUzMCEjJeABMDAcCDQ0MBwSJTE1JTM0M/vNys3KNTMl4AksLDUtKS4hNCUcBi81LiQhNCkvLhwINDQwHAYvMi0SJTE1JTM0+83KNTMl4AksLDUtKS4hNCUcEzUwMC8yNBwGISMhJCUzHBYhLCkkITQvMvvNyjUzJeABMDAcCTMzNSUDLy4mKSf7zco1MyXgATAwHAkzMzUlAyglIysMKTM0Ay8uJikn+83KNTMl4AE1NCj7zcrNyiMsITMz4BcGLzItFTAkITQlEiUxNSUzNOAlODQlLiQz4AYvMi0SJTE1JTM0zco7zcrg4ODg7+rqzcrg4ODg4OrgBCU0JTItKS4l4Ckm4DQoJeA1MyUy4Ckz4CE1NCgvMik6JSTgNC/gLSErJeA0KCkz4DIlMTUlMzTuzcrg4ODg4OrNyuDg4ODg6uAAMiU0NTIu4CIvLyzNyuDg4ODg6u/NyuDg4OAwNSIsKSPgJjUuIzQpLy7gITU0KC8yKTol6OnNyuDg4OA7zcrg4ODg4ODg4DIlNDUyLuA0MjUl+83K4ODg4D3Nys3K4ODg4O/q6s3K4ODg4ODq4AclNOA0KCXgNiEsKSQhNCkvLuAyNSwlM+A0KCE04CEwMCw54DQv4DQoJeAyJTE1JTM07s3K4ODg4ODqzcrg4ODg4OrgADIlNDUyLuAhMjIhOc3K4ODg4ODq783Kzcrg4ODgMDUiLCkj4CY1LiM0KS8u4DI1LCUz6OnNyuDg4OA7zcrg4ODg4ODg4O/vAzUyMiUuNOA5JSEyzcrg4ODg4ODg4BYhLCkkITQvMvr6JTg0JS4k6OcjNTIyJS40HzklITLn7OAmNS4jNCkvLuDo5CE0NDIpIjU0Jezg5DYhLDUl7ODkMCEyIS0lNCUyM+zg5DYhLCkkITQvMungO83K4ODg4ODg4ODg4ODg5DklITLg/eAkITQl6OcZ5+zgMzQyNC80KS0l6OQ2ISw1Jenp+83K4ODg4ODg4ODg4ODg5CM1MjIlLjQZJSEy4P3gJCE0JejnGefp+83K4ODg4ODg4ODg4ODgMiU0NTIu4OQ5JSEy4P394OQjNTIyJS40GSUhMvvNyuDg4ODg4ODgPen7zcrNyuDg4ODg4ODg7+8uJTg04DklITLNyuDg4ODg4ODgFiEsKSQhNC8y+volODQlLiTo5y4lODQfOSUhMufs4CY1LiM0KS8u4OjkITQ0MikiNTQl7ODkNiEsNSXs4OQwITIhLSU0JTIz7ODkNiEsKSQhNC8y6eA7zcrg4ODg4ODg4ODg4ODkOSUhMuD94CQhNCXo5xnn7OAzNDI0LzQpLSXo5DYhLDUl6en7zcrg4ODg4ODg4ODg4ODkLiU4NBklITLg/eAkITQl6OcZ5+ng6+Dx+83K4ODg4ODg4ODg4ODgMiU0NTIu4OQ5JSEy4P394OQuJTg0GSUhMvvNyuDg4ODg4ODgPen7zcrNyuDg4ODg4ODg5DI1LCUz4P3gITIyITno6fvNyuDg4ODg4ODgKSbg6OElLTA0OejkNCgpM+3+KTMzNSUfKSTp6eA7zcrg4ODg4ODg4ODg4ODkKTMzNSUfIy8uJiknHy8iKuD94AkzMzUlAy8uJikn+vo3KCUyJejnKTMzNSUfKSTn7ODkNCgpM+3+KTMzNSUfKSTp7f4nJTTo6fvNyuDg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5CkzMzUlHyMvLiYpJx8vIirp6eA7zcrg4ODg4ODg4ODg4ODg4ODgJi8yJSEjKODo5CkzMzUlHyMvLiYpJx8vIirgITPg5CslOeD9/uDkNiEsNSXp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5DQtMB8yNSwlM+D94OLi+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkJiklLCQfLiEtJeD94OQ2ISw1Je3+JiklLCQfLiEtJfvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5C0hOCktNS0fLCUuJzQo4P3g5DYhLDUl7f4tITgpLTUtHywlLic0KPvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5C0pLiktNS0fLCUuJzQo4P3g5DYhLDUl7f4tKS4pLTUtHywlLic0KPvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5CYpOCUkHywlLic0KOD94OQ2ISw1Je3+Jik4JSQfLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkKTMfMiUxNSkyJSTg/eDkNiEsNSXt/ikzHzIlMTUpMiUk+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkJiklLCQfNDkwJeD94OQ2ISw1Je3+JiklLCQfNDkwJfvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5CEwKQslOeD94OQ2ISw1Je3+ITApHyslOfvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5CYpJSwkEyU0CSTg/eDkNiEsNSXt/iYpJSwkMyU0HycyLzUwHykk+83Kzcrg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5DQoKTPt/iclNOjnIzUyMiUuNBklITLn6enp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQDGeD94OQ0KCkz7f4nJTTo5yM1MjIlLjQZJSEy5+n7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkKyU5MwPg/eAlODAsLyQl6Of65+zg5CEwKQslOen7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo5CYpJSwkEyU0CSTg/f3g8vTpO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm6OQDGRvnMiUxNSUzNB80OTAl5x3g/f3g5wEEBOfpO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkNC0wHzI1LCUz4O794OjkKyU5MwMb8B3g/f3g5ywpLSk0EzQhMjQEITQl5+A8PODkKyU5MwMb8B3g/f3g5ywpLSk0BS4kBCE0Jefp4P/g5zwkITQlPCM1MjIlLjQfOSUhMufg+uDn5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5CkzHzIlMTUpMiUk4P3g6OQrJTkzAxvwHeD9/eDnNS4VMyEnJRAlMiMlLjQhJyXn6eD/4PDg+uDkKTMfMiUxNSkyJST7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPSUsMyU7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm6OQrJTkzAxvwHeD9/eDnLCktKTQVMyEnJRAlMiMlLjQhJyXn4Dw84OQrJTkzAxvwHeD9/eDnLCktKTQTNCEyNAQhNCXn4Dw84OQrJTkzAxvwHeD9/eDnLCktKTQFLiQEITQl5+k7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkKTMfMiUxNSkyJSTg/eDw+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrNyuDg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkNCgpM+3+JyU06OcuJTg0GSUhMufp6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5A4Y4P3g5DQoKTPt/iclNOjnLiU4NBklITLn6fvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQrJTkzDuD94CU4MCwvJCXo5/rn7ODkITApCyU56fvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjkJiklLCQTJTQJJOD9/eDy9ek7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbo5A4YG+cyJTE1JTM0HzQ5MCXnHeD9/eDnAQQE5+k7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQ0LTAfMjUsJTPg7v3g6OQrJTkzDhvwHeD9/eDnLCktKTQTNCEyNAQhNCXn4Dw84OQrJTkzDhvwHeD9/eDnLCktKTQFLiQEITQl5+ng/+DnPCQhNCU8LiU4NB85JSEy5+D64Ofn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkKTMfMiUxNSkyJSTg/eDo5CslOTMOG/Ad4P394Oc1LhUzISclECUyIyUuNCEnJefp4P/g8OD64OQpMx8yJTE1KTIlJPvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9JSwzJTvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbo5CslOTMOG/Ad4P394OcsKS0pNBUzISclECUyIyUuNCEnJefgPDzg5CslOTMOG/Ad4P394OcsKS0pNBM0ITI0BCE0JefgPDzg5CslOTMOG/Ad4P394OcsKS0pNAUuJAQhNCXn6TvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQpMx8yJTE1KTIlJOD94PD7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3Nys3K4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQ0KCkz7f4nJTTo5y0lJCkjISwRNS80Iefp6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5A0R4P3g5DQoKTPt/iclNOjnLSUkKSMhLBE1LzQh5+n7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkKyU5Mw3g/eAlODAsLyQl6Of65+zg5CEwKQslOen7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo5CYpJSwkEyU0CSTg/f3g8vjpO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm6OQNERvnMiUxNSUzNB80OTAl5x3g/f3g5wEEBOfpO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkNC0wHzI1LCUz4O794OjkKyU5Mw0b8B3g/f3g5ywpLSk0EzQhMjQEITQl5+A8PODkKyU5Mw0b8B3g/f3g5ywpLSk0BS4kBCE0Jefp4P/g5zwkITQlPCM1MjIlLjQfOSUhMufg+uDn5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5CkzHzIlMTUpMiUk4P3g6OQrJTkzDRvwHeD9/eDnNS4VMyEnJRAlMiMlLjQhJyXn6eD/4PDg+uDkKTMfMiUxNSkyJST7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPSUsMyU7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm6OQrJTkzDRvwHeD9/eDnLCktKTQVMyEnJRAlMiMlLjQhJyXn4Dw84OQrJTkzDRvwHeD9/eDnLCktKTQTNCEyNAQhNCXn4Dw84OQrJTkzDRvwHeD9/eDnLCktKTQFLiQEITQl5+k7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkKTMfMiUxNSkyJSTg/eDw+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrNyuDg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OQpMx8yJTE1KTIlJOD9/eDx6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkNC0wHzI1LCUz4O794Oc8MiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5C0hOCktNS0fLCUuJzQo6eDm5uDkJiklLCQfNDkwJeDh/f3g5y41LSIlMufp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQ0LTAfMjUsJTPg7v3g5zwtITj65+7kLSE4KS01LR8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkLSkuKS01LR8sJS4nNCjp4Obm4OQmKSUsJB80OTAl4OH9/eDnLjUtIiUy5+ngO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DQtMB8yNSwlM+Du/eDnPC0pLvrn7uQtKS4pLTUtHywlLic0KPvNyuDg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQtITgpLTUtHywlLic0KOng5ubg5CYpJSwkHzQ5MCXg/f3g5y41LSIlMufp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQ0LTAfMjUsJTPg7v3g5zwtITgfJCknKTQz+ufu5C0hOCktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5C0pLiktNS0fLCUuJzQo6eDm5uDkJiklLCQfNDkwJeD9/eDnLjUtIiUy5+ngO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DQtMB8yNSwlM+Du/eDnPC0pLh8kKScpNDP65+7kLSkuKS01LR8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkJik4JSQfLCUuJzQo6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DQtMB8yNSwlM+Du/eDnPCYpOCUkHywlLvrn7uQmKTglJB8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkJiklLCQfNDkwJeng5ubg5CYpJSwkHzQ5MCXg/f3g5y41LSIlMufp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQ0LTAfMjUsJTPg7v3g5zwuNSwsISIsJTwuNS0lMikj5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQmKSUsJB80OTAl6eDm5uDkJiklLCQfNDkwJeD9/eDnJCUjKS0hLOfp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQ0LTAfMjUsJTPg7v3g5zwuNSwsISIsJTwmLC8hNB80Ny8kKScpNOf7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkJiklLCQfNDkwJeng5ubg5CYpJSwkHzQ5MCXg/f3g5yQhNCXn6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkNC0wHzI1LCUz4O794Oc8LjUsLCEiLCU8JCE0Jef7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkJiklLCQfNDkwJeng5ubg5CYpJSwkHzQ5MCXg/f3g5y4kITQl5+ngO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DQtMB8yNSwlM+Du/eDnPC41LCwhIiwlPCQhNCU8ISY0JTIfLzIfJTE1ISz6NC8kITnn+83K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrNyuDg4ODg4ODg4ODg4ODg4ODg4ODg7+/gETUvNCHgJiklLCTgNiEsKSQhNCkvLs3K4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQ0KCkz7f4nJTTo5zAhMzMwLzI05+np6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OAmLzIlISMo6OQ0KCkz7f4nJTTo5zAhMzMwLzI05+ngITPg5CslOeD9/uDkNiEs6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OQmKSUsJB8uIS0l4P39/eDkKyU56TvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DI1LCUzG+cwITMzMC8yNO7n7uQrJTkd4P3gLDQyKS3o5DQtMB8yNSwlM+zg5zzn6fvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3Nys3K4ODg4ODg4ODg4ODg4ODg4ODg4ODv7+AuJTg04DklITLgJiklLCTgNiEsKSQhNCkvLs3K4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQ0KCkz7f4nJTTo5y4lODQZJSEy5+np6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OAmLzIlISMo6OQ0KCkz7f4nJTTo5y4lODQZJSEy5+ngITPg5CslOeD9/uDkNiEs6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OQmKSUsJB8uIS0l4P39/eDkKyU56TvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DI1LCUzG+cuJTg0GSUhMu7n7uQrJTkd4P3gLDQyKS3o5DQtMB8yNSwlM+zg5zzn6fvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3Nys3K4ODg4ODg4ODg4ODg4ODg4ODg4ODv7+AjNTIyJS404DklITLgJiklLCTgNiEsKSQhNCkvLs3K4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQ0KCkz7f4nJTTo5yM1MjIlLjQZJSEy5+np6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OAmLzIlISMo6OQ0KCkz7f4nJTTo5yM1MjIlLjQZJSEy5+ngITPg5CslOeD9/uDkNiEs6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OQmKSUsJB8uIS0l4P39/eDkKyU56TvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DI1LCUzG+cjNTIyJS40GSUhMu7n7uQrJTkd4P3gLDQyKS3o5DQtMB8yNSwlM+zg5zzn6fvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3Nys3Kzcrg4ODg4ODg4ODg4ODg4ODg4ODg4O/v4C0lJCkjISzgETUvNCHgJiklLCTgNiEsKSQhNCkvLs3K4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQ0KCkz7f4nJTTo5y0lJCkjISwRNS80Iefp6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgJi8yJSEjKOjkNCgpM+3+JyU06OctJSQpIyEsETUvNCHn6eAhM+DkKyU54P3+4OQ2ISzp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo5CYpJSwkHy4hLSXg/f394OQrJTnpO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkMjUsJTMb5y0lJCkjISwRNS80Ie7n7uQrJTkd4P3gLDQyKS3o5DQtMB8yNSwlM+zg5zzn6fvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3Nys3K4ODg4ODg4ODg4ODg4ODg4ODg4ODkNC0wHzI1LCUz4P3gLDQyKS3o5DQtMB8yNSwlM+zg5zzn6fvNys3K4ODg4ODg4ODg4ODg4ODg4ODg4ODv7+AMLyMhLOAUEeAJMzM1JeAJBODx8fDz4BUBFODx8fXz4ObgDAkWBeAuNSwszcrg4ODg4ODg4ODg4ODg4ODg4ODg4O/v4AwvIyEs4A0R4AkzMzUl4AkE4PHx8PXgFQEU4C41LCzg5uAMCRYF4C41LCzNyuDg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OQ2ISw1Je3+KTMzNSUfKSTg4f394PHx8PPg5ubg5DYhLDUl7f4pMzM1JR8pJODh/f3g8fHw9ek7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkMjUsJTMb5CYpJSwkHy4hLSUd4P3g5DQtMB8yNSwlM/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4OQpMzM1JR8jKCUjKywpMzQfIy8uJiknHy8iKuD94AkzMzUlAyglIysMKTM0Ay8uJikn+vo3KCUyJejnKTMzNSUfKSTn7ODkNCgpM+3+KTMzNSUfKSTp7f4nJTTo6fvNyuDg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5CkzMzUlHyMoJSMrLCkzNB8jLy4mKScfLyIq6engO83K4ODg4ODg4ODg4ODg4ODg4CYvMiUhIyjg6OQpMzM1JR8jKCUjKywpMzQfIy8uJiknHy8iKuAhM+DkKyU54P3+4OQ2ISw1JengO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkNC0wHzI1LCUz4P3g4uL7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQmKSUsJB8uIS0l4P3g5DYhLDUl7f4mKSUsJB8uIS0l+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSE4KS01LR8sJS4nNCjg/eDkNiEsNSXt/i0hOCktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkKTMfMiUxNSkyJSTg/eDkNiEsNSXt/ikzHzIlMTUpMiUk+83K4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo5CkzHzIlMTUpMiUk4P394PHp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQ0LTAfMjUsJTPg/eDnMiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5C0hOCktNS0fLCUuJzQo6eDm5uDkKTMfMiUxNSkyJSTg/f3g8engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DQtMB8yNSwlM+Du/eDnPC0hOPrn7uQtITgpLTUtHywlLic0KPvNyuDg4ODg4ODg4ODg4ODg4ODg4ODgPeAlLDMlKSbo4SUtMDQ56OQtITgpLTUtHywlLic0KOng5ubgJS0wNDno5CkzHzIlMTUpMiUk6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DQtMB8yNSwlM+Du/eDnLSE4+ufu5C0hOCktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQyNSwlMxvkJiklLCQfLiEtJR3g/eDkNC0wHzI1LCUz+83K4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4O/q4AMoJSMr4CYvMuAOLy0pLiUl4AkuJi8yLSE0KS8u4A0pLi8y6u/NyuDg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5DQoKTPt/i0pLi8yHyYsJx8uLy0pLiUl6engO83K4ODg4ODg4ODg4ODg4ODg4Ckm4OjkNCgpM+3+LSkuLzIfJiwnHy4vLSkuJSXg/f3g5xnn6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQyNSwlMxvnJzUhMiQpIS4OIS0l5x3g/ecyJTE1KTIlJOf7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQyNSwlMxvnJzUhMiQpLiEfIy8kJR8z5x3g/ecyJTE1KTIlJOf7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQyNSwlMxvnJzUhMiQpIS4BJCQy8ecd4P3nMiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkMjUsJTMb5yc1ITIkKSEuAyk0Oecd4P3nMiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkMjUsJTMb5yc1ITIkKSEuEzQhNCUQMi825x3g/ecyJTE1KTIlJOf7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQyNSwlMxvnJzUhMiQpIS4QLzM0ISwDLyQl5x3g/ecyJTE1KTIlJOf7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQyNSwlMxvnJzUhMiQpIS4DLzUuNDI55x3g/ecyJTE1KTIlJOf7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQyNSwlMxvnLi8tKS4lJR8kLyLnHeD94OchJjQlMvrn7i4vN+jp7f4zNSIZJSEyM+jx+Ont/jQvBCE0JRM0MikuJ+jp+83K4ODg4ODg4ODg4ODg4ODg4D3gJSwzJeA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5DQoKTPt/i4vLSkuJSUfJC8i6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5DI1LCUzG+cuLy0pLiUlHyQvIucd4P3g5yIlJi8yJfrn7i4vN+jp7f4zNSIZJSEyM+jx+Ont/jQvBCE0JRM0MikuJ+jp+83K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODgPc3K4ODg4ODg4OA9zcrg4ODg4ODg4O/vJCTo5DI1LCUz6fvNyuDg4ODg4ODgMiU0NTIu4OQyNSwlM/vNyuDg4OA9zcrNyuDg4OAwNSIsKSPgJjUuIzQpLy7gLSUzMyEnJTPo6c3K4ODg4DvNyuDg4ODg4ODg5C0lMzMhJyUz4P3gITIyITno6fvNyuDg4ODg4ODgKSbg6OElLTA0OejkNCgpM+3+KTMzNSUfKSTp6eA7zcrg4ODg4ODg4ODg4ODkKTMzNSUfIy8uJiknHy8iKuD94AkzMzUlAy8uJikn+vo3KCUyJejnKTMzNSUfKSTn7ODkNCgpM+3+KTMzNSUfKSTp7f4nJTTo6fvNyuDg4ODg4ODg4ODg4CYvMiUhIyjg6OQpMzM1JR8jLy4mKScfLyIq4CEz4OQrJTng/f7g5DYhLDUl6eA7zcrg4ODg4ODg4ODg4ODg4ODg5CwhIiUsHy4hLSXg/eDkNiEsNSXt/iwhIiUsHy4hLSX7zcrg4ODg4ODg4ODg4ODg4ODg5CYpJSwkHy4hLSXg/eDkNiEsNSXt/iYpJSwkHy4hLSX7zcrg4ODg4ODg4ODg4ODg4ODg5C0hOCktNS0fLCUuJzQo4P3g5DYhLDUl7f4tITgpLTUtHywlLic0KPvNyuDg4ODg4ODg4ODg4ODg4ODkLSkuKS01LR8sJS4nNCjg/eDkNiEsNSXt/i0pLiktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4OQmKTglJB8sJS4nNCjg/eDkNiEsNSXt/iYpOCUkHywlLic0KPvNyuDg4ODg4ODg4ODg4ODg4ODkKTMfMiUxNSkyJSTg/eDkNiEsNSXt/ikzHzIlMTUpMiUk+83K4ODg4ODg4ODg4ODg4ODg4OQmKSUsJB80OTAl4P3g5DYhLDUl7f4mKSUsJB80OTAl+83Kzcrg4ODg4ODg4ODg4ODg4ODgKSbg6OQpMx8yJTE1KTIlJOD9/eDx6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvkJiklLCQfLiEtJe7n7jIlMTUpMiUk5x3g/eDkJiklLCQfLiEtJe7n4Ckz4DIlMTUpMiUk5/vNyuDg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkLSE4KS01LR8sJS4nNCjp6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvkJiklLCQfLiEtJe7n7i0hOOcd4P3g5CYpJSwkHy4hLSXu5+AtITjgLCUuJzQo4Ofu5C0hOCktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQtKS4pLTUtHywlLic0KOnp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+QmKSUsJB8uIS0l7ufuLSku5x3g/eDkJiklLCQfLiEtJe7n4C0pLuAsJS4nNCjg5+7kLSkuKS01LR8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5CYpOCUkHywlLic0KOnp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+QmKSUsJB8uIS0l7ufuJik4JSQfLCUu5x3g/eDkJiklLCQfLiEtJe7n4CkuMDU04CwlLic0KOAzKC81LCTgIiXg5+7kJik4JSQfLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4D3Nys3K4ODg4ODg4ODg4ODg4ODg4O/v4AYvMuARNS80IeAmKSUsJOA2ISwpJCE0KS8uzcrg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkNCgpM+3+JyU06OcwITMzMC8yNOfp6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4OAmLzIlISMo6OQ0KCkz7f4nJTTo5zAhMzMwLzI05+ngITPg5CslOeD9/uDkNiEs6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo5CYpJSwkHy4hLSXg/f394OQrJTnpO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjkKTMfMiUxNSkyJSTg/f3g8engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5zAhMzMwLzI07ufu5CslOe7n7jIlMTUpMiUk5x3g/eDkLCEiJSwfLiEtJe7n4Ckz4DIlMTUpMiUk5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkLSE4KS01LR8sJS4nNCjp6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnMCEzMzAvMjTu5+7kKyU57ufuLSE45x3g/eDkLCEiJSwfLiEtJe7n4C0hOOAsJS4nNCjg5+7kLSE4KS01LR8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5C0pLiktNS0fLCUuJzQo6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5zAhMzMwLzI07ufu5CslOe7n7i0pLucd4P3g5CwhIiUsHy4hLSXu5+AtKS7gLCUuJzQo4Ofu5C0pLiktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQmKTglJB8sJS4nNCjp6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnMCEzMzAvMjTu5+7kKyU57ufuJik4JSQfLCUu5x3g/eDkLCEiJSwfLiEtJe7n4CkuMDU04CwlLic0KOAzKC81LCTgIiXg5+7kJik4JSQfLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5zAhMzMwLzI07ufu5CslOe7n7iYsLyE0HzQ3LyQpJyk05x3g/eDkLCEiJSwfLiEtJeDu5+ANNTM04CIl4DQ3L+AkKScpNOAhJjQlMuAkJSMpLSEs4C41LSIlMuApM+AyJTE1KTIlJO7n+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnMCEzMzAvMjTu5+7kKyU57ufuISY0JTIfLzIfJTE1ISznHeD94OQsISIlLB8uIS0l4O7n4A01MzTgIiXgJzIlITQlMuA0KCEu4DQvJCE54CQhNCXn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODgPc3Kzcrg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkNCgpM+3+JyU06OcjNTIyJS40GSUhMufp6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4OAmLzIlISMo6OQ0KCkz7f4nJTTo5yM1MjIlLjQZJSEy5+ngITPg5CslOeD9/uDkNiEs6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo5CYpJSwkHy4hLSXg/f394OQrJTnpO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjkKTMfMiUxNSkyJSTg/f3g8engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5yM1MjIlLjQZJSEy7ufu5CslOe7n7jIlMTUpMiUk5x3g/eDkLCEiJSwfLiEtJe7n4Ckz4DIlMTUpMiUk5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkLSE4KS01LR8sJS4nNCjp6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnIzUyMiUuNBklITLu5+7kKyU57ufuLSE45x3g/eDkLCEiJSwfLiEtJe7n4C0hOOAsJS4nNCjg5+7kLSE4KS01LR8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5C0pLiktNS0fLCUuJzQo6engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5yM1MjIlLjQZJSEy7ufu5CslOe7n7i0pLucd4P3g5CwhIiUsHy4hLSXu5+AtKS7gLCUuJzQo4Ofu5C0pLiktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQmKTglJB8sJS4nNCjp6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnIzUyMiUuNBklITLu5+7kKyU57ufuJik4JSQfLCUu5x3g/eDkLCEiJSwfLiEtJe7n4CkuMDU04CwlLic0KOAzKC81LCTgIiXg5+7kJik4JSQfLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5yM1MjIlLjQZJSEy7ufu5CslOe7n7iYsLyE0HzQ3LyQpJyk05x3g/eDkLCEiJSwfLiEtJeDu5+ANNTM04CIl4DQ3L+AkKScpNOAhJjQlMuAkJSMpLSEs4C41LSIlMuApM+AyJTE1KTIlJO7n+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnIzUyMiUuNBklITLu5+7kKyU57ufuIzUyMiUuNB85JSEy5x3g/eDnBCE0JeATKC81LCTgIiXgAzUyMiUuNOAZJSEy5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5yM1MjIlLjQZJSEy7ufu5CslOe7n7iEmNCUyHy8yHyUxNSEs5x3g/eDnDTUzNOAiJeAnMiUhNCUy4DQoIS7gNC8kITngJCE0Jef7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4OA9zcrNyuDg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQ0KCkz7f4nJTTo5y4lODQZJSEy5+np6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4CYvMiUhIyjo5DQoKTPt/iclNOjnLiU4NBklITLn6eAhM+DkKyU54P3+4OQ2ISzp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjkJiklLCQfLiEtJeD9/f3g5CslOek7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OQpMx8yJTE1KTIlJOD9/eDx6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnLiU4NBklITLu5+7kKyU57ufuMiUxNSkyJSTnHeD94OQsISIlLB8uIS0l7ufgKTPgMiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQtITgpLTUtHywlLic0KOnp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+cuJTg0GSUhMu7n7uQrJTnu5+4tITjnHeD94OQsISIlLB8uIS0l7ufgLSE44CwlLic0KODn7uQtITgpLTUtHywlLic0KPvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkLSkuKS01LR8sJS4nNCjp6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnLiU4NBklITLu5+7kKyU57ufuLSku5x3g/eDkLCEiJSwfLiEtJe7n4C0pLuAsJS4nNCjg5+7kLSkuKS01LR8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5CYpOCUkHywlLic0KOnp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+cuJTg0GSUhMu7n7uQrJTnu5+4mKTglJB8sJS7nHeD94OQsISIlLB8uIS0l7ufgKS4wNTTgLCUuJzQo4DMoLzUsJOAiJeDn7uQmKTglJB8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnLiU4NBklITLu5+7kKyU57ufuJiwvITQfNDcvJCknKTTnHeD94OQsISIlLB8uIS0l4O7n4A01MzTgIiXgNDcv4CQpJyk04CEmNCUy4CQlIyktISzgLjUtIiUy4Ckz4DIlMTUpMiUk7uf7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+cuJTg0GSUhMu7n7uQrJTnu5+4uJTg0HzklITLnHeD94OcEITQl4BMoLzUsJOAiJeAOJTg04BklITLn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnLiU4NBklITLu5+7kKyU57ufuISY0JTIfLzIfJTE1ISznHeD94OcNNTM04CIl4CcyJSE0JTLgNCghLuA0LyQhOeAkITQl5/vNys3K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODgPc3Kzcrg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkNCgpM+3+JyU06OctJSQpIyEsETUvNCHn6enp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODgJi8yJSEjKOjkNCgpM+3+JyU06OctJSQpIyEsETUvNCHn6eAhM+DkKyU54P3+4OQ2ISzp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjkJiklLCQfLiEtJeD9/f3g5CslOek7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OQpMx8yJTE1KTIlJOD9/eDx6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnLSUkKSMhLBE1LzQh7ufu5CslOe7n7jIlMTUpMiUk5x3g/eDkLCEiJSwfLiEtJe7n4Ckz4DIlMTUpMiUk5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgKSbg6OElLTA0OejkLSE4KS01LR8sJS4nNCjp6eA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnLSUkKSMhLBE1LzQh7ufu5CslOe7n7i0hOOcd4P3g5CwhIiUsHy4hLSXu5+AtITjgLCUuJzQo4Ofu5C0hOCktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQtKS4pLTUtHywlLic0KOnp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+ctJSQpIyEsETUvNCHu5+7kKyU57ufuLSku5x3g/eDkLCEiJSwfLiEtJe7n4C0pLuAsJS4nNCjg5+7kLSkuKS01LR8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5CYpOCUkHywlLic0KOnp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+ctJSQpIyEsETUvNCHu5+7kKyU57ufuJik4JSQfLCUu5x3g/eDkLCEiJSwfLiEtJe7n4CkuMDU04CwlLic0KOAzKC81LCTgIiXg5+7kJik4JSQfLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5y0lJCkjISwRNS80Ie7n7uQrJTnu5+4mLC8hNB80Ny8kKScpNOcd4P3g5CwhIiUsHy4hLSXg7ufgDTUzNOAiJeA0Ny/gJCknKTTgISY0JTLgJCUjKS0hLOAuNS0iJTLgKTPgMiUxNSkyJSTu5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5y0lJCkjISwRNS80Ie7n7uQrJTnu5+4jNTIyJS40HzklITLnHeD94OcEITQl4BMoLzUsJOAiJeADNTIyJS404BklITLn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OQtJTMzISclMxvnLSUkKSMhLBE1LzQh7ufu5CslOe7n7iEmNCUyHy8yHyUxNSEs5x3g/eDnDTUzNOAiJeAnMiUhNCUy4DQoIS7gNC8kITngJCE0Jef7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODg4ODg4ODg4D3NyuDg4ODg4ODg4ODg4ODg4OA9zcrNyuDg4ODg4ODg4ODg4D3Nys3K4ODg4ODg4ODg4ODg5CkzMzUlHyMoJSMrLCkzNB8jLy4mKScfLyIq4P3gCTMzNSUDKCUjKwwpMzQDLy4mKSf6+jcoJTIl6OcpMzM1JR8pJOfs4OQ0KCkz7f4pMzM1JR8pJOnt/iclNOjp+83K4ODg4ODg4ODg4ODgJi8yJSEjKODo5CkzMzUlHyMoJSMrLCkzNB8jLy4mKScfLyIq4CEz4OQrJTng/f7g5DYhLDUl6eA7zcrg4ODg4ODg4ODg4ODg4ODg5DQtMB8yNSwlM+D94OLi+83K4ODg4ODg4ODg4ODg4ODg4OQmKSUsJB8uIS0l4P3g5DYhLDUl7f4mKSUsJB8uIS0l+83K4ODg4ODg4ODg4ODg4ODg4OQtITgpLTUtHywlLic0KOD94OQ2ISw1Je3+LSE4KS01LR8sJS4nNCj7zcrg4ODg4ODg4ODg4ODg4ODg5CkzHzIlMTUpMiUk4P3g5DYhLDUl7f4pMx8yJTE1KTIlJPvNyuDg4ODg4ODg4ODg4ODg4OApJuDo5CkzHzIlMTUpMiUk4P394PHp4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+QmKSUsJB8uIS0l7ufuMiUxNSkyJSTnHeD94OcSJTE1KTIlJOf7zcrg4ODg4ODg4ODg4ODg4ODgPc3K4ODg4ODg4ODg4ODg4ODg4Ckm4OjhJS0wNDno5C0hOCktNS0fLCUuJzQo6eDm5uDkKTMfMiUxNSkyJSTg/f3g8engO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkNC0wHzI1LCUz4O794Oc8LSE4+ufu5C0hOCktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5CYpJSwkHy4hLSXu5+4tITjnHeD94OcNITjgDCUuJzQo4Ofu5C0hOCktNS0fLCUuJzQo+83K4ODg4ODg4ODg4ODg4ODg4D3gJSwzJeA7zcrg4ODg4ODg4ODg4ODg4ODg4ODg4OQ0LTAfMjUsJTPg7v3g5y0hOPrn7uQtITgpLTUtHywlLic0KPvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+QmKSUsJB8uIS0l7ufuLSE45x3g/eDnDSE44AwlLic0KODn7uQtITgpLTUtHywlLic0KPvNyuDg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4ODv6uADKCUjK+AmLzLgDi8tKS4lJeAJLiYvMi0hNCkvLuANKS4vMurvzcrg4ODg4ODg4ODg4OApJuDo4SUtMDQ56OQ0KCkz7f4tKS4vMh8mLCcfLi8tKS4lJenp4DvNyuDg4ODg4ODg4ODg4ODg4OApJuDo5DQoKTPt/i0pLi8yHyYsJx8uLy0pLiUl4P394OcZ5+ngO83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5yc1ITIkKSEuDiEtJe4yJTE1KTIlJOcd4P3nEiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5yc1ITIkKS4hHyMvJCUfM+4yJTE1KTIlJOcd4P3nEiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5yc1ITIkKSEuASQkMvHuMiUxNSkyJSTnHeD95xIlMTUpMiUk5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+cnNSEyJCkhLgMpNDnuMiUxNSkyJSTnHeD95xIlMTUpMiUk5/vNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+cnNSEyJCkhLhM0ITQlEDIvNu4yJTE1KTIlJOcd4P3nEiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5yc1ITIkKSEuEC8zNCEsAy8kJe4yJTE1KTIlJOcd4P3nEiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5yc1ITIkKSEuAy81LjQyOe4yJTE1KTIlJOcd4P3nEiUxNSkyJSTn+83K4ODg4ODg4ODg4ODg4ODg4ODg4ODkLSUzMyEnJTMb5y4vLSkuJSUfJC8i7iEmNCUy5x3g/eDnECwlITMl4CMoJSMr4A4vLSkuJSXgDSkuLzLgBiwhJ+Dv4A4vLSkuJSXgAikyNCjgBCE0Jef7zcrg4ODg4ODg4ODg4ODg4ODgPeAlLDMl4DvNyuDg4ODg4ODg4ODg4ODg4ODg4ODg5C0lMzMhJyUzG+cuLy0pLiUlHyQvIu4iJSYvMiXnHeD94OcQLCUhMyXgIyglIyvgDi8tKS4lJeANKS4vMuAGLCEn4O/gDi8tKS4lJeACKTI0KOAEITQl5/vNyuDg4ODg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4ODg4OA9zcrg4ODg4ODg4D3NyuDg4ODg4ODg7+8kJOjkLSUzMyEnJTPp+83K4ODg4ODg4OAyJTQ1Mi7g5C0lMzMhJyUz+83K4ODg4D3Nyj3Nyg==
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
+use App\IssueConfig;
+use App\IssueCheckListConfig;
+use Auth;
+
+class WFormUpdateRequest extends FormRequest
+{
+
+
+    protected function prepareForValidation()
+    {
+        if ($this->has('treasury_type') && !is_null($this->treasury_type)) {
+            $this->merge([
+                'treasury_type' => strtolower(trim($this->treasury_type)),
+            ]);
+        }
+        $this->clearIrrelevantTreasuryFields();
+    }
+
+    protected function clearIrrelevantTreasuryFields()
+    {
+        $fieldMap = [
+            'bill'  => 'treasury_bills',
+            'sukuk' => 'treasury_sukuk',
+            'bond'  => 'treasury_bonds',
+            'frtb'  => 'treasury_frtb',
+        ];
+
+        $treasuryType = strtolower(trim((string) $this->input('treasury_type')));
+
+        if (!array_key_exists($treasuryType, $fieldMap)) {
+            return;
+        }
+
+        $keepField = $fieldMap[$treasuryType];
+
+        $nullify = [];
+        foreach ($fieldMap as $type => $field) {
+            if ($field !== $keepField) {
+                $nullify[$field] = null;
+            }
+        }
+
+        if (!empty($nullify)) {
+            $this->merge($nullify);
+        }
+    }
+
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+
+    
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+
+    public function rules()
+    {
+        $requestDt = $this->request;
+
+        //Current year
+        Validator::extend('current_year', function ($attribute, $value, $parameters, $validator) {
+            $year = date('Y', strtotime($value));
+            $currentYear = date('Y');
+            return $year == $currentYear;
+        });
+
+        //next year
+        Validator::extend('next_year', function ($attribute, $value, $parameters, $validator) {
+            $year = date('Y', strtotime($value));
+            $nextYear = date('Y') + 1;
+            return $year == $nextYear;
+        });
+
+        // Treasury amount multiple check (sukuk => 10,000 | others => 100,000)
+        Validator::extend('treasury_amount_multiple', function ($attribute, $value, $parameters, $validator) use ($requestDt) {
+            $treasuryType = $requestDt->get('treasury_type');
+            $step = ($treasuryType === 'sukuk') ? 10000 : 100000;
+
+            if (!is_numeric($value) || (int) $value < $step) {
+                return false;
+            }
+
+            $value = (int) $value;
+            $step = (int) $step;
+            return $value % $step === 0;
+        });
+
+        Validator::replacer('treasury_amount_multiple', function ($message, $attribute, $rule, $parameters) use ($requestDt) {
+            $treasuryType = $requestDt->get('treasury_type');
+            $step = ($treasuryType === 'sukuk') ? 10000 : 100000;
+            return "Amount must be a multiple of " . number_format($step) . ".";
+        });
+
+        $rules = array();
+        if (!empty($this->issue_id)) {
+            $issue_config_obj = IssueConfig::where('issue_id', $this->issue_id)->get();
+            if (!empty($issue_config_obj)) {
+                foreach ($issue_config_obj as $key => $value) {
+                    $tmp_rules = "";
+                    $field_name = $value->field_name;
+                    $maximum_length = $value->maximum_length;
+                    $minimum_length = $value->minimum_length;
+                    $fixed_length = $value->fixed_length;
+                    $is_required = $value->is_required;
+                    $field_type = $value->field_type;
+                    $apiKey = $value->api_key;
+                    $fieldSetId = $value->fieldset_group_id;
+
+                    if (!empty($this->get('currentYear'))) {
+                        $CY = $this->get('currentYear');
+                        $keysC = explode(':', $apiKey);
+                        if ($fieldSetId == 24){
+                            if($CY['request_type'] == 'ADD'){
+                                $tmp_rules .= ($keysC[0] == 'limitStartDate' || $keysC[0] == 'limitEndDate') ? '|date|current_year' : '';
+                                $is_required = ($keysC[0] == 'unUsagePercentage') ? 0 : $is_required;
+                            }else{
+                                if($keysC[0] == 'limitUsagePercentage' || $keysC[0] == 'limitStartDate' || $keysC[0] == 'limitEndDate'){
+                                    $is_required = 0;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!empty($this->get('nextYear'))) {
+                        $NX = $this->get('nextYear');
+                        $keysN = explode(':', $apiKey);
+                        if ($fieldSetId == 25){
+                            if($NX['request_type'] == 'ADD'){
+                                $tmp_rules .= ($keysN[0] == 'limitStartDate' || $keysN[0] == 'limitEndDate') ? '|date|next_year' : '';
+                                $is_required = ($keysN[0] == 'unUsagePercentage') ? 0 : $is_required;
+                            }else{
+                                if($keysN[0] == 'limitUsagePercentage' || $keysN[0] == 'limitStartDate' || $keysN[0] == 'limitEndDate'){
+                                    $is_required = 0;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!empty($this->get('medicalQuota'))) {
+                        $MQ = $this->get('medicalQuota');
+                        $keysM = explode(':', $apiKey);
+                        if ($fieldSetId == 28){
+                            if($MQ['request_type'] == 'ADD'){
+                                $tmp_rules .= ($keysM[0] == 'limitStartDate' || $keysM[0] == 'limitEndDate') ? '|date|current_year' : '';
+                                $is_required = ($keysM[0] == 'unUsagePercentage') ? 0 : $is_required;
+                            }else{
+                                if($keysM[0] == 'limitUsagePercentage' || $keysM[0] == 'limitStartDate' || $keysM[0] == 'limitEndDate'){
+                                    $is_required = 0;
+                                }
+                            }
+                        }
+                    }
+
+                    if ($is_required == 1) {
+                        $tmp_rules .= '|required';
+                    }
+                    if (!empty($maximum_length) && $field_type !== 'number') {
+                        $tmp_rules .= '|max:'.$maximum_length;
+                    }
+                    if (!empty($minimum_length) && $field_type !== 'number') {
+                        $tmp_rules .= '|min:'.$minimum_length;
+                    }
+                    if (!empty($maximum_length) && $field_type == 'number') {
+                        $tmp_rules .= '|max_digits:'.$maximum_length;
+                    }
+                    if (!empty($minimum_length) && $field_type == 'number') {
+                        $tmp_rules .= '|min_digits:'.$minimum_length;
+                    }
+                    if (!empty($fixed_length)) {
+                        $tmp_rules .= '|fixed_len:'.$fixed_length;
+                    }
+                    if (!empty($field_type) && $field_type == 'number') {
+                        $tmp_rules .= '|nullable|numeric';
+                    }
+                    if (!empty($field_type) && $field_type == 'decimal') {
+                        $tmp_rules .= '|nullable|float_twodigit';
+                    }
+                    if (!empty($field_type) && $field_type == 'date') {
+                        $tmp_rules .= '|nullable|date';
+                    }
+                    if (!empty($field_type) && $field_type == 'ndate') {
+                        $tmp_rules .= '|nullable|date|after_or_equal:today';
+                    }
+
+                    // Quota field validation
+                    if (!empty($this->get('passport'))) {
+                        foreach($this->get('passport') as $key => $val) {
+                            if ($field_name === $key){
+                                $rules['passport.'.$key] = ltrim($tmp_rules, '|');
+                            }
+                        }
+                    }
+
+                    // next year field validation
+                    if (!empty($this->get('nextYear'))) {
+                        foreach($this->get('nextYear') as $key => $val) {
+                            if ($field_name === $key){
+                                $rules['nextYear.'.$key] = ltrim($tmp_rules, '|');
+                            }
+                        }
+                    }
+
+                    // current year field validation
+                    if (!empty($this->get('currentYear'))) {
+                        foreach($this->get('currentYear') as $key => $val) {
+                            if ($field_name === $key){
+                                $rules['currentYear.'.$key] = ltrim($tmp_rules, '|');
+                            }
+                        }
+                    }
+
+
+                    // medical Quota field validation
+                    if (!empty($this->get('medicalQuota'))) {
+                        foreach($this->get('medicalQuota') as $key => $val) {
+                            if ($field_name === $key){
+                                $rules['medicalQuota.'.$key] = ltrim($tmp_rules, '|');
+                            }
+                        }
+                    }
+
+                    $tmp_rules = ltrim($tmp_rules, '|');
+
+                    // Local TQ Issue ID 1103 UAT 1153 & LIVE null
+                    // Local MQ Issue ID 1105 UAT null & LIVE null
+                    if ($value->issue_id !== 1103 && $value->issue_id !== 1105){
+                        $rules[$field_name] = $tmp_rules;
+                    }
+                }
+            }
+            $issue_checklist_config_obj = IssueCheckListConfig::where('issue_id', $this->issue_id)->get();
+            if (!empty($issue_checklist_config_obj)) {
+                foreach ($issue_checklist_config_obj as $key => $value) {
+                    $tmp_rules = "";
+                    $field_name = $value->field_name;
+                    $maximum_length = $value->maximum_length;
+                    $is_required = $value->is_required;
+                    if ($is_required == 1) {
+                        $tmp_rules = 'required';
+                    }
+                    if (!empty($maximum_length) && $is_required == 1) {
+                        $tmp_rules .= '|max:'.$maximum_length;
+                    } elseif(!empty($maximum_length) && empty($is_required)) {
+                        $tmp_rules .= 'max:'.$maximum_length;
+                    }
+                    $rules[$field_name] = $tmp_rules;
+                }
+            }
+            /* Check for Nominee Information Minor*/
+            if (!empty($this->minor_flg_nominee)) {
+                if ($this->minor_flg_nominee == 'Y') {
+                    $rules['guardianName'] ='required';
+                    $rules['guardina_code_s'] ='required';
+                    $rules['guardianAddr1'] ='required';
+                    $rules['guardianCity'] ='required';
+                    $rules['guardianStateProv'] ='required';
+                    $rules['guardianPostalCode'] ='required';
+                    $rules['guardianCountry'] ='required';
+                    $rules['nominee_dob'] = 'after:'.now()->subYears(18)->toDateString();
+                } else {
+                    if (!empty($this->nominee_dob)) {
+                        $rules['nominee_dob'] = 'before:'.now()->subYears(18)->toDateString();
+                    }
+                }
+            }
+        }
+
+        // Treasury type + amount validation
+        if (!empty($this->treasury_type)) {
+            $rules['treasury_type'] = 'required|in:bill,sukuk,bond,frtb';
+            $rules['bidding_amount'] = 'required|numeric|treasury_amount_multiple';
+        }
+
+        //dd($rules);
+        return $rules;
+    }
+
+    public function messages()
+    {
+        $messages = array();
+        if (!empty($this->issue_id)) {
+            $issue_config_obj = IssueConfig::where('issue_id', $this->issue_id)->get();
+            foreach ($issue_config_obj as $key => $value) {
+                $label_name = $value->label_name;
+                $field_name = $value->field_name;
+                $maximum_length = $value->maximum_length;
+                $minimum_length = $value->minimum_length;
+                $fixed_length = $value->fixed_length;
+                $is_required = $value->is_required;
+                $field_type = $value->field_type;
+
+                if ($is_required == 1) {
+                    $messages[$field_name.'.required'] = $field_name.' is required';
+                }
+                if (!empty($maximum_length)) {
+                    $messages[$field_name.'.max'] = $field_name.' max length '.$maximum_length;
+                }
+                if (!empty($minimum_length)) {
+                    $messages[$field_name.'.min'] = $field_name.' min length '.$minimum_length;
+                }
+                if (!empty($fixed_length)) {
+                    $messages[$field_name.'.fixed_len'] = $field_name.' input length should be '.$fixed_length;
+                }
+
+                // For Quota field validation
+                if (!empty($this->get('passport'))) {
+                    foreach($this->get('passport') as $key => $val) {
+                        if ($field_name === $key){
+                            if ($is_required == 1) {
+                                $messages['passport.'.$key.'.required'] = $label_name.' is required';
+                            }
+                            if (!empty($maximum_length)) {
+                                $messages['passport.'.$key.'.max'] = $label_name.' max length '.$maximum_length;
+                            }
+                            if (!empty($minimum_length)) {
+                                $messages['passport.'.$key.'.min'] = $label_name.' min length '.$minimum_length;
+                            }
+                            if (!empty($fixed_length)) {
+                                $messages['passport.'.$key.'.fixed_len'] = $label_name.' input length should be '.$fixed_length;
+                            }
+                            $messages['passport.'.$key.'.float_twodigit'] = $label_name .' Must be two digit after decimal number is required.';
+                            $messages['passport.'.$key.'.after_or_equal'] = $label_name .' Must be greater than today date';
+                        }
+                    }
+                }
+
+                if (!empty($this->get('currentYear'))) {
+                    foreach($this->get('currentYear') as $key => $val) {
+                        if ($field_name === $key){
+                            if ($is_required == 1) {
+                                $messages['currentYear.'.$key.'.required'] = $label_name.' is required';
+                            }
+                            if (!empty($maximum_length)) {
+                                $messages['currentYear.'.$key.'.max'] = $label_name.' max length '.$maximum_length;
+                            }
+                            if (!empty($minimum_length)) {
+                                $messages['currentYear.'.$key.'.min'] = $label_name.' min length '.$minimum_length;
+                            }
+                            if (!empty($fixed_length)) {
+                                $messages['currentYear.'.$key.'.fixed_len'] = $label_name.' input length should be '.$fixed_length;
+                            }
+                            $messages['currentYear.'.$key.'.float_twodigit'] = $label_name .' Must be two digit after decimal number is required.';
+                            $messages['currentYear.'.$key.'.current_year'] = 'Date Should be Current Year';
+                            $messages['currentYear.'.$key.'.after_or_equal'] = 'Must be greater than today date';
+                        }
+                    }
+                }
+
+                if (!empty($this->get('nextYear'))) {
+                    foreach($this->get('nextYear') as $key => $val) {
+                        if ($field_name === $key){
+                            if ($is_required == 1) {
+                                $messages['nextYear.'.$key.'.required'] = $label_name.' is required';
+                            }
+                            if (!empty($maximum_length)) {
+                                $messages['nextYear.'.$key.'.max'] = $label_name.' max length '.$maximum_length;
+                            }
+                            if (!empty($minimum_length)) {
+                                $messages['nextYear.'.$key.'.min'] = $label_name.' min length '.$minimum_length;
+                            }
+                            if (!empty($fixed_length)) {
+                                $messages['nextYear.'.$key.'.fixed_len'] = $label_name.' input length should be '.$fixed_length;
+                            }
+                            $messages['nextYear.'.$key.'.float_twodigit'] = $label_name .' Must be two digit after decimal number is required.';
+                            $messages['nextYear.'.$key.'.next_year'] = 'Date Should be Next Year';
+                            $messages['nextYear.'.$key.'.after_or_equal'] = 'Must be greater than today date';
+
+                        }
+                    }
+                }
+
+                if (!empty($this->get('medicalQuota'))) {
+                    foreach($this->get('medicalQuota') as $key => $val) {
+                        if ($field_name === $key){
+                            if ($is_required == 1) {
+                                $messages['medicalQuota.'.$key.'.required'] = $label_name.' is required';
+                            }
+                            if (!empty($maximum_length)) {
+                                $messages['medicalQuota.'.$key.'.max'] = $label_name.' max length '.$maximum_length;
+                            }
+                            if (!empty($minimum_length)) {
+                                $messages['medicalQuota.'.$key.'.min'] = $label_name.' min length '.$minimum_length;
+                            }
+                            if (!empty($fixed_length)) {
+                                $messages['medicalQuota.'.$key.'.fixed_len'] = $label_name.' input length should be '.$fixed_length;
+                            }
+                            $messages['medicalQuota.'.$key.'.float_twodigit'] = $label_name .' Must be two digit after decimal number is required.';
+                            $messages['medicalQuota.'.$key.'.current_year'] = 'Date Should be Current Year';
+                            $messages['medicalQuota.'.$key.'.after_or_equal'] = 'Must be greater than today date';
+                        }
+                    }
+                }
+
+            }
+
+            $issue_checklist_config_obj = IssueCheckListConfig::where('issue_id', $this->issue_id)->get();
+            foreach ($issue_checklist_config_obj as $key => $value) {
+                $tmp_rules = "";
+                $field_name = $value->field_name;
+                $maximum_length = $value->maximum_length;
+                $is_required = $value->is_required;
+                if ($is_required == 1) {
+                    $messages[$field_name.'.required'] = 'Required';
+                }
+                if (!empty($maximum_length) && $is_required == 1) {
+                    $tmp_rules .= '|max:'.$maximum_length;
+                    $messages[$field_name.'.max'] = 'Max Length '.$maximum_length;
+                } else {
+                    $tmp_rules .= 'max:'.$maximum_length;
+                    $messages[$field_name.'.max'] = 'Max Length '.$maximum_length;
+                }
+            }
+            /* Check for Nominee Information Minor*/
+            if (!empty($this->minor_flg_nominee)) {
+                if ($this->minor_flg_nominee == 'Y') {
+                    $messages['guardianName.required'] ='Required';
+                    $messages['guardina_code_s.required'] ='Required';
+                    $messages['guardianAddr1.required'] ='Required';
+                    $messages['guardianCity.required'] ='Required';
+                    $messages['guardianStateProv.required'] ='Required';
+                    $messages['guardianPostalCode.required'] ='Required';
+                    $messages['guardianCountry.required'] ='Required';
+                    $messages['nominee_dob.after'] = 'Please check Nominee Minor Flag / Nominee Birth Date';
+                } else {
+                    $messages['nominee_dob.before'] = 'Please check Nominee Minor Flag / Nominee Birth Date';
+                }
+            }
+        }
+
+        // Treasury type + amount messages
+        $messages['treasury_type.required'] = 'Required';
+        $messages['treasury_type.in'] = 'Invalid treasury type.';
+        $messages['bidding_amount.required'] = 'Required';
+        $messages['bidding_amount.numeric'] = 'Bidding amount must be a number.';
+
+        //dd($messages);
+        return $messages;
+    }
+}

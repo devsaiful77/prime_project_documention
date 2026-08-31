@@ -1230,7 +1230,7 @@
                     <tbody style="word-break: break-all;">
                         @if ($raw->applicant_first_nominee_name)
                             <tr>
-                                <td class="vcenter text-center value-text" style="font-size:9px">MD Saiful Islam Munna</td>
+                                <td class="vcenter text-center value-text" style="font-size:9px">{{ $raw->applicant_first_nominee_name ?? '' }}</td>
                                 <td class="vcenter text-center value-text" style="font-size:9px">{{ $raw->applicant_first_nominee_nidpassportbirth_no ?? '' }}</td>
                                 <td class="vcenter text-center value-text" style="font-size:7px">{{ $raw->applicant_first_nominee_address ?? '' }}</td>
                                 <td class="vcenter text-center value-text" style="font-size:9px">{{ $raw->applicant_first_nominee_relation_with_account_holder ?? '' }}</td>

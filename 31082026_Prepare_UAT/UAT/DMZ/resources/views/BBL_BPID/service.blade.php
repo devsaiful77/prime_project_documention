@@ -37,7 +37,7 @@
                     <div class="dropdown-wrapper mb-2">
                         <label class="mb-1 text-white">Select {{ $type }}<span class="required">*</span></label>
                         <select class="dropdown-select single_select2 single_select2_focus" name="account_number" id="accountNumberMobile">
-                            @if(count($accountNumbers) != 1)
+                            @if(count($accountNumbers) > 0)
                                 <option value="">Select {{ $type }}</option>
                             @endif
                             @foreach($accountNumbers as $key => $value)
@@ -96,11 +96,11 @@
                             >
 
                             <label class="form-check-label text-white" for="checkme">
-                                For more information, please visit the
+                                For more information, please visit
                                 <a href="#" class="text-white text-decoration-underline">
                                     https://www.primebank.com.bd/wealth-management
                                 </a>
-                                or Contact “16218 &amp; 09610016218”
+                                or contact ‘16218 or 09610016218’
                             </label>
                         </div>
                     @endif
@@ -156,7 +156,7 @@
                                                 <div class="form-group" style="padding-bottom: 8px;">
                                                     <label class="mb-1">{{ $type }} Number <span class="required"> * </span></label>
                                                     <select class="form-select single_select2 single_select2_focus" name="account_number" id="accountNumberWeb" >
-                                                        @if(count($accountNumbers) != 1)
+                                                        @if(count($accountNumbers) > 0)
                                                             <option value="">Select {{ $type }}</option>
                                                         @endif
                                                         @foreach($accountNumbers as $key => $value)
@@ -224,11 +224,11 @@
                                             >
 
                                             <label class="form-check-label text-white" for="checkme">
-                                                For more information, please visit the
+                                                For more information, please visit
                                                 <a href="#" class="text-white text-decoration-underline">
                                                     https://www.primebank.com.bd/wealth-management
                                                 </a>
-                                                or Contact “16218 &amp; 09610016218”
+                                                or contact ‘16218 or 09610016218’
                                             </label>
                                         </div>
                                         @endif

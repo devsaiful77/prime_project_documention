@@ -33,7 +33,7 @@
         <form id="cifFormApp" action="{{ url('/CI/updateWForm') }}" method="POST">
             @csrf
             <div class="container-fluid custom-layout app_view">
-                <div class="dropdown-wrapper mb-4">
+                <div class="dropdown-wrapper mb-4 d-none">
                     <label class="mb-1 text-white"> {{ $type }} Number</label>
                     @if($product_type == 1)
                         <input type="text" value="{{$accNumber->mask_card_no}}" name="account_number" class="form-control" readonly />
@@ -42,7 +42,7 @@
                     @endif
                 </div>
                 <input type="hidden" name="request_mode" id="request_mode" value="app" />
-                <div class="dropdown-wrapper mb-4">
+                <div class="dropdown-wrapper mb-4  d-none">
                     <label class="mb-1 d-block text-white">Service Request</label>
                     <input type="text" value="{{$service_name->name}}" class="form-control" id="request_type_mobile" readonly />
                 </div>
@@ -138,7 +138,7 @@
                                         <input type="hidden" name="otp_mode" value="1"/>
                                         <input type="hidden" name="reference_number" value="{{ $refNum }}" />
                                         <input type="hidden" name="product_type" value="{{ $product_type }}" />
-                                        <div class="card card-color">
+                                        <div class="card card-color d-none">
                                             <div class="card-body" style="padding: 0;">
                                                 <div class="form-group" style="padding-bottom: 8px;">
                                                     <label class="mb-1"> {{ $type }} Number </label>
@@ -150,7 +150,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card card-color">
+                                        <div class="card card-color d-none">
                                             <div class="card-body" style="padding: 0;">
                                                 <div class="form-group" style="padding-bottom: 8px;">
                                                     <label class="mb-1 d-block">Service Request</label>

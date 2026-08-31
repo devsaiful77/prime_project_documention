@@ -1140,6 +1140,13 @@ $status = "";
                                         </div>
                                     @endif
 
+                                    {{-- AUCTION Print option --}}
+                                    @if ($dataForView['issue_id'] == 1193)
+                                        <div class="col-lg-1">
+                                            <button class="btn btn-info btn-sm" type="button" id="auctionPrintBtn">Print Auction Form</button>
+                                        </div>
+                                    @endif
+
                                     <div class="col-lg-2 text-center">
                                         <button type="submit" class="btn btn-danger close-btn form-group mr-1 ml-2"
                                                 onclick="overlay('show');" value="close" name="submit" style="margin-right: 40px;">Close
@@ -1243,6 +1250,12 @@ $status = "";
 
                     {{-- Hidden Form for POST in New Tab --}}
                     <form id="bpidPrintForm" action="{{ route('support.printBpIdTicketDetails') }}" method="POST" target="_blank" style="display:none;">
+                        @csrf
+                        <input type="hidden" name="issue_id" value="{{ $dataForView['issue_id'] }}">
+                        <input type="hidden" name="other_data" value="{{ json_encode($dataForView['w_form_type']) }}">
+                    </form>
+
+                    <form action="{{ route('support.printAuctionTicketDetails') }}" method="POST" target="_blank" id="auctionPrintForm" style="margin: 10px 0px;" target="_blank" style="display:none;">
                         @csrf
                         <input type="hidden" name="issue_id" value="{{ $dataForView['issue_id'] }}">
                         <input type="hidden" name="other_data" value="{{ json_encode($dataForView['w_form_type']) }}">
@@ -2426,6 +2439,11 @@ $status = "";
                 $(document).on('click', '#bpidPrintBtn', function () {
                     // Submit in new tab
                     $('#bpidPrintForm').submit();
+                });
+
+                $(document).on('click', '#auctionPrintBtn', function () {
+                    // Submit in new tab
+                    $('#auctionPrintForm').submit();
                 });
 
             </script>
