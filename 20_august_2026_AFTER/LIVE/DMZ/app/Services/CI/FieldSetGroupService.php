@@ -19,9 +19,11 @@ class FieldSetGroupService
 
         foreach ($group as $key => $value) {
             $single['fieldset_title'] = '';
+            $single['fieldset_id'] = '';
             if ($key) {
                 $fieldSet = issueFieldsetGroup::find($key);
                 $single['fieldset_title'] = $fieldSet->name;
+                $single['fieldset_id'] = $fieldSet->group_id_name;
             }
             $single['fields'] = $value;
             $fields[] = $single;
