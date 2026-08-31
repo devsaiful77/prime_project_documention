@@ -7,4 +7,5 @@ class LOCALIDEnum
 {
     const POST_NO_DEBIT = 1124;
     const BPID = 1118;
+    const AUCTION = 1193;
 }

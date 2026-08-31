@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'eMs6uw'); return 0;
-##!!!##VFFUUbWotKy6t6iqrGeIt7eCVFFUUby6rGeQs7O8tLC1qLuso4uou6ipqLqso4yztri8rLW7o5S2q6yzglRRVFGqs6i6umeLwLWotLCqiJeQirmsq6y1u7Cos2esv7ustau6Z5S2q6yzVFHCVFFQt7m2u6yqu6yrZ2u7qKmzrGeEZ26rwLWotLCqpqi3sKaquayrrLW7sKizboJUUWdnZ2e3uba7rKq7rKtna62ws7OoqbOsZ4Rnom6wq25zbqi3sG5zbry6rLm1qLSsbnNut6i6ur62uatupIJUUcRUUQ==
