@@ -335,7 +335,7 @@ if (!empty($issue_id)) {
         @endphp
 
         <div class="mobile_fieldset" @if($shouldHideFieldset) style="display:none;" @endif>
-            <fieldset class="inputTextWrap mt-3" @if(!empty($single['fieldset_id'])) id="{{ $single['fieldset_id'] }}" @endif>
+            <fieldset class="inputTextWrap" @if(!empty($single['fieldset_id'])) id="{{ $single['fieldset_id'] }}" @endif>
                 <legend>
                     @if ($issueId == 1192)
                         <button type="button"
@@ -354,9 +354,29 @@ if (!empty($issue_id)) {
                             $PApiKey = $r['api_key'];
                             $PApiKeyArr = explode(':', $PApiKey);
                             $PApiKeyId = $PApiKeyArr[0];
+
+                            // Applicant-count wise field hide logic
+                            $applicantFieldMap = [
+                                'second_app_mobile' => 2,
+                                'second_app_email'  => 2,
+                                'third_app_mobile'  => 3,
+                                'third_app_email'   => 3,
+                                'fourth_app_mobile' => 4,
+                                'fourth_app_email'  => 4,
+                            ];
+
+                            $hideStyle = '';
+                            if (array_key_exists($r->field_name, $applicantFieldMap)) {
+                                $requiredCount = $applicantFieldMap[$r->field_name];
+                                $currentApplicantCount = $applicant_count ?? 1;
+
+                                if ($currentApplicantCount < $requiredCount) {
+                                    $hideStyle = 'display: none;';
+                                }
+                            }
                         @endphp
                         @if($r->field_type==\App\Enum\FieldTypeEnum::TEXT)
-                            <div class="input-wrapper mb-3 {{ $r->field_name }}">
+                            <div class="input-wrapper mb-3 {{ $r->field_name }}" style="{{ $hideStyle }}">
                                 <label for="" class="input-label">{{ $r->label_name }}<span class="required">@if($r->is_required == 1) * @endif</span></label>
                                 <input type="{{ $r->field_type }}" class="input-field text_eng" placeholder="{{ $r->placeholder }}" name="{{ $r->field_name }}" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}">
                                 <div class="{{ $r->field_name }}_err error-message"></div>

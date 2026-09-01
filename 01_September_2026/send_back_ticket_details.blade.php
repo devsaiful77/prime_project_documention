@@ -328,10 +328,37 @@ $i=1;
         <fieldset class="card-color" style="color: #000; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; background: #EFEFEF; border-radius: 5px;">
             <legend style=" font-size: 18px; font-weight: 500">{{ $single['fieldset_title'] }}</legend>
             @foreach($single['fields'] as $key => $r)
+                @php
+                    $PApiKey = $r['api_key'];
+                    $PApiKeyArr = explode(':', $PApiKey);
+                    $PApiKeyId = $PApiKeyArr[0];
+
+                    // Applicant-count wise field hide logic
+                    $applicantFieldMap = [
+                        'second_app_mobile' => 2,
+                        'second_app_email'  => 2,
+                        'third_app_mobile'  => 3,
+                        'third_app_email'   => 3,
+                        'fourth_app_mobile' => 4,
+                        'fourth_app_email'  => 4,
+                    ];
+
+                    $hideStyle = '';
+                    if (array_key_exists($r->field_name, $applicantFieldMap)) {
+                        $requiredCount = $applicantFieldMap[$r->field_name];
+                        $currentApplicantCount = $applicant_count ?? 1;
+
+                        if ($currentApplicantCount < $requiredCount) {
+                            $hideStyle = 'display: none;';
+                        }
+                    }
+
+                @endphp
+
                 <div class="mb-2">
                     @if($r->field_type==\App\Enum\FieldTypeEnum::TEXT)
 
-                        <div class="form-group {{ $r->field_name }}" style="padding-bottom: 8px;">
+                        <div class="form-group {{ $r->field_name }}" style="padding-bottom: 8px; {{ $hideStyle }}">
                             <label class="mb-1">{{ $r->label_name }}<span class="required">@if($r->is_required == 1) {{'*'}} @endif</span></label>
                             <input type="{{ $r->field_type }}" class="form-control text_eng" name="{{ $r->field_name }}" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}"
                                    placeholder="{{ $r->placeholder }}"/>

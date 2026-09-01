@@ -464,6 +464,27 @@ class TreasuryController extends Controller
                 $isEmailOtp = 0;
             }
 
+            // Applicant count wise field hide logic (same as issueFormFieldBPID)
+            $applicant_count = 1;
+            if (!empty($accNum) && !empty($accNum->account_number)) {
+                $check_bpid = DB::table('bp_ids')
+                    ->where('account_number', $accNum->account_number)
+                    ->latest()
+                    ->first();
+
+                if ($check_bpid) {
+                    for ($i = 4; $i >= 2; $i--) {
+                        $contact_field = "contact_no_{$i}";
+                        $email_field = "email_{$i}";
+
+                        if (!empty($check_bpid->$contact_field) || !empty($check_bpid->$email_field)) {
+                            $applicant_count = $i;
+                            break;
+                        }
+                    }
+                }
+            }
+
             $backUrl = url('/') . '/BPID/send-back/details/?CIToken=' . $ci_token . '&request_type=' . $request_type;
 
             $data = [
@@ -484,8 +505,9 @@ class TreasuryController extends Controller
                 'is_send_back' => 1,
                 'uploadedAttachment' => $uploadedAttachment,
                 'backUrl' => $backUrl,
-		'issue_id' => $issueId,
-                'request_type' => $request_type
+		        'issue_id' => $issueId,
+                'request_type' => $request_type,
+                'applicant_count' => $applicant_count,
 
             ];
 
