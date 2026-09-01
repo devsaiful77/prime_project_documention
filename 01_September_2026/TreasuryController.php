@@ -42,7 +42,7 @@ class TreasuryController extends Controller
                 ->first();
 
         if ($findSameUserIssue) {
-            $sameIssueRequestFound  = false;
+            $sameIssueRequestFound  = true;
         }
 
         if (!empty($first) && $first == 1) {
@@ -158,10 +158,22 @@ class TreasuryController extends Controller
     public function issueFormFieldBPID(Request $request)
     {
         $bpid_data = null;
+        $applicant_count = 1;
         if($request->issue_id == 1193){
             $check_bpid = DB::table('bp_ids')->where('account_number', $request->account_number)->latest()->first();
             if ($check_bpid && !empty($check_bpid->bp_id)) {
                 $bpid_data = $check_bpid;
+
+                // Determine applicant_count based on highest filled contact_no_X / email_X
+                for ($i = 4; $i >= 2; $i--) {
+                    $contact_field = "contact_no_{$i}";
+                    $email_field = "email_{$i}";
+
+                    if (!empty($bpid_data->$contact_field) || !empty($bpid_data->$email_field)) {
+                        $applicant_count = $i;
+                        break;
+                    }
+                }
             }
             else{
                 return view('BBL_BPID.partials.BPID_no_data_found', ['account_number' => $request->account_number]);
@@ -178,14 +190,16 @@ class TreasuryController extends Controller
             return view('BBL_BPID.partials.extra_form_field_with_group_bpid', [
                 'issue_fields' => $fields, 
                 'issue_id' => $request->issue_id,
-                'bpid_data' => $bpid_data
+                'bpid_data' => $bpid_data,
+                'applicant_count' => $applicant_count,
             ]);
         } else {
             // dd("okay");
             return view('BBL_BPID.partials.extra_form_field_with_group_app_bpid', [
                 'issue_fields' => $fields, 
                 'issue_id' => $request->issue_id,
-                'bpid_data' => $bpid_data
+                'bpid_data' => $bpid_data,
+                'applicant_count' => $applicant_count,
             ]);
         }
     }

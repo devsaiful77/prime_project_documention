@@ -1,8 +1,52 @@
+<style>
+    .fieldset-toggle-box {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100% !important;
+        min-height: 36px;
+        padding: 8px 12px !important;
+        border: 1px solid #cfd6df !important;
+        border-radius: 6px;
+        background: #f8fafc;
+        color: #1f2937 !important;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.2;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .fieldset-toggle-btn:focus,
+    .fieldset-toggle-btn:focus .fieldset-title-text,
+    .fieldset-toggle-btn:focus .toggle-icon {
+        color: #ffffff !important;
+    }
+
+    .mobile_fieldset fieldset {
+        margin: 0 0 5px 0;
+        border: 0;
+    }
+
+    .fieldset-toggle-box .toggle-icon {
+        font-size: 12px;
+        line-height: 1;
+    }
+
+    .mobile_fieldset legend{
+        margin-bottom: 0px;
+    }
+</style>
 <?php
 $input_checkbox = '';
 $input_radio = '';
 $input_dropdown = '';
 $i=1;
+
+$issueId = '';
+if (!empty($issue_id)) {
+    $issueId = $issue_id;
+}
 ?>
 @foreach($issue_fields as $single)
     <!-- Field without Fieldset -->
@@ -268,10 +312,43 @@ $i=1;
 
     <!-- Field With Fieldset -->
     @if($single['fieldset_title'] != "")
-        <div class="mobile_fieldset">
-            <fieldset class="inputTextWrap mt-3">
-                <legend>{{ $single['fieldset_title'] }}:</legend>
-                <div>
+
+        @php
+            // Kon fieldset-er hide/show kon field-er upor depend korbe, tar map
+            $conditionalFieldsetMap = [
+                'BPID_second_applicant' => 'Second Applicant Name:',
+                'BPID_third_applicant'  => 'Third Applicant Name:',
+                'BPID_fourth_applicant' => 'Four Applicant Name:',
+                'BPID_second_nominee'   => 'Second Nominee Name',
+                'BPID_third_nominee'    => 'Third Nominee Name',
+                'BPID_fourth_nominee'   => 'Fourth Nominee Name',
+            ];
+
+            $currentFieldsetId = $single['fieldset_id'] ?? '';
+            $shouldHideFieldset = false;
+
+            if (array_key_exists($currentFieldsetId, $conditionalFieldsetMap)) {
+                $checkLabel = $conditionalFieldsetMap[$currentFieldsetId];
+                $checkValue = array_key_exists($checkLabel, $arraySingle) ? $arraySingle[$checkLabel] : '';
+                $shouldHideFieldset = trim((string) $checkValue) === '';
+            }
+        @endphp
+
+        <div class="mobile_fieldset" @if($shouldHideFieldset) style="display:none;" @endif>
+            <fieldset class="inputTextWrap mt-3" @if(!empty($single['fieldset_id'])) id="{{ $single['fieldset_id'] }}" @endif>
+                <legend>
+                    @if ($issueId == 1192)
+                        <button type="button"
+                                class="btn btn-sm fieldset-toggle-btn fieldset-toggle-box"
+                                data-fieldset-id="{{ $single['fieldset_id'] ?? '' }}">
+                            <span class="fieldset-title-text">{{ $single['fieldset_title'] }}:</span>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                    @else
+                        {{ $single['fieldset_title'] }}:
+                    @endif
+                </legend>
+                <div id="body_{{ $single['fieldset_id'] ?? '' }}" class="fieldset-body">
                     @foreach($single['fields'] as $key => $r)
                         @php
                             $PApiKey = $r['api_key'];
@@ -545,5 +622,23 @@ $i=1;
         });
 
     </script>
-@endpush
 
+    <script nonce="{{ app('csp_nonce') }}">
+        $(document).ready(function () {
+            // Toggle on legend button click
+            $(document).on('click', '.fieldset-toggle-btn', function () {
+                const fieldsetId = $(this).data('fieldset-id');
+                const $body = $('#body_' + fieldsetId);
+                const $icon = $(this).find('.toggle-icon');
+
+                if ($body.is(':visible')) {
+                    $body.slideUp(200);
+                    $icon.text('▼');
+                } else {
+                    $body.slideDown(200);
+                    $icon.text('▲');
+                }
+            });
+        });
+    </script>
+@endpush

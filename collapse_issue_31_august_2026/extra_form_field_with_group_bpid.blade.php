@@ -494,13 +494,36 @@ if ($issueId == 1193 && !empty($bpid_data)) {
                             $PApiKey = $r['api_key'];
                             $PApiKeyArr = explode(':', $PApiKey);
                             $PApiKeyId = $PApiKeyArr[0];
+
+                            $hideStyle = ($PApiKeyId == 'customerMobile' || $PApiKeyId == 'customerPhone' || $PApiKey == 'customerEmail') ? 'display: none;' : '';
+
+                            // Applicant-count wise field hide logic
+                            $applicantFieldMap = [
+                                'second_app_mobile' => 2,
+                                'second_app_email'  => 2,
+                                'third_app_mobile'  => 3,
+                                'third_app_email'   => 3,
+                                'fourth_app_mobile' => 4,
+                                'fourth_app_email'  => 4,
+                            ];
+
+                            if (array_key_exists($r->field_name, $applicantFieldMap)) {
+                                $requiredCount = $applicantFieldMap[$r->field_name];
+                                $currentApplicantCount = $applicant_count ?? 1;
+
+                                if ($currentApplicantCount < $requiredCount) {
+                                    $hideStyle = 'display: none;';
+                                }
+                            }
+
+
                         @endphp
     
                         <div class="mb-2">
     
                             @if($r->field_type==\App\Enum\FieldTypeEnum::TEXT)
     
-                                <div class="form-group {{ $r->field_name }}" style="padding-bottom: 8px;">
+                                <div class="form-group {{ $r->field_name }}" style="padding-bottom: 8px; {{ $hideStyle }}">
                                     <label class="mb-1">{{ $r->label_name }}<span class="required">@if($r->is_required == 1) {{'*'}} @endif</span></label>
                                     <input type="{{ $r->field_type }}"
                                         class="form-control text_eng"
