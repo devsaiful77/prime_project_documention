@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'VypclV'); return 0;
-##!!!##cW5xbtLF0cnX1MXHyYSl1NSfcW5xbtnXyYSt0NDZ0c3SxdjJwKjF2MXGxdfJwKnQ09XZydLYwLHTyMnQn3FucW7H0MXX14Sm1K3IhMnc2MnSyNeEsdPIydBxbt9xbm3U1tPYycfYyciEiNjFxtDJhKGEi8bUw83I14ufcW6EhISE1NbT2MnH2MnIhIjKzdDQxcbQyYShhL+LxtTDzciLkISLxcfH09nS2MPS2dHGydaLkISL1snKydbJ0sfJw9LZ0cbJ1ovBn3Fu4XFu

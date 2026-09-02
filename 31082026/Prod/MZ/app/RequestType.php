@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'ESgiZI'); return 0;
-##!!!##GBUYFRgVeWx4cH57bG5wK0x7e0YYFRgVGBWAfnArVHd3gHh0eWx/cGdPbH9sbWx+cGdQd3p8gHB5f2dYem9wd0YYFRgVbndsfn4rXXB8gHB+f1+Ee3ArcIN/cHlvfitYem9wdxgVhhgVKysrK3t9en9wbn9wbysvf2xtd3ArSCsyfXB8gHB+f2p/hHtwMkYYFSsrKyt7fXp/cG5/cG8rL3t9dHhsfYRWcIQrSCsydG8yRhgVKysrK3t9en9wbn9wbysvcXR3d2xtd3ArSGYYFSsrKysrKzJ5bHhwMjcYFSsrKysrKzJ+f2x/gH4yGBUrKysraEYYFYgYFQ==

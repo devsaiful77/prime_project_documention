@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'QwIpiM'); return 0;
-##!!!##REFEQaWYpJyqp5ianFd4p6dyREFEQayqnFeAo6OspKClmKuck3uYq5iZmKqck3yjpqisnKWrk4Smm5yjckRBREGao5iqqleKpqypmpxXnK+rnKWbqleEppuco0RBskRBQKeppqucmqucm1dbq5iZo5xXdFdeqqasqZqcXnJEQVdXV1enqaarnJqrnJtXW52go6OYmaOcV3RXkl6gm15jXqqmrKmanJalmKScXpRyREG0REE=

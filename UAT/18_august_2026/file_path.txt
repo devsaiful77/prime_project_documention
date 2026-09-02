@@ -1,3 +1,0 @@
-engine\app\Http\Controllers\SupportsController.php
-engine\resources\views\Reports\export\excel_gen_report.blade.php
-engine\resources\views\Supports\wform_details.blade.php

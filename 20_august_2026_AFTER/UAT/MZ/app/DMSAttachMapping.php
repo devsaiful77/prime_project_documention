@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'ly9nnj'); return 0;
-##!!!##cW5xbtLF0cnX1MXHyYSl1NSfcW5xbtnXyYSt0NDZ0c3SxdjJwKjF2MXGxdfJwKnQ09XZydLYwLHTyMnQn3FucW7H0MXX14Sosbel2NjFx8yxxdTUzdLLhMnc2MnSyNeEsdPIydBxbt9xbm3U1tPYycfYyciEiNjFxtDJhKGEi8jR18PF2NjFx8zD0cXU1M3Sy4ufcW6EhISE1NbT2MnH2MnIhIjKzdDQxcbQyYShhL+LzciLkIvWycrJ1snSx8nD0tnRxsnWi5CLxdjYxcfM0cnS2MPNyIuQi8jTx8PN0sjJ3IuQi9fYxdjZ14vBn4RxbuFxbg==

@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'mccRip'); return 0;
-##!!!##a2hraMy/y8PRzr/Bw36fzs6Za2hraNPRw36nysrTy8fMv9LDuqK/0r/Av9HDuqPKzc/Tw8zSuqvNwsPKmWtoa2jByr/R0X6hp6S1zdDJxMrN1X7D1tLDzMLRfqvNwsPKa2jZa2hnztDN0sPB0sPCfoLSv8DKw36bfoXBx8S91c3QycTKzdWFmWtofn5+fs7QzdLDwdLDwn6CxMfKyr/AysN+m365hcfChYqFx9HR08O9x8KFioXF0M3Tzr3HzMTNvcfChYqF0dK/0tPRhbuZa2jba2g=

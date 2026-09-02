@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'SfTdip'); return 0;
-##!!!##V1RXVLirt6+9uqutr2qLurqFV1RXVL+9r2qTtra/t7O4q76vpo6rvqusq72vpo+2ubu/r7i+ppe5rq+2hVdUV1Sttqu9vWqNube6tquzuL6Quby3nsO6r2qvwr6vuK69ape5rq+2V1TFV1RTury5vq+tvq+uam6+q6y2r2qHanGtube6tquzuL6psLm8t6m+w7qvcYVXVFO6vLm+r62+r65qbrq8s7ervMOVr8Nqh2pxvK+wr7yvuK2vqbi/t6yvvHGFV1RTur+strOtam6zuK28r7evuL6zuLFqh2qwq7a9r4VXVFO6v6y2s61qbr6zt6+9vqu3ur1qh2qwq7a9r4VXVGpqamq6vLm+r62+r65qbrCztrarrLavaodqpVdUampqampqampxvK+wr7yvuK2vqbi/t6yvvHF2V1RqampqampqanGvwr68q6mws6+2rnGnhVdUx1dU

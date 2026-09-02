@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'Q3WMgv'); return 0;
-##!!!##JRIPEg9zZnJqeHVmaGolRnV1QBIPEg96eGolWHVmeW5qYVVqd3JueHhudHNhUnRpanF4YVVqd3JueHhudHMlRlglR2Z4alVqd3JueHhudHNAEg8SD2hxZnh4JVVqd3JueHhudHMlan15anNpeCVHZnhqVWp3cm54eG50cxIPgBIPDnV3dHlqaHlqaSUpa25xcWZncWolQiVgLGh0c3l3dHFxandkc2ZyaiwxJSxzZnJqLDElLGlueHVxZn5kc2ZyaiwxJSxpanhod251eW50cyxiQBIPgg==

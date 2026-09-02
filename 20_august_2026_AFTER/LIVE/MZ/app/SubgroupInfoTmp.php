@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'W4I238'); return 0;
-##!!!##fnt+e9/S3tbk4dLU1pGy4eGsfnt+e+bk1pG63d3m3trf0uXWzbXS5dLT0uTWzbbd4OLm1t/lzbfS1OXg49rW5M250uS30tTl4OPqrH575uTWkbrd3ebe2t/S5dbNtdLl0tPS5NbNtt3g4ubW3+XNvuDV1t2sfnt+e9Td0uTkkcTm09jj4Obhut/X4MXe4ZHW6eXW39Xkkb7g1dbdfnvsfnuRkZGR5uTWkbnS5LfS1OXg4+qsfnt+e5GRkZHh5tPd2tSR1+bf1OXa4N+R1dbh0uPl3tbf5Zma7H57kZGRkZGRkZHj1uXm49+RleXZ2uSer9PW3eDf2OTF4Jm11uHS4+Xe1t/lq6vU3dLk5JqsfnuRkZGR7n57fnuRkZGR4ebT3drUkdfm39Tl2uDfkdjj4Obhut/X4Jma7H57kZGRkZGRkZHj1uXm49+RleXZ2uSer9PW3eDf2OTF4Jm44+Dm4brf1+Crq9Td0uTkmqx+e5GRkZHufnvufns=

@@ -1,3 +1,0 @@
-<?php
-bolt_decrypt( __FILE__ , 'KzkVmk'); return 0;
-##!!!##a2hraMy/y8PRzr/Bw36fzs6Za2hraNPRw36nysrTy8fMv9LDuqK/0r/Av9HDuqPKzc/Tw8zSuqvNwsPKmWtoa2jByr/R0X6f0tK/wcbLw8zSfsPW0sPMwtF+q83Cw8praNlraGfO0M3Sw8HSw8J+gtK/wMrDfpt+hb/S0r/BxsvDzNLRhZlraGfO08DKx8F+gtLHy8PR0r/LztF+m37Ev8rRw5lraH5+fn7O0M3Sw8HSw8J+gsTHysq/wMrDfpt+uYXHwoWKhcTHysO9zL/Lw4WKhdDDxMPQw8zBw73M08vAw9CFioW/0tK/wcbLw8zSvcK/0sOFioXTzsrNv8LDwr3A14W7mX5raNtraA==
