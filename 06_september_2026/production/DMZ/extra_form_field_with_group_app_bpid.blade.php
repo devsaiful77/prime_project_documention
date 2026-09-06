@@ -63,7 +63,7 @@ if (!empty($issue_id)) {
 }
 
 $bpidValues = [];
-if ($issueId == 1193 && !empty($bpid_data)) {
+if ($issueId == 1449 && !empty($bpid_data)) {
     $bpidValues = [
         'bpId'            => $bpid_data->bp_id,
         'accountNumber'   => $bpid_data->account_number,
@@ -338,7 +338,7 @@ if ($issueId == 1193 && !empty($bpid_data)) {
                         id="{{ $single['fieldset_id'] }}"
                     @endif>
                     <legend>
-                        @if ($issueId == 1192)
+                        @if ($issueId == 1450 )
                             <button type="button"
                                     class="btn btn-sm fieldset-toggle-btn fieldset-toggle-box"
                                     data-fieldset-id="{{ $single['fieldset_id'] ?? '' }}">
@@ -598,14 +598,14 @@ if ($issueId == 1193 && !empty($bpid_data)) {
                             @endif
                         @endforeach
 
-                        {{-- For BpId if issue_id 1192 --}}
-                        @if ($issueId == 1192)
+                        {{-- For BpId if issue_id BPID --}}
+                        @if ($issueId == 1450)
                             @if(($single['fieldset_id'] ?? null) === 'BPID_first_applicant')
                                 <input type="hidden" name="nominee_count" id="nomineeCount" value="0">
                                 <input type="hidden" name="applicant_count" id="applicantCount" value="0">
                             @endif
                         @endif
-                        {{-- For BpId if issue_id 1192 --}}
+                        {{-- For BpId if issue_id BPID --}}
                     </div>
                 </fieldset>
             </div>

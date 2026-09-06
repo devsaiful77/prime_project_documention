@@ -337,7 +337,7 @@ if (!empty($issue_id)) {
         <div class="mobile_fieldset" @if($shouldHideFieldset) style="display:none;" @endif>
             <fieldset class="inputTextWrap mt-3" @if(!empty($single['fieldset_id'])) id="{{ $single['fieldset_id'] }}" @endif>
                 <legend>
-                    @if ($issueId == 1192)
+                    @if ($issueId == getId('BPID'))
                         <button type="button"
                                 class="btn btn-sm fieldset-toggle-btn fieldset-toggle-box"
                                 data-fieldset-id="{{ $single['fieldset_id'] ?? '' }}">
