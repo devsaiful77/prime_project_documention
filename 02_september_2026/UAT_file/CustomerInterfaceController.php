@@ -2,74 +2,72 @@
 
 namespace App\Http\Controllers\CI;
 
-use App\Attachment;
-use App\BpId;
 use App\CIUserSession;
-use App\Comment;
 use App\Complaint;
 use App\ComplaintFormType;
 use App\ComplaintFormTypeHistory;
-use App\CustomerInterfaceToken;
-use App\Enum\FlowEnum;
-use App\Feedback;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CIWFormRequest;
-use App\IssueAttachmentConfig;
-use App\IssueConfig;
-use App\IssueGroupWorkflow;
-use App\IssueWorkflow;
-use App\OtpCode;
-use App\OutgoingEMAIL;
-use App\OutgoingSMS;
-use App\Reference;
-use App\Rules\SpecialCharacterFilter;
-use App\Sequence;
 use App\Services\CI\ApiAccessTokenService;
-use App\Services\CI\CICURLService;
-use App\Services\CI\CIFModificationService;
 use App\Services\CI\CIRequestResponseService;
-use App\Services\CI\FieldSetGroupService;
 use App\Services\CI\getCustomerDetailsService;
-use App\Services\CI\OTPGenerateService;
 use App\Services\CI\OTPSendEmailService;
 use App\Services\CI\PBSessionIdApiService;
-use App\Services\CI\TokenValidatedService;
-use App\Setting;
-use App\SMSEmail;
-use App\SubgroupInfo;
-use App\UnitItem;
-use App\WForm;
-use App\WFormType;
-use App\WFormTypeHistory;
-use Carbon\Carbon;
-use DateTime;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Rules\SpecialCharacterFilter;
+
+use App\WForm;
+use App\BpId;
+use App\Comment;
+use App\OtpCode;
+use App\Sequence;
+use App\SMSEmail;
+use App\UnitItem;
+use App\Reference;
+use App\WFormType;
+use App\Attachment;
+use App\IssueConfig;
+use App\OutgoingSMS;
+use App\SubgroupInfo;
+use App\IssueWorkflow;
+use App\OutgoingEMAIL;
+use App\WFormTypeHistory;
+use App\IssueGroupWorkflow;
+use App\CustomerInterfaceToken;
+use App\IssueAttachmentConfig;
+use App\Setting;
+use App\Enum\FlowEnum;
+use App\Feedback;
+use Carbon\Carbon;
 use Throwable;
+use DateTime;
+
+use App\Http\Requests\CIWFormRequest;
+use App\Services\CI\FieldSetGroupService;
+use App\Services\CI\TokenValidatedService;
+use App\Services\CI\OTPGenerateService;
+use App\Services\CI\CICURLService;
+use App\Services\CI\CIFModificationService;
 
 class CustomerInterfaceController extends Controller
 {
     public function index()
     {
-        // return abort(404, 'Page not found!');
-        return view('BBL_CI.index');
+        return abort(404, 'Page not found!');
+        //return view('BBL_CI.index');
     }
 
-
-    // CI token validate
     public function accessCI(Request $request)
     {
-        // return $request->all();
-
         $sessionId = $request->sessionId;
         $myPrimeId = $request->myPrimeId;
 
-        Log::info('CI Request Body', [$request->all()]);
+        Log::info('CI Request Log', [$request->all()]);
 
         $cus_email = '';
         $cus_phone = '';
@@ -85,31 +83,19 @@ class CustomerInterfaceController extends Controller
             ], 422);
         }
 
+        // Local
+        //$api_credentials = ['username' => 'PrIMeCIFbL', 'password' => '^*PBLci#455a:vServe}=))'];
 
-        // Live
-        // $api_credentials = ['ci_username' => 'PBCIServe2026', 'ci_password' => $ciPass];
-
-        $api_credentials = (array)DB::table('api_credential')->select('ci_username', 'ci_password')->first();
-
+        $api_credentials = (array) DB::table('api_credential')->select('ci_username', 'ci_password')->first();
+        Log::info('api_credential', [$api_credentials]);
         $username = $request->header('username');
         $password = $request->header('password');
         Log::info('CI Request Header', ['username' => $username, 'password' => $password]);
 
-        // UAT
-        $username = getId('USER_NAME');
-        $password = getId('USER_PASSWORD');
-
-        // LIVE
-        // $username = 'PBCIServe2026';
-        // $password = encrypt('^*PB#ci#2026Jan:vSeRve}=))');
-
-        // LIVE
-        // $username = 'PBCIServe2026';
-        // $password = encrypt('^*PB#ci#2026Jan:vSeRve}=))');
-
         try {
-            //$password = decrypt($password);
+            $password = decrypt($password);
         } catch (Throwable $e) {
+            dd($e->getMessage());
             Log::error('Password Error', ['message' => 'Invalid Password!']);
             return response()->json([
                 'error' => [
@@ -120,7 +106,6 @@ class CustomerInterfaceController extends Controller
         }
 
         if (empty($username) || empty($password)) {
-            Log::error('Password Error2', ['message' => 'Username or Password is required!']);
             return response()->json([
                 'error' => [
                     'code' => '422',
@@ -129,22 +114,25 @@ class CustomerInterfaceController extends Controller
             ], 422);
         }
 
+        //dd($api_credentials['ci_username'],$username,$api_credentials['ci_password'],$password);
         // validated username and password
-        // if ($api_credentials['ci_username'] !== $username || $api_credentials['ci_password'] !== $password) {
-        //     Log::error('Password Error3', ['message' => 'Username or Password dose not Match!']);
-        //     return response()->json([
-        //         'error' => [
-        //             'code' => '444',
-        //             'message' => 'Username or Password dose not Match!',
-        //         ]
-        //     ], 444);
-        // }
+        if ($api_credentials['ci_username'] !== $username || $api_credentials['ci_password'] !== $password) {
+            return response()->json([
+                'error' => [
+                    'code' => '444',
+                    'message' => 'Username or Password dose not Match!',
+                ]
+            ], 444);
+        }
 
 
         // TODO: Here need to validate 'myPrimeId' & 'sessionId'
+
         $checkSession = PBSessionIdApiService::checkPrimeSession($myPrimeId, $sessionId);
 
         if (!empty($checkSession['resCif'])) {
+
+
             $customerDetails = getCustomerDetailsService::getCustomerDetailsById($checkSession);
 
             $uniqueToken = Str::uuid()->toString();
@@ -157,9 +145,9 @@ class CustomerInterfaceController extends Controller
             $CIToken->token = $uniqueToken;
             $CIToken->myPrimeId = $myPrimeId;
             $CIToken->callback_url = $checkSession['resCallbackUrl'] ?? '';
-            $CIToken->is_verify = 1;
+            /*$CIToken->is_verify = 1;*/
             $CIToken->last_activity_time = date('d-m-Y H:i:s');
-            $CIToken->expires_at = date('Y-m-d H:i:s', strtotime(Carbon::now()->addMinutes($setting->ci_session_time ?? 10)));
+            /*$CIToken->expires_at = date('Y-m-d H:i:s', strtotime(Carbon::now()->addMinutes($setting->ci_session_time ?? 10)));*/
             $CIToken->save();
 
             CIUserSession::create([
@@ -168,20 +156,15 @@ class CustomerInterfaceController extends Controller
                 'time' => date('Y-m-d H:i:s', strtotime(Carbon::now())),
             ]);
 
-            $module = strtoupper($request->input('module'));
-            $encryptedToken = encrypt($uniqueToken);
+            Log::info('CI Return Success!', ['ci_web_url' => url('/') . '/CI/dashboard/?CIToken=' . $uniqueToken]);
 
-            Log::info('CI Return Success!', ['ci_web_url' => url('/') . '/CI/service/?CIToken=' . encrypt($uniqueToken) . '&first=1']);
-            // return response()->json([
-            //     'code' => '000',
-            //     'message' => 'Success',
-            //     'ci_web_url' => url('/') . '/CI/service/?CIToken=' . encrypt($uniqueToken) . '&first=1',
-            // ], 200);
+            return response()->json([
+                'code' => '000',
+                'message' => 'Success',
+                //'ci_web_url' => url('/') . '/CI/dashboard/?CIToken=' . encrypt($uniqueToken),
+                'ci_web_url' => url('/') . '/CI/dashboard/?CIToken=' . $uniqueToken,
 
-            return redirect()->route('CI.service', [
-                'CIToken' => encrypt($uniqueToken),
-                'first' => 1
-            ]);
+            ], 200);
         } else {
             Log::error('CI Error', ['message' => 'CIF number not found!', 'request' => $request->all()]);
             return response()->json([
@@ -193,53 +176,58 @@ class CustomerInterfaceController extends Controller
         }
     }
 
-    public function service()
-    {
-        //$setting = Setting::select('setting_id', 'ci_session_time')->first();
-        $CIToken = \request()->get('CIToken');
-        $first = \request()->get('first');
 
-        if (!empty($first) && $first == 1) {
-            try {
-                $token = decrypt($CIToken);
-                session()->forget('auth_token');
-                session()->put('auth_token', $token);
-            } catch (Throwable $e) {
-                Log::error('service() Error', ['message' => 'invalid access token.']);
-                return abort(404, 'Page not found!');
-            }
-        } else {
-            $token = \request()->get('CIToken');
-        }
-
-        // Check Token if exit
-        $data = CustomerInterfaceToken::where('token', $token)->first();
-
-        if ($data) {
-            if (!empty(session()->get('auth_token')) && session()->get('auth_token') === $token) {
-                return view('BBL_CI.service_home', ["ci_token" => $token, 'step1' => 'active']);
-            } else {
-                // return abort(403, 'Unauthorized User!');
-                Log::error('error', ['message' => 'Unauthorized User!']);
-                return abort(404, 'Unauthorized User!');
-            }
-        }
-
-        Log::error('error', ['message' => 'Session Id not found!']);
-        return abort(404, 'Unauthorized User!');
-        // return view('errors.errors_msg')->with('msg', 'Session Id not found!');
-    }
-
-    // Service type page
-    public function serviceType()
+    public function dashboard()
     {
         $CIToken = \request()->get('CIToken');
-        $requestType = \request()->get('request_type');
+        //$first = \request()->get('first');
+
+        //try {
+        // $token = decrypt($CIToken);
+        //} catch (Throwable $e) {
+        //Log::error('Dashboard Error', ['message' => $e->getMessage()]);
+        //return abort(404, 'Page not found!');
+        //}
 
         // Check Token if exit
         $data = CustomerInterfaceToken::where('token', $CIToken)->first();
 
-        $backUrl = url('/') . '/CI/service/?CIToken=' . $CIToken;
+        if (!empty($data)) {
+            if ($data->is_verify == 0) {
+                session()->forget('auth_token');
+                session()->put('auth_token', $CIToken);
+                $data->is_verify = 1;
+                $data->expires_at = date('Y-m-d H:i:s', strtotime(Carbon::now()->addMinutes($setting->ci_session_time ?? 10)));
+                $data->last_activity_time = date('d-m-Y H:i:s');
+                $data->update();
+                Log::info('success', ['message' => 'Return Route Success']);
+                return redirect()->route('CI.service', ['CIToken' => $CIToken]);
+            }
+        }
+        Log::error('error', ['message' => 'This Url has been expired']);
+        return abort(404, 'Unauthorized User!');
+    }
+
+    public function service()
+    {
+        $CIToken = \request()->get('CIToken');
+        $data = CustomerInterfaceToken::where('token', $CIToken)->where('is_verify', 1)->first();
+        if ($data) {
+            return view('BBL_CI.service_home', ["ci_token" => $CIToken, 'step1' => 'active']);
+        }
+        Log::error('error', ['message' => 'Session Id not found!']);
+        return abort(404, 'Unauthorized User!');
+    }
+
+    public function serviceType()
+    {
+
+        $CIToken = \request()->get('CIToken');
+        $requestType = \request()->get('request_type');
+        // Check Token if exit
+        $data = CustomerInterfaceToken::where('token', $CIToken)->where('is_verify', 1)->first();
+
+        $backUrl = url('/') . '/CI/service/?CIToken=' . $CIToken . '&request_type=' . $requestType;
 
         if ($data) {
             if (!empty(session()->get('auth_token')) && session()->get('auth_token') === $CIToken) {
@@ -272,7 +260,6 @@ class CustomerInterfaceController extends Controller
         return abort(404, 'Session Id not found!');
         // return view('errors.errors_msg')->with('msg', 'Session Id not found!');
     }
-
     public function serviceDetails()
     {
         return view('BBL_CI.service_details');
@@ -287,7 +274,7 @@ class CustomerInterfaceController extends Controller
             $group_name = '';
             $sendBackTickets = WForm::with('ciTicketStatus', 'serviceName')
                 ->where('w_form.SIF_Number', $check_token->cif_number)
-                ->whereNotIn('w_form.w_form_type', [getId('BPID'), getId('AUCTION_REQUEST')])
+                ->whereNotIn('w_form.w_form_type', [1192, 1193])
                 ->where(function ($query) {
                     $query->where('w_form.source', 'CI Web')
                         ->orWhere('w_form.source', 'CI App');
@@ -297,8 +284,7 @@ class CustomerInterfaceController extends Controller
                 ->orderBy('w_form.id', 'DESC')
                 ->paginate(10);
 
-
-            $group_name = \Illuminate\Support\Facades\DB::table('group_info')->where('id', getId('CUSTOMER_INTERFACE_GROUP'))->first(['name']);
+            $group_name = \Illuminate\Support\Facades\DB::table('group_info')->where('id', 190)->first(['name']);
 
             $backUrl = url('/') . '/CI/service-type/?CIToken=' . $ci_token . '&request_type=' . $requestType;
             return view('BBL_CI.send_back_details', compact('sendBackTickets', 'ci_token', 'backUrl', 'group_name'));
@@ -324,7 +310,7 @@ class CustomerInterfaceController extends Controller
                 ->orderBy('complaint.id', 'DESC')
                 ->paginate(10);
 
-            $group_name = \Illuminate\Support\Facades\DB::table('group_info')->where('id', getId('CUSTOMER_INTERFACE_GROUP'))->first(['name']);
+            $group_name = \Illuminate\Support\Facades\DB::table('group_info')->where('id', 190)->first(['name']);
 
             $backUrl = url('/') . '/CI/service-type/?CIToken=' . $ci_token . '&request_type=' . $requestType;
             return view('BBL_CI.complaint.send_back_details', compact('sendBackTickets', 'ci_token', 'backUrl', 'group_name'));
@@ -341,7 +327,7 @@ class CustomerInterfaceController extends Controller
             $group_name = '';
             $ticketStatus = WForm::with('serviceName')
                 ->where('w_form.SIF_Number', $check_token->cif_number)
-                ->whereNotIn('w_form.w_form_type', [getId('BPID'), getId('AUCTION_REQUEST')])
+                ->whereNotIn('w_form.w_form_type', [1192, 1193])
                 ->where(function ($query) {
                     $query->where('w_form.source', 'CI Web')
                         ->orWhere('w_form.source', 'CI App');
@@ -351,7 +337,7 @@ class CustomerInterfaceController extends Controller
                 ->orderBy('w_form.id', 'DESC')
                 ->paginate(10);
 
-            $group_name = \Illuminate\Support\Facades\DB::table('group_info')->where('id', getId('CUSTOMER_INTERFACE_GROUP'))->first(['name']);
+            $group_name = \Illuminate\Support\Facades\DB::table('group_info')->where('id', 190)->first(['name']);
 
             $backUrl = url('/') . '/CI/service-type/?CIToken=' . $ci_token . '&request_type=' . $requestType;
 
@@ -377,7 +363,7 @@ class CustomerInterfaceController extends Controller
                 ->where('reference.form_status', '<>', -7)
                 ->orderBy('complaint.id', 'DESC')
                 ->paginate(10);
-            $group_name = \Illuminate\Support\Facades\DB::table('group_info')->where('id', getId('CUSTOMER_INTERFACE_GROUP'))->first(['name']);
+            $group_name = \Illuminate\Support\Facades\DB::table('group_info')->where('id', 190)->first(['name']);
             $backUrl = url('/') . '/CI/service-type/?CIToken=' . $ci_token . '&request_type=' . $requestType;
             return view('BBL_CI.complaint.ticket_status_details', compact('ticketStatus', 'ci_token', 'backUrl', 'group_name'));
         }
@@ -386,7 +372,6 @@ class CustomerInterfaceController extends Controller
 
     public function accountVerify(Request $request, $product_type, $request_type)
     {
-
         if ($product_type == 4) {
             $type = 'Loan Account';
         } elseif ($product_type == 3) {
@@ -405,30 +390,22 @@ class CustomerInterfaceController extends Controller
         // prd($check_token);
         if ($check_token) {
 
-            /*$email_address = $check_token->email;
-            $mobile_number = $check_token->mobile_no;
-            $cif_number = $check_token->cif_number;
-
-            // Valid Email Checking
-            $validator = validator(['email' => $email_address], ['email' => 'required|email']);
-            if($validator->fails()){
-                $isEmailOtp = 0;
-            };*/
-
             $response = CICURLService::ciCurl($check_token->cif_number, $product_type);
 
 
             $response = $response->getContent();
             $response = json_decode($response, true);
             $accountNumbers = $response['accountNumbers'];
+            session()->forget('accountNumbers');
+            session()->put('accountNumbers', $accountNumbers);
             $api_response = $response['data'];
 
             if ($accountNumbers) {
                 $unit_items = UnitItem::where('unit_items.product_type_id', $product_type)
                     ->join('issue_workflows', 'unit_items.id', 'issue_workflows.issue_id')
                     ->join('issue_group_workflows', 'issue_workflows.issue_workflow_id', 'issue_group_workflows.issue_workflow_id')
-                    ->where('issue_group_workflows.group_info_id', getId('CUSTOMER_INTERFACE_GROUP'))
-                    ->whereNotIn('unit_items.id', [getId('BPID'), getId('AUCTION_REQUEST')]);
+                    ->where('issue_group_workflows.group_info_id', 190)
+                    ->whereNotIn('unit_items.id', [1192, 1193]);
 
                 if ($request_type == 'complaint') {
                     $unit_items = $unit_items->where('unit_items.issues_from', 'complaint');
@@ -482,6 +459,7 @@ class CustomerInterfaceController extends Controller
     public function OtpVerifyPage(Request $request)
     {
         $data = $request->get('data');
+        // dd($data);
         return view('BBL_CI.partials.otp_page', ['data' => $data]);
     }
 
@@ -491,9 +469,9 @@ class CustomerInterfaceController extends Controller
         $request_for = $request->request_for;
         $fields = FieldSetGroupService::getFieldSet($request->issue_id);
         if ($request_for == 'web') {
-            return view('BBL_CI.partials.extra_form_field_with_group', ['issue_fields' => $fields, 'issue_id' => $request->issue_id]);
+            return view('BBL_CI.partials.extra_form_field_with_group', ['issue_fields' => $fields]);
         } else {
-            return view('BBL_CI.partials.extra_form_field_with_group_app', ['issue_fields' => $fields, 'issue_id' => $request->issue_id]);
+            return view('BBL_CI.partials.extra_form_field_with_group_app', ['issue_fields' => $fields]);
         }
     }
 
@@ -512,7 +490,7 @@ class CustomerInterfaceController extends Controller
             $otpGenId = $dataArr['otpGenId'];
             $otpCode = $dataArr['otpCode'];
 
-            return response()->json(['otpCode' => $otpCode, 'otpGenId' => $otpGenId, 'invalidCount' => 0]);
+            return response()->json(['otpGenId' => $otpGenId, 'invalidCount' => 0]);
         } else {
             return response()->json('not found');
         }
@@ -554,7 +532,7 @@ class CustomerInterfaceController extends Controller
 
     public function otpSubmit(Request $request)
     {
-        // dd("ok");
+        //dd($request->request_type);
         $inputedOtpCode = $request->otp1 . $request->otp2 . $request->otp3 . $request->otp4 . $request->otp5 . $request->otp6 . $request->otp7;
         $otpCode = $request->otpCode;
         $otpGenId = $request->otp_auto_id;
@@ -572,11 +550,8 @@ class CustomerInterfaceController extends Controller
             $mobile_number = $check_token->mobile_no;
             $email_address = $check_token->email;
             $backUrl = url('/') . '/CI/service/?CIToken=' . $ci_token;
-            if ($request->module == "BPID") {
-                $backUrl = url('/') . '/BPID/service/?CIToken=' . $ci_token . '&request_type=' . $requestType;
-            }
-
-            // for BPID Ticket Status URL
+		
+	    // for BPID Ticket Status URL
             if ($request->request_type == getId('BPID')) {
 
                 $ticketStatusUrl = url('/') . '/BPID/ticket-status'
@@ -589,16 +564,12 @@ class CustomerInterfaceController extends Controller
                     . '&request_type=' . $requestType;
             }
             // for BPID Ticket Status URL
-
+	
             elseif ($request->request_type == 'complaint') {
                 $ticketStatusUrl = url('/') . '/CI/complaint-ticket-status?CIToken=' . $ci_token . '&request_type=' . $requestType;
             } else {
                 $ticketStatusUrl = url('/') . '/CI/ticket/status/details?CIToken=' . $ci_token . '&request_type=' . $requestType;
             }
-
-
-
-
             $CIUrl = '';
             try {
                 $encryptOtp = decrypt($findOtp->otp);
@@ -679,13 +650,13 @@ class CustomerInterfaceController extends Controller
                                 // dd("if");
                                 $referenceModelName->form_status = 11;
                                 $referenceModelName->unit_id = 1;
-                                $referenceModelName->subgroup_id = getId('CARD_MAINTAINT_GROUP');
-                                $referenceModelName->sub_group_info_id = getId('CUSTOMER_INTERFACE_SUBGROUP');
+                                $referenceModelName->subgroup_id = 185;
+                                $referenceModelName->sub_group_info_id = 1506;
                             } else {
                                 // dd("else");
                                 $referenceModelName->form_status = 0;
                                 // Local CI User ID CI & UAT CI
-                                $this->audit(['reference_number' => $reference_number, 'unit_id' => 1, 'group_id' => getId('CARD_MAINTAINT_GROUP'), 'user_id' => 'CI', 'action' => 'CIF API Calling Failed', 'comments' => 'STP Failed so sent to CI checker', 'isapproved' => 0, 'subgroup_id' => getId('CUSTOMER_INTERFACE_SUBGROUP')]);
+                                $this->audit(['reference_number' => $reference_number, 'unit_id' => 1, 'group_id' => 185, 'user_id' => 'CI', 'action' => 'CIF API Calling Failed', 'comments' => 'STP Failed so sent to CI checker', 'isapproved' => 0, 'subgroup_id' => 1506]);
                             }
                             $referenceModelName->save();
                         }
@@ -694,8 +665,6 @@ class CustomerInterfaceController extends Controller
                 if ($form_status == 7) {
                     $this->audit(['reference_number' => $reference_number, 'unit_id' => 1, 'group_id' => '', 'user_id' => 'CI', 'action' => 'Sentback Ticket re-submitted', 'comments' => '', 'isapproved' => '1', 'subgroup_id' => '']);
                 }
-
-
                 if ($request->request_mode_in_otp == "app") {
                     // dd("here");
                     return response()->json([
@@ -707,7 +676,6 @@ class CustomerInterfaceController extends Controller
                         'ci_token' => $ci_token,
                         'backUrl' => $backUrl,
                         'otpGenId' => $otpGenId,
-                        'otpCode' => $otpCode,
                         'issue_name' => $issue_name,
                         'success' => true,
                     ]);
@@ -720,7 +688,6 @@ class CustomerInterfaceController extends Controller
                         'ci_token' => $ci_token,
                         'backUrl' => $backUrl,
                         'otpGenId' => $otpGenId,
-                        'otpCode' => $otpCode,
                         'issue_name' => $issue_name,
                         'step3' => 'active',
                         'success' => true,
@@ -896,7 +863,7 @@ class CustomerInterfaceController extends Controller
                 ->first();
 
             if (empty($findSameUserIssue)) {
-                $sameIssueRequestFound  = false;
+                $sameIssueRequestFound = false;
             }
         } elseif ($unitItems->issues_from == 'complaint') {
             $findSameUserIssue = DB::table('complaint')
@@ -908,7 +875,7 @@ class CustomerInterfaceController extends Controller
                 ->first();
 
             if (empty($findSameUserIssue)) {
-                $sameIssueRequestFound  = false;
+                $sameIssueRequestFound = false;
             }
         }
 
@@ -917,17 +884,6 @@ class CustomerInterfaceController extends Controller
 
     public function CIWFormSubmit(CIWFormRequest $request)
     {
-        $bpid_reference_number = '';
-        if($request->w_form_type == getId('AUCTION_REQUEST')){
-            $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
-            if(!$bpid){
-                flash('BPID Not Found!', 'danger');
-                return redirect()->back();
-            }
-            $bpid_reference_number = $bpid->reference_number;
-
-        }
-
         // dd($bpid_reference_number);
 
         ($request->request_mode == "app") ? $source = 'CI App' : $source = 'CI Web';
@@ -938,23 +894,29 @@ class CustomerInterfaceController extends Controller
         $sessionAccounts = session()->get('accountNumbers');
         $requestAccount  = $request->account_number;
 
-        // if (!array_key_exists($requestAccount, $sessionAccounts)) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Invalid account number selected.'
-        //     ], 403);
+        // if($sessionAccounts != $requestAccount){
+        //  return response()->json([
+        //             'success' => false,
+        //             'message' => 'Invalid account number selected.'
+        //         ], 404);
+
         // }
 
-        // dd($check_token);
+
+        // dd($request->all());
         if ($check_token && $request->api_response && $request->account_number && $request->product_type) {
+            $bpid_reference_number = '';
+            if($request->w_form_type == getId('AUCTION_REQUEST')){
+                $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
+                if(!$bpid){
+                    flash('BPID Not Found!', 'danger');
+                    return redirect()->back();
+                }
+                $bpid_reference_number = $bpid->reference_number;
+
+            }
+
             $sameIssueRequest = $this->sameIssueRequestCheck($request->account_number, $request->w_form_type);
-            // if ($sameIssueRequest) {
-            //     return response()->json([
-            //         'errorType' => '2',
-            //         'success' => false,
-            //         'message' => 'You have already submit a request with this issue, Please wait for while we process your request.',
-            //     ], 422);
-            // }
 
             $api_response = decrypt($request->api_response);
             $response = CICURLService::apiResponse($api_response, $request->account_number, $request->product_type);
@@ -963,8 +925,8 @@ class CustomerInterfaceController extends Controller
             $customer_name = $response['accountHolderName'];
             /* $maskedCardNumber = $response['maskedCardNumber'];*/
             $cif_number = $check_token->cif_number;
-            $mobile_number = $check_token->mobile_no ?? '01718440618';
-            $email_address = $check_token->email ?? 'test@gmail.com';
+            $mobile_number = $check_token->mobile_no ?? '';
+            $email_address = $check_token->email ?? '';
             $product_type = $request->product_type;
             $extra_field = '';
             $otpGenId = null;
@@ -982,37 +944,49 @@ class CustomerInterfaceController extends Controller
             } elseif ($product_type == 5) {
                 $prodTypeAlpha = "TR";
             }
-
             $reference_number = "SA" . date("ymd") . $prodTypeAlpha . userIdPadLeftWith0($this->dayWiseSequence('sr'), 6, '0');
 
-            // dd($request->allFiles());
+
+            $bpid_reference_number = '';
+            if($request->w_form_type == getId('AUCTION_REQUEST')){
+                $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
+                if(!$bpid){
+                    flash('BPID Not Found!', 'danger');
+                    return redirect()->back();
+                }
+
+                if($request->bp_id != $bpid->bp_id){
+                    flash('BPID Number Invalid!', 'danger');
+                    return redirect()->back();
+                }
+
+                $bpid_reference_number = $bpid->reference_number;
+
+            }
+            $docDestPath = base_path("../public/attachments");
+
             // BPID Attachment upload
             DB::beginTransaction();
 
             try {
+                if (!File::exists($docDestPath)) {
+                    File::makeDirectory($docDestPath, 0755, true, true);
+                }
+
                 if ($request->w_form_type == getId('BPID') || $request->w_form_type == getId('AUCTION_REQUEST')) {
 
                     foreach ($request->allFiles() as $field => $file) {
                         if (!$file->isValid()) {
-                            throw new \Exception("Field {$field} has an invalid file upload. Error: " . $file->getErrorMessage());
-                        }
-
-                        if ($file->getSize() > 3000000) { // 3MB
-                            throw new \Exception('File too large');
-                        }
-
-                        $allowed = ['image/jpeg', 'image/png', 'image/jpg'];
-                        if (!in_array($file->getMimeType(), $allowed)) {
-                            throw new \Exception('Invalid file type');
+                            throw new \Exception("Field {$field} has an invalid file upload. Error code: " . $file->getError());
                         }
 
                         $fileName = $field . '_attach_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
                         $fileContent = File::get($file->getRealPath());
-                        $isUploaded = Storage::disk('local_storage')->put($fileName, $fileContent);
+                        $isUploaded = Storage::disk('custom_storage')->put($fileName, $fileContent);
 
                         if (!$isUploaded) {
-                            throw new \Exception("Failed to save file '{$fileName}' on local_storage disk.");
+                            throw new \Exception("Failed to save file '{$fileName}' on disk ");
                         }
 
                         Attachment::create([
@@ -1023,6 +997,8 @@ class CustomerInterfaceController extends Controller
                             'uploaded_by'      => auth()->id(),
                             'name'             => ucwords(str_replace('_', ' ', $field)),
                         ]);
+
+                        //$file->move($docDestPath, $fileName);
                     }
                 } else {
 
@@ -1033,7 +1009,7 @@ class CustomerInterfaceController extends Controller
                                 $file = $row['file'];
 
                                 if (!$file->isValid()) {
-                                    throw new \Exception("File at index {$key} upload failed. Error: " . $file->getErrorMessage());
+                                    throw new \Exception("File at index {$key} standard check failed. Upload Error: " . $file->getErrorMessage());
                                 }
 
                                 $extension = $file->getClientOriginalExtension();
@@ -1042,12 +1018,11 @@ class CustomerInterfaceController extends Controller
                                 $origin_name = substr($origin_name, 0, 20);
                                 $fileName = $origin_name . "_attach_nX_" . round(microtime(true) * 10) . "_" . ($key + 1) . '.' . $extension;
 
-                                // Storage Disk
                                 $fileContent = File::get($file->getRealPath());
-                                $isUploaded = Storage::disk('local_storage')->put($fileName, $fileContent);
+                                $isUploaded = Storage::disk('custom_storage')->put($fileName, $fileContent);
 
                                 if (!$isUploaded) {
-                                    throw new \Exception("Failed to save file '{$fileName}' on local_storage disk.");
+                                    throw new \Exception("Failed to save file '{$fileName}' on disk ");
                                 }
 
                                 $attachment = new Attachment();
@@ -1079,6 +1054,7 @@ class CustomerInterfaceController extends Controller
             }
 
 
+
             if ($request->isMethod('post')) {
                 $issue_config = IssueConfig::where('issue_id', $request->w_form_type)->get();
                 if (count($issue_config) != 0) {
@@ -1099,7 +1075,7 @@ class CustomerInterfaceController extends Controller
                 $workflowlist = "";
                 $workflow = IssueWorkflow::where('issue_id', $unitItemData->id)->first();
                 // Local Customer Interface Group ID Local 162 & UAT 185 & LIVE 186
-                $firstWorkFlow = IssueGroupWorkflow::where('group_info_id', getId('CUSTOMER_INTERFACE_GROUP'))
+                $firstWorkFlow = IssueGroupWorkflow::where('group_info_id', 190)
                     ->where('issue_workflow_id', $workflow->issue_workflow_id)
                     ->first();
                 if ($workflow->flow_type == FlowEnum::REGULAR) {
@@ -1135,11 +1111,11 @@ class CustomerInterfaceController extends Controller
                     $referenceModelName->reference_number = $reference_number;
                     $referenceModelName->unit_id = (!empty($unit_label)) ? $unit_label : 2;
                     // Local Customer Interface Group ID 162 & UAT 185
-                    $referenceModelName->subgroup_id = (!empty($subgroup_id)) ? $subgroup_id : getId('CUSTOMER_INTERFACE_GROUP');
+                    $referenceModelName->subgroup_id = (!empty($subgroup_id)) ? $subgroup_id : 190;
                     if (!empty($subgroup_id)) {
                         $subgroup_info_id = SubgroupInfo::where('group_info_id', $subgroup_id)->first();
                         // Local Customer Interface Sub-Group ID 367 & UAT 383
-                        $referenceModelName->sub_group_info_id = (!empty($subgroup_info_id->id)) ? $subgroup_info_id->id : getId('CUSTOMER_INTERFACE_SUBGROUP');
+                        $referenceModelName->sub_group_info_id = (!empty($subgroup_info_id->id)) ? $subgroup_info_id->id : 1506;
                     }
                     $referenceModelName->issue_id = (!empty($workflow->issue_id)) ? $workflow->issue_id : 0;
                     $referenceModelName->date = strtotime(date('d-m-Y h:i:s A'));
@@ -1202,9 +1178,10 @@ class CustomerInterfaceController extends Controller
                     // Local CI Group ID UAT 203 & LIVE 186
                     // Local CI Sub-Group ID UAT 383 & LIVE 710
                     // Local CI User ID UAT CI & LIVE CI
-                    $this->audit(['reference_number' => $reference_number, 'unit_id' => 1, 'group_id' => getId('CUSTOMER_INTERFACE_GROUP'), 'user_id' => 'CI', 'action' => 'Ticket Logged', 'comments' => '', 'isapproved' => '1', 'subgroup_id' => getId('CUSTOMER_INTERFACE_SUBGROUP')]);
+                    $this->audit(['reference_number' => $reference_number, 'unit_id' => 1, 'group_id' => 190, 'user_id' => 'CI', 'action' => 'Ticket Logged', 'comments' => '', 'isapproved' => '1', 'subgroup_id' => 1506]);
 
                     $backUrl = url('/') . '/CI/service/?CIToken=' . $ci_token . '&request_type=' . $requestType;
+
                     if ($request->module == "BPID") {
                         /* ====================== Store bp id START ====================== */
                         if ($request->w_form_type == getId('BPID')) {
@@ -1233,6 +1210,7 @@ class CustomerInterfaceController extends Controller
                         $backUrl = url('/') . '/BPID/service/?CIToken=' . $ci_token . '&request_type=' . $requestType;
                     }
 
+
                     flash('Service Request have been saved successfully. Ticket No: ' . $reference_number, 'success');
                     $mobile_no = maskPhoneNumber($mobile_number);
                     $mask_email = maskEmail($email_address);
@@ -1247,7 +1225,6 @@ class CustomerInterfaceController extends Controller
                             'ci_token' => $ci_token,
                             'backUrl' => $backUrl,
                             'otpGenId' => $otpGenId,
-                            'otpCode' => $otpCode,
                             'issue_name' => $issue_name,
                             'mobile_no' => $mobile_no,
                             'mask_email' => $mask_email,
@@ -1265,7 +1242,6 @@ class CustomerInterfaceController extends Controller
                             'ci_token' => $ci_token,
                             'backUrl' => $backUrl,
                             'otpGenId' => $otpGenId,
-                            'otpCode' => $otpCode,
                             'issue_name' => $issue_name,
                             'mobile_no' => $mobile_no,
                             'mask_email' => $mask_email,
@@ -1287,25 +1263,23 @@ class CustomerInterfaceController extends Controller
 
     public function CIWFormUpdate(CIWFormRequest $request)
     {
-        // dd($request->all());
 
-
-        $bpid_reference_number = '';
-        if($request->w_form_type == getId('AUCTION_REQUEST')){
-            $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
-            if(!$bpid){
-                flash('BPID Not Found!', 'danger');
-                return redirect()->back();
-            }
-            $bpid_reference_number = $bpid->reference_number;
-
-        }
-
+        //dd($request->all());
         $ci_token = $request->ci_token;
         $requestType = \request()->get('request_type');
         $check_token = TokenValidatedService::validatedToken($ci_token);
 
         if ($check_token) {
+            $bpid_reference_number = '';
+            if($request->w_form_type == getId('AUCTION_REQUEST')){
+                $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
+                if(!$bpid){
+                    flash('BPID Not Found!', 'danger');
+                    return redirect()->back();
+                }
+                $bpid_reference_number = $bpid->reference_number;
+
+            }
 
             $cif_number = $check_token->cif_number;
             $mobile_number = $check_token->mobile_no;
@@ -1317,105 +1291,86 @@ class CustomerInterfaceController extends Controller
             $extra_field = '';
 
             if ($request->isMethod('post')) {
+                $w_form_type = WFormType::where('reference_number', $reference_number)->first();
 
-                DB::beginTransaction();
+                WFormTypeHistory::create([
+                    'reference_number' => $reference_number,
+                    'extra_field' => $w_form_type->extra_field,
+                    'check_list' => $w_form_type->check_list,
+                    'user_id' => $cif_number,
+                ]);
 
-                try {
-                    $w_form_type = WFormType::where('reference_number', $reference_number)->first();
-
-                    if ($w_form_type) {
-                        WFormTypeHistory::create([
-                            'reference_number' => $reference_number,
-                            'extra_field'      => $w_form_type->extra_field,
-                            'check_list'       => $w_form_type->check_list,
-                            'user_id'          => $cif_number,
-                        ]);
-                    }
-
-                    $referenceModelName = Reference::where('reference_number', $reference_number)->first();
-
-                    if (empty($referenceModelName)) {
-                        DB::rollBack();
-                        flash('Failed to save data. Invalid reference number.', 'danger');
-                        return redirect()->back();
-                    }
-
-                    $issue_config = IssueConfig::where('issue_id', $referenceModelName->issue_id)->get();
-                    if ($issue_config->isNotEmpty()) {
-                        $dataName = [];
-                        foreach ($issue_config as $issue_con) {
-                            if ($request->has($issue_con->field_name) && $request[$issue_con->field_name] != null) {
-                                $dataName[] = [$issue_con->label_name => $request[$issue_con->field_name]];
-                            } else {
-                                $dataName[] = [$issue_con->label_name => ''];
-                            }
-                        }
-                        $extra_field = json_encode($dataName);
-                    }
-
-                    $unitItemModelName = new UnitItem;
-                    $unitItemData = $unitItemModelName->select("id", "unit_id", "is_sent_sms", "name")
-                        ->where("master_id", $request->w_form_type)
-                        ->where("issues_from", "wform")
-                        ->first();
-
-                    $workflowlist = "";
-                    if ($unitItemData) {
-                        $workflow = IssueWorkflow::where('issue_id', $unitItemData->id)->first();
-                        if ($workflow) {
-                            // Local Customer Interface Group ID UAT 203 & LIVE 186
-                            $firstWorkFlow = IssueGroupWorkflow::where('group_info_id', getId('CUSTOMER_INTERFACE_GROUP'))
-                                ->where('issue_workflow_id', $workflow->issue_workflow_id)
-                                ->first();
-
-                            if ($firstWorkFlow && $workflow->flow_type == FlowEnum::REGULAR) {
-                                if ($firstWorkFlow->touch_checker == 1) {
-                                    $subgroup_id = $firstWorkFlow->group_info_id;
-                                    $next_label  = $firstWorkFlow->touch_checker;
-                                    $unit_label  = 2;
-                                } else {
-                                    $workflowlist = IssueGroupWorkflow::where('issue_workflow_id', $workflow->issue_workflow_id)
-                                        ->where('is_touch_point', '<>', 1)
-                                        ->orderBy('issue_group_workflow_id', 'ASC')
-                                        ->first();
-
-                                    if ($workflowlist) {
-                                        $subgroup_id = $workflowlist->group_info_id;
-                                        $next_label  = $workflowlist->touch_maker;
-                                        $unit_label  = ($workflowlist->touch_maker == 1) ? 1 : 2;
-                                    }
-                                }
-                            }
-
-                            if ($firstWorkFlow && $workflow->flow_type == FlowEnum::FORWARD) {
-                                $subgroup_id = $firstWorkFlow->group_info_id;
-                                $next_label  = $firstWorkFlow->touch_checker;
-                                $unit_label  = 2;
-                            }
+                $referenceModelName = Reference::where('reference_number', $reference_number)->first();
+                $issue_config = IssueConfig::where('issue_id', $referenceModelName->issue_id)->get();
+                if (count($issue_config) != 0) {
+                    foreach ($issue_config as $issue_con) {
+                        if ($request[$issue_con->field_name] != null) {
+                            $dataName[] = [$issue_con->label_name => $request[$issue_con->field_name]];
+                        } else {
+                            $dataName[] = [$issue_con->label_name => ''];
                         }
                     }
-
+                    $extra_field = json_encode($dataName);
+                }
+                $unitItemModelName = new UnitItem;
+                $unitItemData = $unitItemModelName->select("id", "unit_id", "is_sent_sms", "name")
+                    ->where("master_id", $request->w_form_type)
+                    ->where("issues_from", "wform")
+                    ->first();
+                $workflowlist = "";
+                $workflow = IssueWorkflow::where('issue_id', $unitItemData->id)->first();
+                // Local Customer Interface Group ID UAT 203 & LIVE 186
+                $firstWorkFlow = IssueGroupWorkflow::where('group_info_id', 190)
+                    ->where('issue_workflow_id', $workflow->issue_workflow_id)
+                    ->first();
+                if ($workflow->flow_type == FlowEnum::REGULAR) {
+                    if ($firstWorkFlow->touch_checker == 1) {
+                        $subgroup_id = $firstWorkFlow->group_info_id;
+                        $next_label = $firstWorkFlow->touch_checker;
+                        $unit_label = 2;
+                    } else {
+                        $workflowlist = IssueGroupWorkflow::where('issue_workflow_id', $workflow->issue_workflow_id)
+                            ->where('is_touch_point', '<>', 1)
+                            ->orderBy('issue_group_workflow_id', 'ASC')
+                            ->first();
+                        if ($workflowlist->touch_maker == 1) {
+                            $subgroup_id = $workflowlist->group_info_id;
+                            $next_label = $workflowlist->touch_maker;
+                            $unit_label = 1; //'1' mean Maker
+                        } else {
+                            $subgroup_id = $workflowlist->group_info_id;
+                            $next_label = $workflowlist->touch_maker;
+                            $unit_label = 2; //'2' mean Checker
+                        }
+                    }
+                }
+                if ($workflow->flow_type == FlowEnum::FORWARD) {
+                    $subgroup_id = $firstWorkFlow->group_info_id;
+                    $next_label = $firstWorkFlow->touch_checker;
+                    $unit_label = 2;
+                }
+                if (!empty($referenceModelName)) {
                     $referenceModelName->unit_id = (!empty($unit_label)) ? $unit_label : 2;
-                    $referenceModelName->subgroup_id = (!empty($subgroup_id)) ? $subgroup_id : getId('CUSTOMER_INTERFACE_GROUP');
-
+                    $referenceModelName->subgroup_id = (!empty($subgroup_id)) ? $subgroup_id : 190; // CI Group ID UAT 203 & LIVE 186
                     if (!empty($subgroup_id)) {
                         $subgroup_info_id = SubgroupInfo::where('group_info_id', $subgroup_id)->first();
-                        $referenceModelName->sub_group_info_id = (!empty($subgroup_info_id->id)) ? $subgroup_info_id->id : getId('CUSTOMER_INTERFACE_SUBGROUP');
+                        $referenceModelName->sub_group_info_id = (!empty($subgroup_info_id->id)) ? $subgroup_info_id->id : 1506; // CI Group ID UAT 383 & LIVE 710
                     }
                     $referenceModelName->save();
 
                     $wformTypeModelName = WFormType::where('reference_number', $reference_number)->first();
-                    if ($wformTypeModelName && !empty($extra_field)) {
+                    if (!empty($extra_field)) {
                         $wformTypeModelName->extra_field = $extra_field;
-                        $wformTypeModelName->save();
                     }
+                    $wformTypeModelName->save();
 
                     $issue_name = '';
-                    $unitItemData = UnitItem::select("name")
+                    $unitItemModelName = new UnitItem;
+                    $unitItemData = $unitItemModelName
+                        ->select("name")
                         ->where("issues_from", 'wform')
                         ->where("master_id", $referenceModelName->issue_id)
                         ->first();
-
                     if (!empty($unitItemData)) {
                         $issue_name = $unitItemData->name;
                     }
@@ -1423,8 +1378,9 @@ class CustomerInterfaceController extends Controller
                     if (!empty($mobile_number) && !empty($cif_number)) {
                         $dataArr = OTPGenerateService::otpCodeGenerate($cif_number, $request->w_form_type, $request->product_type, $request->account_number, $reference_number, $mobile_number, $email_address, $request->otp_mode);
                         $otpGenId = $dataArr['otpGenId'];
-                        $otpCode  = $dataArr['otpCode'];
+                        $otpCode = $dataArr['otpCode'];
                     }
+
 
                     // ==========================
                     // Attachment Process (Storage Disk)
@@ -1455,17 +1411,17 @@ class CustomerInterfaceController extends Controller
                                 $existingAttachment = Attachment::where('reference_number', $reference_number)->where('name', $displayName)->first();
 
                                 if ($existingAttachment) {
-                                    Storage::disk('local_storage')->delete($existingAttachment->file_name);
+                                    Storage::disk('custom_storage')->delete($existingAttachment->file_name);
                                     $existingAttachment->delete();
                                 }
 
                                 $fileName = $field . '_attach_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
                                 $fileContent = File::get($file->getRealPath());
-                                $isUploaded = Storage::disk('local_storage')->put($fileName, $fileContent);
+                                $isUploaded = Storage::disk('custom_storage')->put($fileName, $fileContent);
 
                                 if (!$isUploaded) {
-                                    throw new \Exception("Failed to save file '{$fileName}' on local_storage disk.");
+                                    throw new \Exception("Failed to save file '{$fileName}' on custom_storage disk.");
                                 }
 
                                 Attachment::create([
@@ -1497,10 +1453,10 @@ class CustomerInterfaceController extends Controller
 
                                         // Storage Disk
                                         $fileContent = File::get($file->getRealPath());
-                                        $isUploaded = Storage::disk('local_storage')->put($fileName, $fileContent);
+                                        $isUploaded = Storage::disk('custom_storage')->put($fileName, $fileContent);
 
                                         if (!$isUploaded) {
-                                            throw new \Exception("Failed to save file '{$fileName}' on local_storage disk.");
+                                            throw new \Exception("Failed to save file '{$fileName}' on custom_storage disk.");
                                         }
 
                                         $attachment = new Attachment();
@@ -1531,66 +1487,67 @@ class CustomerInterfaceController extends Controller
                         ], 500);
                     }
 
-
-
-
-
-
                     DB::commit();
 
-                    $backUrl = url('/') . '/CI/service/?CIToken=' . $ci_token . '&request_type=' . $requestType;
 
-                    if ($referenceModelName->issue_id == getId('BPID') || $referenceModelName->issue_id == getId('AUCTION_REQUEST')) {
+
+
+                    // Local CI User ID 'ci' & UAT 'ci'
+                    /*$this->audit(['reference_number'=>$reference_number,'unit_id'=>1,'group_id'=>'','user_id'=>'ci','action'=>'Sentback Ticket re-submitted','comments'=>'', 'isapproved'=>'1', 'subgroup_id' => '']);*/
+                    $backUrl = url('/') . '/CI/service/?CIToken=' . $ci_token . '&request_type=' . $requestType;
+		    if ($referenceModelName->issue_id == getId('BPID') || $referenceModelName->issue_id == getId('AUCTION_REQUEST')) {
                         $backUrl = url('/') . '/BPID/service/?CIToken=' . $ci_token . '&request_type=' . $requestType;
                     }
 
                     flash('Sentback service request have been re-submitted successfully. Ticket No: ' . $reference_number, 'success');
-                    $mobile_no  = maskPhoneNumber($mobile_number);
+                    $mobile_no = maskPhoneNumber($mobile_number);
                     $mask_email = maskEmail($email_address);
-
-                    $responseData = [
-                        'success'          => true,
-                        'message'          => 'Created successfully!',
-                        'product_type'     => $product_type,
-                        'reference_number' => $reference_number,
-                        'storedFiles'      => $storedFileNames,
-                        'ci_token'         => $ci_token,
-                        'backUrl'          => $backUrl,
-                        'otpGenId'         => $otpGenId,
-                        'otpCode'          => $otpCode,
-                        'issue_name'       => $issue_name,
-                        'mobile_no'        => $mobile_no,
-                        'mask_email'       => $mask_email,
-                        'otp_mode'         => $request->otp_mode,
-                        'is_send_back'     => $request->is_send_back,
-                        'invalidCount'     => 0
-                    ];
-
-                    if ($request->request_mode != "app") {
-                        $responseData['step2'] = 'active';
+                    if ($request->request_mode == "app") {
+                        return response()->json([
+                            'success' => true,
+                            'message' => 'Created successfully!',
+                            'product_type' => $product_type,
+                            'reference_number' => $reference_number,
+                            'storedFiles' => $storedFileNames,
+                            'ci_token' => $ci_token,
+                            'backUrl' => $backUrl,
+                            'otpGenId' => $otpGenId,
+                            'issue_name' => $issue_name,
+                            'mobile_no' => $mobile_no,
+                            'mask_email' => $mask_email,
+                            'otp_mode' => $request->otp_mode,
+                            'is_send_back' => $request->is_send_back,
+                            'invalidCount' => 0
+                        ], 200);
+                    } else {
+                        return response()->json([
+                            'success' => true,
+                            'message' => 'Created successfully!',
+                            'product_type' => $product_type,
+                            'reference_number' => $reference_number,
+                            'storedFiles' => $storedFileNames,
+                            'ci_token' => $ci_token,
+                            'backUrl' => $backUrl,
+                            'otpGenId' => $otpGenId,
+                            'issue_name' => $issue_name,
+                            'mobile_no' => $mobile_no,
+                            'mask_email' => $mask_email,
+                            'otp_mode' => $request->otp_mode,
+                            'step2' => 'active',
+                            'is_send_back' => $request->is_send_back,
+                            'invalidCount' => 0
+                        ], 200);
                     }
-
-                    return response()->json($responseData, 200);
-                } catch (\Throwable $e) {
-                    DB::rollBack(); // সমস্যা হলে ডাটা রোলব্যাক হবে
-
-                    Log::error('CIWFormUpdate Error: ' . $e->getMessage(), [
-                        'reference_number' => $reference_number,
-                        'exception'        => $e
-                    ]);
-
-                    return response()->json([
-                        'file_storage_error' => true,
-                        'success'            => false,
-                        'message'            => 'Failed to update: ' . $e->getMessage(),
-                    ], 500);
+                } else {
+                    flash('Failed to save data', 'danger');
+                    return redirect()->back();
                 }
             }
         }
-
         return view('errors.errors_msg')->with('msg', 'invalid access token.');
     }
 
+	
     private function formatFieldName($field)
     {
         $name = str_replace('_', ' ', $field);
@@ -1598,23 +1555,23 @@ class CustomerInterfaceController extends Controller
         return $name;
     }
 
+
+
     public function CIComplaintFormSubmit(CIWFormRequest $request)
     {
         ($request->request_mode == "app") ? $source = 'CI App' : $source = 'CI Web';
         $ci_token = $request->ci_token;
         $requestType = \request()->get('request_type');
         $check_token = TokenValidatedService::validatedToken($ci_token);
-
         if ($check_token && $request->api_response && $request->account_number && $request->product_type) {
             $sameIssueRequest = $this->sameIssueRequestCheck($request->account_number, $request->w_form_type);
             if ($sameIssueRequest) {
                 return response()->json([
                     'errorType' => '2',
                     'success' => false,
-                    'message' => 'You have a already submit request with this issue, Please wait for while we process your request.',
+                    'message' => 'You have already submit a request with this issue, Please wait for while we process your request.',
                 ], 422);
             }
-
             $api_response = decrypt($request->api_response);
             $response = CICURLService::apiResponse($api_response, $request->account_number, $request->product_type);
             $response = $response->getContent();
@@ -1642,10 +1599,9 @@ class CustomerInterfaceController extends Controller
                 $prodTypeAlpha = "TR";
             }
 
-            $reference_number = "CA" . date("ymd") . $prodTypeAlpha . userIdPadLeftWith0($this->dayWiseSequence('sr'), 6, '0');
+            $reference_number = "CA" . date("ymd") . $prodTypeAlpha . userIdPadLeftWith0($this->dayWiseSequence('cm'), 6, '0');
 
             if ($request->file_name) {
-                $docDestPath = base_path("../public/attachments");
                 foreach ($request->file_name as $key => $row) {
                     if (array_key_exists('file', $row)) {
                         $extension = $row['file']->getClientOriginalExtension();
@@ -1653,7 +1609,6 @@ class CustomerInterfaceController extends Controller
                         $origin_name = str_replace(' ', '_', $origin_name);
                         $origin_name = substr($origin_name, 0, 20);
                         $fileName = $origin_name . "_attach_nX_" . round(microtime(true) * 10) . "_" . ($key + 1) . '.' . $extension;
-
                         $attachment = new Attachment();
                         $attachment->file_name = $fileName;
                         $attachment->name = $row['name'];
@@ -1661,23 +1616,27 @@ class CustomerInterfaceController extends Controller
                         $attachment->attachment_date = date('Y-m-d');
                         $attachment->uploaded_by = $cif_number;
                         $attachment->save();
-
-                        // $fileContent = File::get($row['file']->getRealPath());
-                        // Storage::disk('custom_storage')->put($fileName, $fileContent);
+                        //$files->move($docDestPath, $fileName);
+                        $fileContent = File::get($row['file']->getRealPath());
+                        Storage::disk('custom_storage')->put($fileName, $fileContent);
 
                         //Upload File to external server UAT & LIVE
-                        try {
-                            $row['file']->move($docDestPath, $fileName);
-                        } catch (Throwable $e) {
-                            Log::error('attachment-move-error', [$e->getMessage()]);
-                        }
+                        /*try {
+                             Storage::disk('sftp')->put($fileName, fopen($row['file'], 'r+'));
+                          } catch (Throwable $e) {
+                                dd($e->getMessage());
+                            }*/
                     }
                 }
 
                 try {
                     $attachments = Attachment::where('reference_number', $reference_number)->get();
                     foreach ($attachments as $attachment) {
-                        $filePath = $docDestPath . '/' . $attachment->file_name;
+                        //UAT
+                        $filePath = Storage::disk('custom_storage')->path($attachment->file_name);
+                        //Live
+                        //$filePath = $docDestPath . '/' . $attachment->file_name;
+
                         if (!file_exists($filePath)) {
                             // delete attachment data
                             Attachment::where('reference_number', $reference_number)->delete();
@@ -1714,7 +1673,7 @@ class CustomerInterfaceController extends Controller
                 $workflowlist = "";
                 $workflow = IssueWorkflow::where('issue_id', $unitItemData->id)->first();
                 // Local Customer Interface Group ID Local 162 & UAT 203 & LIVE 186
-                $firstWorkFlow = IssueGroupWorkflow::where('group_info_id', getId('CUSTOMER_INTERFACE_GROUP'))
+                $firstWorkFlow = IssueGroupWorkflow::where('group_info_id', 190)
                     ->where('issue_workflow_id', $workflow->issue_workflow_id)
                     ->first();
                 if ($workflow->flow_type == FlowEnum::REGULAR) {
@@ -1746,15 +1705,14 @@ class CustomerInterfaceController extends Controller
                 $referenceModelName = new Reference;
                 if ($referenceModelName->save()) {
                     $issueId = (!empty($workflow->issue_id)) ? $workflow->issue_id : 0;
-
                     $referenceModelName->reference_number = $reference_number;
                     $referenceModelName->unit_id = (!empty($unit_label)) ? $unit_label : 2;
                     // Local Customer Interface Group ID 203 & UAT 185
-                    $referenceModelName->subgroup_id = (!empty($subgroup_id)) ? $subgroup_id : getId('CUSTOMER_INTERFACE_GROUP');
+                    $referenceModelName->subgroup_id = (!empty($subgroup_id)) ? $subgroup_id : 190;
                     if (!empty($subgroup_id)) {
                         $subgroup_info_id = SubgroupInfo::where('group_info_id', $subgroup_id)->first();
                         // Local Customer Interface Sub-Group ID 367 & UAT 383
-                        $referenceModelName->sub_group_info_id = (!empty($subgroup_info_id->id)) ? $subgroup_info_id->id : getId('CUSTOMER_INTERFACE_SUBGROUP');
+                        $referenceModelName->sub_group_info_id = (!empty($subgroup_info_id->id)) ? $subgroup_info_id->id : 1506;
                     }
                     $referenceModelName->issue_id = (!empty($workflow->issue_id)) ? $workflow->issue_id : 0;
                     $referenceModelName->date = strtotime(date('d-m-Y h:i:s A'));
@@ -1793,6 +1751,7 @@ class CustomerInterfaceController extends Controller
                     $wformTypeModelName->extra_field = $extra_field;
                     $wformTypeModelName->save();
 
+
                     $referenceModelName = Reference::where('reference_number', $reference_number)->first();
                     $issue_name = '';
                     $unitItemModelName = new UnitItem;
@@ -1807,6 +1766,7 @@ class CustomerInterfaceController extends Controller
                         }
                     }
 
+
                     // OTP generate and send sms & email
                     if (!empty($mobile_number) && !empty($cif_number)) {
                         $dataArr = OTPGenerateService::otpCodeGenerate($cif_number, $request->w_form_type, $product_type, $request->account_number, $reference_number, $mobile_number, $email_address, $request->otp_mode);
@@ -1817,7 +1777,7 @@ class CustomerInterfaceController extends Controller
                     // Local CI Group ID UAT 203 & LIVE 186
                     // Local CI Sub-Group ID UAT 383 & LIVE 710
                     // Local CI User ID UAT ci & LIVE ci
-                    $this->audit(['reference_number' => $reference_number, 'unit_id' => 1, 'group_id' => getId('CUSTOMER_INTERFACE_GROUP'), 'user_id' => 'CI', 'action' => 'Ticket Logged', 'comments' => '', 'isapproved' => '1', 'subgroup_id' => getId('CUSTOMER_INTERFACE_SUBGROUP')]);
+                    $this->audit(['reference_number' => $reference_number, 'unit_id' => 1, 'group_id' => 190, 'user_id' => 'CI', 'action' => 'Ticket Logged', 'comments' => '', 'isapproved' => '1', 'subgroup_id' => 1506]);
 
                     $backUrl = url('/') . '/CI/service/?CIToken=' . $ci_token . '&request_type=' . $requestType;
                     flash('Complaint Request have been saved successfully. Ticket No: ' . $reference_number, 'success');
@@ -1834,7 +1794,6 @@ class CustomerInterfaceController extends Controller
                             'ci_token' => $ci_token,
                             'backUrl' => $backUrl,
                             'otpGenId' => $otpGenId,
-                            'otpCode' => $otpCode,
                             'issue_name' => $issue_name,
                             'mobile_no' => $mobile_no,
                             'mask_email' => $mask_email,
@@ -1852,7 +1811,6 @@ class CustomerInterfaceController extends Controller
                             'ci_token' => $ci_token,
                             'backUrl' => $backUrl,
                             'otpGenId' => $otpGenId,
-                            'otpCode' => $otpCode,
                             'issue_name' => $issue_name,
                             'mobile_no' => $mobile_no,
                             'mask_email' => $mask_email,
@@ -1917,7 +1875,7 @@ class CustomerInterfaceController extends Controller
                 $workflowlist = "";
                 $workflow = IssueWorkflow::where('issue_id', $unitItemData->id)->first();
                 // Local Customer Interface Group ID UAT 203 & LIVE 186
-                $firstWorkFlow = IssueGroupWorkflow::where('group_info_id', getId('CUSTOMER_INTERFACE_GROUP'))
+                $firstWorkFlow = IssueGroupWorkflow::where('group_info_id', 190)
                     ->where('issue_workflow_id', $workflow->issue_workflow_id)
                     ->first();
                 if ($workflow->flow_type == FlowEnum::REGULAR) {
@@ -1948,10 +1906,10 @@ class CustomerInterfaceController extends Controller
                 }
                 if (!empty($referenceModelName)) {
                     $referenceModelName->unit_id = (!empty($unit_label)) ? $unit_label : 2;
-                    $referenceModelName->subgroup_id = (!empty($subgroup_id)) ? $subgroup_id : getId('CUSTOMER_INTERFACE_GROUP'); // CI Group ID UAT 203 & LIVE 186
+                    $referenceModelName->subgroup_id = (!empty($subgroup_id)) ? $subgroup_id : 190; // CI Group ID UAT 203 & LIVE 186
                     if (!empty($subgroup_id)) {
                         $subgroup_info_id = SubgroupInfo::where('group_info_id', $subgroup_id)->first();
-                        $referenceModelName->sub_group_info_id = (!empty($subgroup_info_id->id)) ? $subgroup_info_id->id : getId('CUSTOMER_INTERFACE_SUBGROUP'); // CI Group ID UAT 383 & LIVE 710
+                        $referenceModelName->sub_group_info_id = (!empty($subgroup_info_id->id)) ? $subgroup_info_id->id : 1506; // CI Group ID UAT 383 & LIVE 710
                     }
                     $referenceModelName->save();
 
@@ -1979,7 +1937,6 @@ class CustomerInterfaceController extends Controller
                     }
 
                     if ($request->file_name) {
-                        $docDestPath = base_path("../public/attachments");
                         $storedFileNames = [];
                         foreach ($request->file_name as $key => $row) {
                             if (array_key_exists('file', $row)) {
@@ -1996,16 +1953,16 @@ class CustomerInterfaceController extends Controller
                                 $attachment->attachment_date = date('Y-m-d');
                                 $attachment->uploaded_by = $cif_number;
                                 $attachment->save();
-                                // $files->move($docDestPath, $fileName);
-                                // $fileContent = File::get($row['file']->getRealPath());
-                                // Storage::disk('custom_storage')->put($fileName, $fileContent);
+                                //$files->move($docDestPath, $fileName);
+                                $fileContent = File::get($row['file']->getRealPath());
+                                Storage::disk('custom_storage')->put($fileName, $fileContent);
 
                                 //Upload File to external server UAT & LIVE
-                                try {
-                                    $row['file']->move($docDestPath, $fileName);
+                                /*try {
+                                    Storage::disk('sftp')->put($fileName, fopen($row['file'], 'r+'));
                                 } catch (Throwable $e) {
-                                    Log::error('attachment-move-error', [$e->getMessage()]);
-                                }
+                                    dd($e->getMessage());
+                                }*/
                             }
                         }
                     }
@@ -2025,7 +1982,6 @@ class CustomerInterfaceController extends Controller
                             'ci_token' => $ci_token,
                             'backUrl' => $backUrl,
                             'otpGenId' => $otpGenId,
-                            'otpCode' => $otpCode,
                             'issue_name' => $issue_name,
                             'mobile_no' => $mobile_no,
                             'mask_email' => $mask_email,
@@ -2043,7 +1999,6 @@ class CustomerInterfaceController extends Controller
                             'ci_token' => $ci_token,
                             'backUrl' => $backUrl,
                             'otpGenId' => $otpGenId,
-                            'otpCode' => $otpCode,
                             'issue_name' => $issue_name,
                             'mobile_no' => $mobile_no,
                             'mask_email' => $mask_email,
@@ -2322,8 +2277,10 @@ class CustomerInterfaceController extends Controller
 
     public function callbackUrl(Request $request)
     {
+        dd('okay');
         try {
-            $sessionTokenDecrypt = decrypt($request->token);
+
+            $sessionTokenDecrypt = $request->token;
             $user = CustomerInterfaceToken::where('token', $sessionTokenDecrypt)->where('is_verify', 1)->first();
             $user->logout_time = date('d-m-Y h:i:s A');
             $user->update();
@@ -2334,12 +2291,13 @@ class CustomerInterfaceController extends Controller
         }
     }
 
-    /*public function attachmentDownload($filename)
+    public function attachmentDownload($filename)
     {
         try {
             $disk = Storage::disk('custom_storage');
             if ($disk->exists($filename)) {
                 $file = $disk->get($filename);
+
                 return response($file, 200, [
                     'Content-Type' => $disk->mimeType($filename),
                     'Content-Disposition' => 'attachment; filename="' . $filename . '"',
@@ -2348,24 +2306,8 @@ class CustomerInterfaceController extends Controller
             return view('errors.images');
         } catch (Throwable $e) {
             //dd($e->getMessage());
+            Log::error('attachment_download_error', [$e->getMessage()]);
             abort(403, 'Somethings went worng!');
-        }
-    }*/
-
-    public function attachmentDownload($filename)
-    {
-        try {
-            $filename = basename($filename);
-            $path = base_path("../public/attachments/" . $filename);
-
-            if (file_exists($path)) {
-                return response()->download($path, $filename);
-            }
-
-            return view('errors.images');
-        } catch (Throwable $e) {
-            Log::error('attachment-download-error', [$e->getMessage()]);
-            abort(403, 'Something went wrong!');
         }
     }
 
@@ -2376,9 +2318,8 @@ class CustomerInterfaceController extends Controller
                 'required',
                 'string',
                 function ($attribute, $value, $fail) {
-                    // This regex checks for non-ASCII characters
                     if (preg_match('/[^\x00-\x7F]/', $value)) {
-                        $fail('The ' . $attribute . ' must only contain English characters.');
+                        $fail('The ' . $attribute . ' must only contain English Character.');
                     }
                 },
                 new SpecialCharacterFilter()
@@ -2386,8 +2327,8 @@ class CustomerInterfaceController extends Controller
         ]);
 
         $ci_token = $request->ci_token;
-        $check_token = TokenValidatedService::validatedToken($ci_token);
         $backUrl = url('/') . '/CI/service/?CIToken=' . $ci_token;
+        $check_token = TokenValidatedService::validatedToken($ci_token);
         if ($check_token) {
             $customer = CustomerInterfaceToken::where('token', $ci_token)->first();
             $reference_number = "F" . date("ymd") . userIdPadLeftWith0($this->dayWiseSequence('sr'), 6, '0');
@@ -2401,6 +2342,9 @@ class CustomerInterfaceController extends Controller
             $feedback->status = 0;
             $feedback->loger = 'CI';
             $feedback->save();
+
+            //return redirect()->back()->with('success_feedback', 'Feedback Submitted Successfully!');
+
             return redirect()->back()->with([
                 'success_feedback' => 'Feedback Submitted Successfully!',
                 'backUrl' => $backUrl,
@@ -2413,10 +2357,13 @@ class CustomerInterfaceController extends Controller
     {
         $reference_number = $request->reference_number;
         $storedFiles = $request->input('files', []);
-        $docPath = base_path("../public/attachments");
 
-        //UAT
-        //$docPath = Storage::disk('custom_storage')->path('');
+        // For Live
+        // $docPath = base_path("../public/attachments");
+
+        // For UAT
+        $docPath = Storage::disk('custom_storage')->path('');
+
         $deletedFiles = [];
         $failedFiles = [];
 

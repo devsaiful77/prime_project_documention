@@ -81,6 +81,18 @@ if (!empty($issue_id)) {
                     <input type="text" class="input-field" name="{{ $r->field_name }}" id="datepickerPrev"
                            placeholder="dd-mm-yyyy" maxlength="{{ $r->maximum_length }}" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}" readonly>
                     <div class="{{ $r->field_name }}_err error-message"></div>
+                    <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                        $(document).ready(function () {
+                            $("#datepickerPrev").datepicker({
+                                maxDate: 0,
+                                dateFormat: 'dd-mm-yy',
+                                showButtonPanel: true,
+                                changeYear: true,
+                                changeMonth: true,
+                                yearRange: "1900:2033",
+                            });
+                        });
+                    </script>
                 </div>
 
             @elseif($r->field_type==\App\Enum\FieldTypeEnum::NEXT_DATE)
@@ -89,6 +101,18 @@ if (!empty($issue_id)) {
                     <input type="text" class="input-field" name="{{ $r->field_name }}" id="datepickerNext" placeholder="dd-mm-yyyy"
                            maxlength="{{ $r->maximum_length }}" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}" readonly>
                     <div class="{{ $r->field_name }}_err error-message"></div>
+                    <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                        $(document).ready(function () {
+                            $("#datepickerNext").datepicker({
+                                minDate: 1,
+                                dateFormat: 'dd-mm-yy',
+                                showButtonPanel: true,
+                                changeYear: true,
+                                changeMonth: true,
+                                yearRange: "1900:2050",
+                            });
+                        });
+                    </script>
                 </div>
             @elseif($r->field_type==\App\Enum\FieldTypeEnum::DROPDOWN)
                 <div class="dropdown-wrapper mb-3 {{ $r->field_name }}">
@@ -120,6 +144,11 @@ if (!empty($issue_id)) {
                                 }
                             @endphp
                             <option value="{{ $option }}" {{$selected}}>{{ $option_name }}</option>
+                            <script nonce="{{ app('csp_nonce') }}">
+                                $(document).ready(function() {
+                                    $('.fieldset_select2').select2();
+                                });
+                            </script>
                         @endforeach
                     </select>
                     <div class="{{ $r->field_name }}_err error-message"></div>
@@ -204,6 +233,41 @@ if (!empty($issue_id)) {
                            placeholder="dd-mm-yyyy" autocomplete="off" maxlength="10" readonly>
                     <div class="{{ $r->field_name }}_err error-message"></div>
 
+                    <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                        $(document).ready(function () {
+                            $('.datePicker').datepicker({
+                                dateFormat: 'dd-mm-yy',
+                                changeYear: true,
+                                changeMonth: true,
+                                yearRange: "1900:2050",
+                            });
+                        });
+                        var input = document.querySelectorAll('.js-date')[0];
+                        var dateInputMask = function dateInputMask(elm) {
+                            elm.addEventListener('keypress', function(e) {
+                                if(e.keyCode < 47 || e.keyCode > 57) {
+                                    e.preventDefault();
+                                }
+                                var len = elm.value.length;
+                                // If we're at a particular place, let the user type the slash
+                                // i.e., 12/12/1212
+                                if(len !== 1 || len !== 3) {
+                                    if(e.keyCode == 47) {
+                                        e.preventDefault();
+                                    }
+                                }
+                                // If they don't add the slash, do it for them...
+                                if(len === 2) {
+                                    elm.value += '-';
+                                }
+                                // If they don't add the slash, do it for them...
+                                if(len === 5) {
+                                    elm.value += '-';
+                                }
+                            });
+                        };
+                        dateInputMask(input);
+                    </script>
 
                 </div>
 
@@ -224,6 +288,23 @@ if (!empty($issue_id)) {
                     <label class="mb-1" style="color:white !important">{{ $r->label_name }}<span class="required">@if( $r->is_required == 1) {{'*'}} @endif</span></label>
                     <input type="text" class="input-field alpha_numeric_field js-ignore-global" name="{{ $r->field_name }}" placeholder="Enter numbers and text only" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}"/>
                     <div class="{{ $r->field_name }}_err error-message"></div>
+                    <script nonce="{{ app('csp_nonce') }}">
+                        $(function () {
+                            $(document).on('input', '.alpha_numeric_field', function () {
+                                const $input = $(this);
+                                const value = $input.val();
+                                const $formGroup = $input.closest('.input-wrapper');
+                                $formGroup.find('.alpha-num-error').remove();
+                                if (/[^a-zA-Z0-9 ]/.test(value)) {
+                                    $input.val(value.replace(/[^a-zA-Z0-9 ]/g, ''));
+                                    $('<span>', {
+                                        class: 'alpha-num-error text-danger mt-1 d-block',
+                                        text: 'Only letters and numbers are allowed.'
+                                    }).appendTo($formGroup);
+                                }
+                            });
+                        });
+                    </script>
                 </div>
             @endif
         @endforeach
@@ -251,13 +332,12 @@ if (!empty($issue_id)) {
                 $checkValue = array_key_exists($checkLabel, $arraySingle) ? $arraySingle[$checkLabel] : '';
                 $shouldHideFieldset = trim((string) $checkValue) === '';
             }
-
         @endphp
 
         <div class="mobile_fieldset" @if($shouldHideFieldset) style="display:none;" @endif>
             <fieldset class="inputTextWrap" @if(!empty($single['fieldset_id'])) id="{{ $single['fieldset_id'] }}" @endif>
                 <legend>
-                    @if ($issueId == getId('BPID'))
+                    @if ($issueId == 1192)
                         <button type="button"
                                 class="btn btn-sm fieldset-toggle-btn fieldset-toggle-box"
                                 data-fieldset-id="{{ $single['fieldset_id'] ?? '' }}">
@@ -322,6 +402,18 @@ if (!empty($issue_id)) {
                                 <input type="text" class="input-field" name="{{ $r->field_name }}" id="datepickerPrev1" placeholder="dd-mm-yyyy"
                                        maxlength="{{ $r->maximum_length }}" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}" readonly>
                                 <div class="{{ $r->field_name }}_err error-message"></div>
+                                <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                                    $(document).ready(function () {
+                                        $("#datepickerPrev1").datepicker({
+                                            maxDate: 0,
+                                            dateFormat: 'dd-mm-yy',
+                                            showButtonPanel: true,
+                                            changeYear: true,
+                                            changeMonth: true,
+                                            yearRange: "1900:2033",
+                                        });
+                                    });
+                                </script>
                             </div>
 
                         @elseif($r->field_type==\App\Enum\FieldTypeEnum::NEXT_DATE)
@@ -330,6 +422,18 @@ if (!empty($issue_id)) {
                                 <input type="text" class="input-field" name="{{ $r->field_name }}" id="datepickerNext1" placeholder="dd-mm-yyyy"
                                        maxlength="{{ $r->maximum_length }}" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}" readonly>
                                 <div class="{{ $r->field_name }}_err error-message"></div>
+                                <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                                    $(document).ready(function () {
+                                        $("#datepickerNext1").datepicker({
+                                            minDate: 1,
+                                            dateFormat: 'dd-mm-yy',
+                                            showButtonPanel: true,
+                                            changeYear: true,
+                                            changeMonth: true,
+                                            yearRange: "1900:2050",
+                                        });
+                                    });
+                                </script>
                             </div>
                         @elseif($r->field_type==\App\Enum\FieldTypeEnum::DROPDOWN)
                             <div class="dropdown-wrapper mb-3 {{ $r->field_name }}">
@@ -360,6 +464,11 @@ if (!empty($issue_id)) {
                                             }
                                         @endphp
                                         <option value="{{ $option }}" {{$selected}}>{{ $option_name }}</option>
+                                        <script nonce="{{ app('csp_nonce') }}">
+                                            $(document).ready(function() {
+                                                $('.fieldset_select2').select2();
+                                            });
+                                        </script>
                                     @endforeach
                                 </select>
                                 <div class="{{ $r->field_name }}_err error-message"></div>
@@ -444,6 +553,41 @@ if (!empty($issue_id)) {
                                        placeholder="dd-mm-yyyy" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}" autocomplete="off" maxlength="10" readonly/>
                                 <div class="{{ $r->field_name }}_err error-message"></div>
 
+                                <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                                    $(document).ready(function () {
+                                        $('.datePicker').datepicker({
+                                            dateFormat: 'dd-mm-yy',
+                                            changeYear: true,
+                                            changeMonth: true,
+                                            yearRange: "1900:2050",
+                                        });
+                                    });
+                                    var input = document.querySelectorAll('.js-date')[0];
+                                    var dateInputMask = function dateInputMask(elm) {
+                                        elm.addEventListener('keypress', function(e) {
+                                            if(e.keyCode < 47 || e.keyCode > 57) {
+                                                e.preventDefault();
+                                            }
+                                            var len = elm.value.length;
+                                            // If we're at a particular place, let the user type the slash
+                                            // i.e., 12/12/1212
+                                            if(len !== 1 || len !== 3) {
+                                                if(e.keyCode == 47) {
+                                                    e.preventDefault();
+                                                }
+                                            }
+                                            // If they don't add the slash, do it for them...
+                                            if(len === 2) {
+                                                elm.value += '-';
+                                            }
+                                            // If they don't add the slash, do it for them...
+                                            if(len === 5) {
+                                                elm.value += '-';
+                                            }
+                                        });
+                                    };
+                                    dateInputMask(input);
+                                </script>
 
                             </div>
                         @elseif($r->field_type==\App\Enum\FieldTypeEnum::NUMBER)
@@ -463,6 +607,23 @@ if (!empty($issue_id)) {
                                 <label class="mb-1" style="color:white !important">{{ $r->label_name }}<span class="required">@if( $r->is_required == 1) {{'*'}} @endif</span></label>
                                 <input type="text" class="input-field alpha_numeric_field js-ignore-global" name="{{ $r->field_name }}" placeholder="Enter numbers and text only" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}"/>
                                 <div class="{{ $r->field_name }}_err error-message"></div>
+                                <script nonce="{{ app('csp_nonce') }}">
+                                    $(function () {
+                                        $(document).on('input', '.alpha_numeric_field', function () {
+                                            const $input = $(this);
+                                            const value = $input.val();
+                                            const $formGroup = $input.closest('.input-wrapper');
+                                            $formGroup.find('.alpha-num-error').remove();
+                                            if (/[^a-zA-Z0-9 ]/.test(value)) {
+                                                $input.val(value.replace(/[^a-zA-Z0-9 ]/g, ''));
+                                                $('<span>', {
+                                                    class: 'alpha-num-error text-danger mt-1 d-block',
+                                                    text: 'Only letters and numbers are allowed.'
+                                                }).appendTo($formGroup);
+                                            }
+                                        });
+                                    });
+                                </script>
                             </div>
                         @endif
                     @endforeach
@@ -473,5 +634,36 @@ if (!empty($issue_id)) {
 @endforeach
 
 @push('js')
-    <script src="{{ URL::asset('public/BBL_BPID/js/send_back_ticket_details_app.js') }}" nonce="{{ app('csp_nonce') }}"></script>
+    <script nonce="{{ app('csp_nonce') }}">
+        $(document).ready(function() {
+            // Bind all existing number fields
+            $(document).on('input', '.number_field', function(event) {
+                allowOnlyNumbers(event);
+            });
+
+            $(document).on('input', '.text_eng', function(event){
+                textInEnglish(event);
+            });
+        });
+
+    </script>
+
+    <script nonce="{{ app('csp_nonce') }}">
+        $(document).ready(function () {
+            // Toggle on legend button click
+            $(document).on('click', '.fieldset-toggle-btn', function () {
+                const fieldsetId = $(this).data('fieldset-id');
+                const $body = $('#body_' + fieldsetId);
+                const $icon = $(this).find('.toggle-icon');
+
+                if ($body.is(':visible')) {
+                    $body.slideUp(200);
+                    $icon.text('▼');
+                } else {
+                    $body.slideDown(200);
+                    $icon.text('▲');
+                }
+            });
+        });
+    </script>
 @endpush

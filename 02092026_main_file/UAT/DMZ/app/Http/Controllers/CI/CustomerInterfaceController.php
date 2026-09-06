@@ -884,16 +884,15 @@ class CustomerInterfaceController extends Controller
 
     public function CIWFormSubmit(CIWFormRequest $request)
     {
-        //$request->all();
+        // dd($bpid_reference_number);
+
         ($request->request_mode == "app") ? $source = 'CI App' : $source = 'CI Web';
         $ci_token = $request->ci_token;
         $requestType = \request()->get('request_type');
         $check_token = TokenValidatedService::validatedToken($ci_token);
 
         $sessionAccounts = session()->get('accountNumbers');
-        $requestAccount = $request->account_number;
-
-
+        $requestAccount  = $request->account_number;
 
         // if($sessionAccounts != $requestAccount){
         //  return response()->json([
@@ -906,6 +905,16 @@ class CustomerInterfaceController extends Controller
 
         // dd($request->all());
         if ($check_token && $request->api_response && $request->account_number && $request->product_type) {
+            $bpid_reference_number = '';
+            if($request->w_form_type == getId('AUCTION_REQUEST')){
+                $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
+                if(!$bpid){
+                    flash('BPID Not Found!', 'danger');
+                    return redirect()->back();
+                }
+                $bpid_reference_number = $bpid->reference_number;
+
+            }
 
             $sameIssueRequest = $this->sameIssueRequestCheck($request->account_number, $request->w_form_type);
 
@@ -940,7 +949,7 @@ class CustomerInterfaceController extends Controller
 
             $bpid_reference_number = '';
             if($request->w_form_type == getId('AUCTION_REQUEST')){
-                $bpid = BpId::where('account_number',$request->account_number)->latest()->first();
+                $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
                 if(!$bpid){
                     flash('BPID Not Found!', 'danger');
                     return redirect()->back();
@@ -983,7 +992,7 @@ class CustomerInterfaceController extends Controller
                         Attachment::create([
                             'file_name'        => $fileName,
                             // 'reference_number' => $reference_number,
-                            'reference_number' => $request->w_form_type == getId('AUCTION') ? $bpid_reference_number : $reference_number,
+                            'reference_number' => $request->w_form_type == getId('AUCTION_REQUEST') ? $bpid_reference_number : $reference_number,
                             'attachment_date'  => now()->toDateString(),
                             'uploaded_by'      => auth()->id(),
                             'name'             => ucwords(str_replace('_', ' ', $field)),
@@ -1261,6 +1270,16 @@ class CustomerInterfaceController extends Controller
         $check_token = TokenValidatedService::validatedToken($ci_token);
 
         if ($check_token) {
+            $bpid_reference_number = '';
+            if($request->w_form_type == getId('AUCTION_REQUEST')){
+                $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
+                if(!$bpid){
+                    flash('BPID Not Found!', 'danger');
+                    return redirect()->back();
+                }
+                $bpid_reference_number = $bpid->reference_number;
+
+            }
 
             $cif_number = $check_token->cif_number;
             $mobile_number = $check_token->mobile_no;
@@ -1407,7 +1426,8 @@ class CustomerInterfaceController extends Controller
 
                                 Attachment::create([
                                     'file_name'        => $fileName,
-                                    'reference_number' => $reference_number,
+                                    // 'reference_number' => $reference_number,
+                                    'reference_number' => $request->w_form_type == getId('AUCTION_REQUEST') ? $bpid_reference_number : $reference_number,
                                     'attachment_date'  => now()->toDateString(),
                                     'uploaded_by'      => auth()->id(),
                                     'name'             => ucwords(str_replace('_', ' ', $field)),

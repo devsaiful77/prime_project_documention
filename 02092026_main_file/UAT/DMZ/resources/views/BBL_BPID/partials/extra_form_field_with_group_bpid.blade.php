@@ -505,6 +505,10 @@ if ($issueId == 1193 && !empty($bpid_data)) {
                                 'third_app_email'   => 3,
                                 'fourth_app_mobile' => 4,
                                 'fourth_app_email'  => 4,
+
+                                'signature_image_two' => 2,
+                                'signature_image_third' => 3,
+                                'signature_image_fourth' => 4,
                             ];
 
                             if (array_key_exists($r->field_name, $applicantFieldMap)) {
@@ -516,13 +520,11 @@ if ($issueId == 1193 && !empty($bpid_data)) {
                                 }
                             }
 
-
                         @endphp
     
                         <div class="mb-2">
     
-                            @if($r->field_type==\App\Enum\FieldTypeEnum::TEXT)
-    
+                            @if($r->field_type==\App\Enum\FieldTypeEnum::TEXT)                              
                                 <div class="form-group {{ $r->field_name }}" style="padding-bottom: 8px; {{ $hideStyle }}">
                                     <label class="mb-1">{{ $r->label_name }}<span class="required">@if($r->is_required == 1) {{'*'}} @endif</span></label>
                                     <input type="{{ $r->field_type }}"
@@ -630,7 +632,7 @@ if ($issueId == 1193 && !empty($bpid_data)) {
     
                             @elseif($r->field_type == \App\Enum\FieldTypeEnum::FILE)
     
-                                <div class="form-group {{ $r->field_name }}">
+                                <div class="form-group {{ $r->field_name }}"  style="{{ $hideStyle }}">
                                     <label class="mb-1">{{ $r->label_name }}
                                         <span class="required">@if($r->is_required == 1) {{'*'}} @endif</span>
                                     </label>

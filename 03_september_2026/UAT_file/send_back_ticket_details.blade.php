@@ -55,6 +55,11 @@ $i=1;
                                         }
                                     @endphp
                                     <option value="{{ $option }}" {{$selected}}>{{ $option_name }}</option>
+                                    <script nonce="{{ app('csp_nonce') }}">
+                                        $(document).ready(function() {
+                                            $('.fieldset_select2').select2();
+                                        });
+                                    </script>
                                 @endforeach
                             </select>
                             <div class="{{ $r->field_name }}_err error-message"></div>
@@ -172,6 +177,41 @@ $i=1;
                                        value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}"
                                        autocomplete="off" maxlength="10" placeholder="dd-mm-yyyy" readonly>
                                 <div class="{{ $r->field_name }}_err error-message"></div>
+                                <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                                    $(document).ready(function () {
+                                        $('.datePicker').datepicker({
+                                            dateFormat: 'dd-mm-yy',
+                                            changeYear: true,
+                                            changeMonth: true,
+                                            yearRange: "1900:2050",
+                                        });
+                                    });
+                                    var input = document.querySelectorAll('.js-date')[0];
+                                    var dateInputMask = function dateInputMask(elm) {
+                                        elm.addEventListener('keypress', function(e) {
+                                            if(e.keyCode < 47 || e.keyCode > 57) {
+                                                e.preventDefault();
+                                            }
+                                            var len = elm.value.length;
+                                            // If we're at a particular place, let the user type the slash
+                                            // i.e., 12/12/1212
+                                            if(len !== 1 || len !== 3) {
+                                                if(e.keyCode == 47) {
+                                                    e.preventDefault();
+                                                }
+                                            }
+                                            // If they don't add the slash, do it for them...
+                                            if(len === 2) {
+                                                elm.value += '-';
+                                            }
+                                            // If they don't add the slash, do it for them...
+                                            if(len === 5) {
+                                                elm.value += '-';
+                                            }
+                                        });
+                                    };
+                                    dateInputMask(input);
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -200,6 +240,19 @@ $i=1;
                                 </div>
                             </div>
 
+                            <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                                $(function() {
+                                    $(".datepickerPrev1").datepicker({
+                                        defaultDate: 0,
+                                        maxDate: 0,
+                                        dateFormat: 'dd-mm-yy',
+                                        changeYear: true,
+                                        changeMonth: true,
+                                        showButtonPanel: true,
+                                        yearRange: "1900:2033",
+                                    });
+                                });
+                            </script>
                         </div>
 
                     @elseif($r->field_type==\App\Enum\FieldTypeEnum::NEXT_DATE)
@@ -212,6 +265,18 @@ $i=1;
                                 </div>
                             </div>
 
+                            <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                                $(document).ready(function () {
+                                    $(".datepickerNext1").datepicker({
+                                        minDate: 1,
+                                        dateFormat: 'dd-mm-yy',
+                                        showButtonPanel: true,
+                                        changeYear: true,
+                                        changeMonth: true,
+                                        yearRange: "1900:2050",
+                                    });
+                                });
+                            </script>
                         </div>
 
                 @elseif($r->field_type==\App\Enum\FieldTypeEnum::DECIMAL)
@@ -233,6 +298,25 @@ $i=1;
                         <input type="text" class="input-field alpha_numeric_field js-ignore-global" name="{{ $r->field_name }}" placeholder="Enter numbers and text only" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}"/>
                         <div class="{{ $r->field_name }}_err error-message"></div>
                         <span class="invalid-char-error text-danger"></span>
+                        <script nonce="{{ app('csp_nonce') }}">
+                            $(document).on('input', '.alpha_numeric_field', function () {
+                                const value = this.value;
+                                const $error = $(this)
+                                    .closest('.input-wrapper')
+                                    .find('.invalid-char-error');
+
+                                if (/[^a-zA-Z0-9 ]/.test(value)) {
+                                    // remove invalid characters
+                                    this.value = value.replace(/[^a-zA-Z0-9 ]/g, '');
+
+                                    // show error
+                                    $error.text('Only letters and numbers are allowed.');
+                                } else {
+                                    // clear error when valid
+                                    $error.text('');
+                                }
+                            });
+                        </script>
                     </div>
                 @endif
             </div>
@@ -242,7 +326,7 @@ $i=1;
     <!-- Field With Fieldset -->
     @if($single['fieldset_title'] != "")
 
-        
+
 
         <fieldset class="" style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
             <legend style=" font-size: 18px; font-weight: 500">{{ $single['fieldset_title'] }}</legend>
@@ -261,7 +345,7 @@ $i=1;
                         'third_app_email'   => 3,
                         'fourth_app_mobile' => 4,
                         'fourth_app_email'  => 4,
-
+                        
                         'signature_image_two' => 2,
                         'signature_image_third' => 3,
                         'signature_image_fourth' => 4,
@@ -289,24 +373,22 @@ $i=1;
                             <div class="{{ $r->field_name }}_err error-message"></div>
                         </div>
 
-                    
+
                     @elseif($r->field_type==\App\Enum\FieldTypeEnum::FILE)
 
-                            
+                        
 
 
-                        <div class="form-group {{ $r->field_name }}" style="{{ $hideStyle }}" >
-                            <label class="mb-1">{{ $r->label_name }}<span class="required">@if($r->is_required == 1) {{'*'}} @endif</span></label>
-                            <input type="{{ $r->field_type }}" id="{{ $PApiKeyId }}" class="form-control text_eng" name="{{ $r->field_name }}"
-                                   placeholder="{{ $r->placeholder }}"/>
-                            <div class="{{ $r->field_name }}_err error-message"></div>
-                        </div>
-
-
+                    <div class="form-group {{ $r->field_name }}" style="{{ $hideStyle }}" >
+                        <label class="mb-1">{{ $r->label_name }}<span class="required">@if($r->is_required == 1) {{'*'}} @endif</span></label>
+                        <input type="{{ $r->field_type }}"  @if($r->is_readonly == 1) readonly @endif  id="{{ $PApiKeyId }}" class="form-control text_eng" name="{{ $r->field_name }}"
+                                placeholder="{{ $r->placeholder }}"/>
+                        <div class="{{ $r->field_name }}_err error-message"></div>
+                    </div>
 
                     @elseif($r->field_type==\App\Enum\FieldTypeEnum::DROPDOWN)
 
-                        <div class="form-group {{ $r->field_name }}" style="padding-bottom: 8px;" style="{{ $hideStyle }}">
+                        <div class="form-group {{ $r->field_name }}" style="padding-bottom: 8px; {{ $hideStyle }}">
                             <label class="mb-1">{{ $r->label_name }} <span class="required">@if( $r->is_required == 1 ) {{'*'}} @else @endif</span></label>
                             <select class="form-select DependantFields fieldset_select2" name="{{ $r->field_name }}" data-id="{{ $r->id }}">
                                 @php
@@ -335,6 +417,11 @@ $i=1;
                                         }
                                     @endphp
                                     <option value="{{ $option }}" {{$selected}}>{{ $option_name }}</option>
+                                    <script nonce="{{ app('csp_nonce') }}">
+                                        $(document).ready(function() {
+                                            $('.fieldset_select2').select2();
+                                        });
+                                    </script>
                                 @endforeach
                             </select>
                             <div class="{{ $r->field_name }}_err error-message"></div>
@@ -437,6 +524,41 @@ $i=1;
                                    value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}"
                                    autocomplete="off" maxlength="10" placeholder="dd-mm-yyyy" readonly/>
                             <div class="{{ $r->field_name }}_err error-message"></div>
+                            <script nonce="{{ app('csp_nonce') }}">
+                                $(document).ready(function () {
+                                    $('.datePicker').datepicker({
+                                        dateFormat: 'dd-mm-yy',
+                                        changeYear: true,
+                                        changeMonth: true,
+                                        yearRange: "1900:2050",
+                                    });
+                                });
+                                var input = document.querySelectorAll('.js-date')[0];
+                                var dateInputMask = function dateInputMask(elm) {
+                                    elm.addEventListener('keypress', function(e) {
+                                        if(e.keyCode < 47 || e.keyCode > 57) {
+                                            e.preventDefault();
+                                        }
+                                        var len = elm.value.length;
+                                        // If we're at a particular place, let the user type the slash
+                                        // i.e., 12/12/1212
+                                        if(len !== 1 || len !== 3) {
+                                            if(e.keyCode == 47) {
+                                                e.preventDefault();
+                                            }
+                                        }
+                                        // If they don't add the slash, do it for them...
+                                        if(len === 2) {
+                                            elm.value += '-';
+                                        }
+                                        // If they don't add the slash, do it for them...
+                                        if(len === 5) {
+                                            elm.value += '-';
+                                        }
+                                    });
+                                };
+                                dateInputMask(input);
+                            </script>
                         </div>
 
                     @elseif($r->field_type==\App\Enum\FieldTypeEnum::NUMBER)
@@ -455,6 +577,19 @@ $i=1;
                             </label>
                             <input type="text" class="form-control datepickerPrev" name="{{ $r->field_name }}" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}" autocomplete="off" maxlength="10" placeholder="dd-mm-yyyy" readonly/>
                             <div class="{{ $r->field_name }}_err error-message"></div>
+                            <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                                $(function() {
+                                    $(".datepickerPrev").datepicker({
+                                        defaultDate: 0,
+                                        maxDate: 0,
+                                        dateFormat: 'dd-mm-yy',
+                                        changeYear: true,
+                                        changeMonth: true,
+                                        showButtonPanel: true,
+                                        yearRange: "1900:2033",
+                                    });
+                                });
+                            </script>
                         </div>
 
                     @elseif($r->field_type==\App\Enum\FieldTypeEnum::NEXT_DATE)
@@ -466,6 +601,18 @@ $i=1;
                                    placeholder="{{ $r->placeholder }}" maxlength="{{ $r->maximum_length }}"
                                     value="{{old($r->field_name)}}" readonly/>
                             <div class="{{ $r->field_name }}_err error-message"></div>
+                            <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                                $(function() {
+                                    $(".datepickerNext").datepicker({
+                                        minDate: 1,
+                                        dateFormat: 'dd-mm-yy',
+                                        showButtonPanel: true,
+                                        changeYear: true,
+                                        changeMonth: true,
+                                        yearRange: "1900:2050",
+                                    });
+                                });
+                            </script>
                         </div>
 
                     @elseif($r->field_type==\App\Enum\FieldTypeEnum::DECIMAL)
@@ -482,6 +629,24 @@ $i=1;
                         <label class="mb-1" style="color:white !important">{{ $r->label_name }}<span class="required">@if( $r->is_required == 1) {{'*'}} @endif</span></label>
                         <input type="text" class="input-field alpha_numeric_field js-ignore-global" name="{{ $r->field_name }}" placeholder="Enter numbers and text only" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}"/>
                         <div class="{{ $r->field_name }}_err error-message"></div>
+                        <script nonce="{{ app('csp_nonce') }}">
+                    
+                            $(function () {
+                                $(document).on('input', '.alpha_numeric_field', function () {
+                                    const $input = $(this);
+                                    const value = $input.val();
+                                    const $formGroup = $input.closest('.input-wrapper');
+                                    $formGroup.find('.alpha-num-error').remove();
+                                    if (/[^a-zA-Z0-9 ]/.test(value)) {
+                                        $input.val(value.replace(/[^a-zA-Z0-9 ]/g, ''));
+                                        $('<span>', {
+                                            class: 'alpha-num-error text-danger mt-1 d-block',
+                                            text: 'Only letters and numbers are allowed.'
+                                        }).appendTo($formGroup);
+                                    }
+                                });
+                            });
+                        </script>
                     </div>
                     @endif
                 </div>
@@ -491,5 +656,17 @@ $i=1;
 @endforeach
 
 @push('js')
-    <script src="{{ URL::asset('public/BBL_BPID/js/send_back_ticket_details.js') }}" nonce="{{ app('csp_nonce') }}"></script>
+    <script nonce="{{ app('csp_nonce') }}">
+        $(document).ready(function() {
+            // Bind all existing number fields
+            $(document).on('input', '.number_field', function(event) {
+                allowOnlyNumbers(event);
+            });
+
+            $(document).on('input', '.text_eng', function(event){
+                textInEnglish(event);
+            });
+        });
+
+    </script>
 @endpush

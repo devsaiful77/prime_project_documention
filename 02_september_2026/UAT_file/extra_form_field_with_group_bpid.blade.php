@@ -1,3 +1,40 @@
+<style>
+    label{
+        color: white !important;
+    }
+
+    .fieldset-toggle-box {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100% !important;
+        min-height: 36px;
+        padding: 8px 12px !important;
+        border: 1px solid #cfd6df !important;
+        border-radius: 6px;
+        background: #f8fafc;
+        color: #1f2937 !important;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.2;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .fieldset-toggle-box .toggle-icon {
+        font-size: 12px;
+        line-height: 1;
+    }
+
+    #body_BPID_second_applicant,
+    #body_BPID_third_applicant,
+    #body_BPID_fourth_applicant,
+    #body_BPID_second_nominee,
+    #body_BPID_third_nominee,
+    #body_BPID_fourth_nominee {
+        display: none;
+    }
+</style>
 <?php
 $input_checkbox = '';
 $input_radio = '';
@@ -10,7 +47,7 @@ if (!empty($issue_id)) {
 }
 
 $bpidValues = [];
-if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
+if ($issueId == 1193 && !empty($bpid_data)) {
     $bpidValues = [
         'bpId'            => $bpid_data->bp_id,
         'accountNumber'   => $bpid_data->account_number,
@@ -264,7 +301,31 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
                                         maxlength="10"
                                         placeholder="dd-mm-yyyy"
                                         readonly />
+                                    {{-- DATE সবসময় readonly — datepicker এর জন্য --}}
                                     <div class="{{ $r->field_name }}_err error-message"></div>
+                                    <script type="text/javascript" nonce="{{ app('csp_nonce') }}">
+                                        $(document).ready(function () {
+                                            $('.datePicker').datepicker({
+                                                dateFormat: 'dd-mm-yy',
+                                                changeYear: true,
+                                                changeMonth: true,
+                                                yearRange: "1900:2050",
+                                            });
+                                        });
+                                        var input = document.querySelectorAll('.js-date')[0];
+                                        var dateInputMask = function dateInputMask(elm) {
+                                            elm.addEventListener('keypress', function(e) {
+                                                if(e.keyCode < 47 || e.keyCode > 57) { e.preventDefault(); }
+                                                var len = elm.value.length;
+                                                if(len !== 1 || len !== 3) {
+                                                    if(e.keyCode == 47) { e.preventDefault(); }
+                                                }
+                                                if(len === 2) { elm.value += '-'; }
+                                                if(len === 5) { elm.value += '-'; }
+                                            });
+                                        };
+                                        dateInputMask(input);
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -282,9 +343,23 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
                                         value="{{ old($r->field_name) }}"
                                         placeholder="dd-mm-yyyy"
                                         readonly />
+                                    {{-- PREV_DATE সবসময় readonly — datepicker এর জন্য --}}
                                     <div class="{{ $r->field_name }}_err error-message"></div>
                                 </div>
                             </div>
+                            <script nonce="{{ app('csp_nonce') }}">
+                                $(function() {
+                                    $(".datepickerPrev").datepicker({
+                                        defaultDate: 0,
+                                        maxDate: 0,
+                                        dateFormat: 'dd-mm-yy',
+                                        showButtonPanel: true,
+                                        changeYear: true,
+                                        changeMonth: true,
+                                        yearRange: "1900:2033",
+                                    });
+                                });
+                            </script>
                         </div>
 
                     @elseif($r->field_type==\App\Enum\FieldTypeEnum::NEXT_DATE)
@@ -300,9 +375,22 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
                                         value="{{ old($r->field_name) }}"
                                         placeholder="dd-mm-yyyy"
                                         readonly />
+                                    {{-- NEXT_DATE সবসময় readonly — datepicker এর জন্য --}}
                                     <div class="{{ $r->field_name }}_err error-message"></div>
                                 </div>
                             </div>
+                            <script nonce="{{ app('csp_nonce') }}">
+                                $(function() {
+                                    $(".datepickerNext").datepicker({
+                                        minDate: 1,
+                                        dateFormat: 'dd-mm-yy',
+                                        changeYear: true,
+                                        changeMonth: true,
+                                        showButtonPanel: true,
+                                        yearRange: "1900:2050",
+                                    });
+                                });
+                            </script>
                         </div>
 
                     @elseif($r->field_type==\App\Enum\FieldTypeEnum::NUMBER)
@@ -358,6 +446,23 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
                                 placeholder="{{ $r->placeholder }}"
                                 @if($r->is_readonly == 1) readonly @endif />
                             <div class="{{ $r->field_name }}_err error-message"></div>
+                            <script nonce="{{ app('csp_nonce') }}">
+                                $(function () {
+                                    $(document).on('input', '.alpha_numeric_field', function () {
+                                        const $input = $(this);
+                                        const value = $input.val();
+                                        const $formGroup = $input.closest('.input-wrapper');
+                                        $formGroup.find('.alpha-num-error').remove();
+                                        if (/[^a-zA-Z0-9 ]/.test(value)) {
+                                            $input.val(value.replace(/[^a-zA-Z0-9 ]/g, ''));
+                                            $('<span>', {
+                                                class: 'alpha-num-error text-danger mt-1 d-block',
+                                                text: 'Only letters and numbers are allowed.'
+                                            }).appendTo($formGroup);
+                                        }
+                                    });
+                                });
+                            </script>
                         </div>
 
                     @endif
@@ -370,7 +475,7 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
                         id="{{ $single['fieldset_id'] }}"
                     @endif>
                 <legend>
-                    @if ($issueId == getId('BPID'))
+                    @if ($issueId == 1192)
                         <button type="button"
                                 class="btn btn-sm fieldset-toggle-btn fieldset-toggle-box"
                                 data-fieldset-id="{{ $single['fieldset_id'] ?? '' }}">
@@ -419,7 +524,7 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
     
                         <div class="mb-2">
     
-                            @if($r->field_type==\App\Enum\FieldTypeEnum::TEXT)
+                            @if($r->field_type==\App\Enum\FieldTypeEnum::TEXT)                              
                                 <div class="form-group {{ $r->field_name }}" style="padding-bottom: 8px; {{ $hideStyle }}">
                                     <label class="mb-1">{{ $r->label_name }}<span class="required">@if($r->is_required == 1) {{'*'}} @endif</span></label>
                                     <input type="{{ $r->field_type }}"
@@ -527,7 +632,7 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
     
                             @elseif($r->field_type == \App\Enum\FieldTypeEnum::FILE)
     
-                                <div class="form-group {{ $r->field_name }}" style="{{ $hideStyle }}">
+                                <div class="form-group {{ $r->field_name }}"  style="{{ $hideStyle }}">
                                     <label class="mb-1">{{ $r->label_name }}
                                         <span class="required">@if($r->is_required == 1) {{'*'}} @endif</span>
                                     </label>
@@ -616,6 +721,29 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
                                         readonly />
                                         
                                     <div class="{{ $r->field_name }}_err error-message"></div>
+                                    <script nonce="{{ app('csp_nonce') }}">
+                                        $(document).ready(function () {
+                                            $('.datePicker').datepicker({
+                                                dateFormat: 'dd-mm-yy',
+                                                changeYear: true,
+                                                changeMonth: true,
+                                                yearRange: "1900:2050",
+                                            });
+                                        });
+                                        var input = document.querySelectorAll('.js-date')[0];
+                                        var dateInputMask = function dateInputMask(elm) {
+                                            elm.addEventListener('keypress', function(e) {
+                                                if(e.keyCode < 47 || e.keyCode > 57) { e.preventDefault(); }
+                                                var len = elm.value.length;
+                                                if(len !== 1 || len !== 3) {
+                                                    if(e.keyCode == 47) { e.preventDefault(); }
+                                                }
+                                                if(len === 2) { elm.value += '-'; }
+                                                if(len === 5) { elm.value += '-'; }
+                                            });
+                                        };
+                                        dateInputMask(input);
+                                    </script>
                                 </div>
     
                             @elseif($r->field_type==\App\Enum\FieldTypeEnum::NUMBER)
@@ -651,6 +779,19 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
                                         readonly />
                                         
                                     <div class="{{ $r->field_name }}_err error-message"></div>
+                                    <script nonce="{{ app('csp_nonce') }}">
+                                        $(function() {
+                                            $(".datepickerPrev").datepicker({
+                                                defaultDate: 0,
+                                                maxDate: 0,
+                                                dateFormat: 'dd-mm-yy',
+                                                changeYear: true,
+                                                changeMonth: true,
+                                                showButtonPanel: true,
+                                                yearRange: "1900:2034",
+                                            });
+                                        });
+                                    </script>
                                 </div>
     
                             @elseif($r->field_type==\App\Enum\FieldTypeEnum::NEXT_DATE)
@@ -669,6 +810,18 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
                                         readonly />
                                         
                                     <div class="{{ $r->field_name }}_err error-message"></div>
+                                    <script nonce="{{ app('csp_nonce') }}">
+                                        $(function() {
+                                            $(".datepickerNext").datepicker({
+                                                minDate: 1,
+                                                dateFormat: 'dd-mm-yy',
+                                                showButtonPanel: true,
+                                                changeYear: true,
+                                                changeMonth: true,
+                                                yearRange: "1900:2050",
+                                            });
+                                        });
+                                    </script>
                                 </div>
     
                             @elseif($r->field_type==\App\Enum\FieldTypeEnum::DECIMAL)
@@ -701,20 +854,37 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
                                         placeholder="{{ $r->placeholder }}"
                                         @if($r->is_readonly == 1) readonly @endif />
                                     <div class="{{ $r->field_name }}_err error-message"></div>
+                                    <script nonce="{{ app('csp_nonce') }}">
+                                        $(function () {
+                                            $(document).on('input', '.alpha_numeric_field', function () {
+                                                const $input = $(this);
+                                                const value = $input.val();
+                                                const $formGroup = $input.closest('.input-wrapper');
+                                                $formGroup.find('.alpha-num-error').remove();
+                                                if (/[^a-zA-Z0-9 ]/.test(value)) {
+                                                    $input.val(value.replace(/[^a-zA-Z0-9 ]/g, ''));
+                                                    $('<span>', {
+                                                        class: 'alpha-num-error text-danger mt-1 d-block',
+                                                        text: 'Only letters and numbers are allowed.'
+                                                    }).appendTo($formGroup);
+                                                }
+                                            });
+                                        });
+                                    </script>
                                 </div>
     
                             @endif
                         </div>
                     @endforeach
     
-                    {{-- For BpId if issue_id BPID --}}
-                    @if ($issueId == getId('BPID'))
+                    {{-- For BpId if issue_id 1192 --}}
+                    @if ($issueId == 1192)
                         @if(($single['fieldset_id'] ?? null) === 'BPID_first_applicant')
                             <input type="hidden" name="nominee_count" id="nomineeCount" value="0">
                             <input type="hidden" name="applicant_count" id="applicantCount" value="0">
                         @endif
                     @endif
-                    {{-- For BpId if issue_id BPID --}}
+                    {{-- For BpId if issue_id 1192 --}}
 
                 </div>
 
@@ -724,6 +894,90 @@ if ($issueId == getId('AUCTION_REQUEST') && !empty($bpid_data)) {
     @endforeach
 
 @push('js')
-    <script src="{{ URL::asset('public/BBL_BPID/js/extra_form_field_with_group_bpid.js') }}" nonce="{{ app('csp_nonce') }}"></script>
+    <script nonce="{{ app('csp_nonce') }}">
+        $(document).ready(function() {
+            // Bind all existing number fields
+            $(document).on('input', '.number_field', function(event) {
+                allowOnlyNumbers(event);
+            });
+
+            $(document).on('input', '.text_eng', function(event){
+                textInEnglish(event);
+            });
+        });
+    </script>
+
+    <script nonce="{{ app('csp_nonce') }}">
+        //hello bangladesh
+
+        $(document).ready(function () {
+
+            // Toggle on legend button click
+            $(document).on('click', '.fieldset-toggle-btn', function () {
+                const fieldsetId = $(this).data('fieldset-id');
+                const $body = $('#body_' + fieldsetId);
+                const $icon = $(this).find('.toggle-icon');
+
+                if ($body.is(':visible')) {
+                    $body.slideUp(200);
+                    $icon.text('▼');
+                } else {
+                    $body.slideDown(200);
+                    $icon.text('▲');
+                }
+            });
+
+            // showHideBpidApplicants — collapse/expand এর সাথে sync
+            const origShowApplicants = window.showHideBpidApplicants;
+            window.showHideBpidApplicants = function(count) {
+                ['BPID_second_applicant','BPID_third_applicant','BPID_fourth_applicant']
+                    .forEach(function(id, i) {
+                        const needed = i + 2; // 2,3,4
+                        const $fieldset = $('#' + id);
+                        const $body     = $('#body_' + id);
+                        const $btn      = $('[data-fieldset-id="' + id + '"]');
+
+                        if (count >= needed) {
+                            $fieldset.show();
+                            $body.slideDown(200);
+                            $btn.find('.toggle-icon').text('▲');
+                        } else {
+                            $fieldset.hide();
+                            $body.hide();
+                        }
+                    });
+
+                if ($('#applicantCount').length) {
+                    $('#applicantCount').val(count);
+                }
+            };
+
+            // showHideBpidNominees — collapse/expand এর সাথে sync
+            window.showHideBpidNominees = function(count) {
+                ['BPID_second_nominee','BPID_third_nominee','BPID_fourth_nominee']
+                    .forEach(function(id, i) {
+                        const needed = i + 2;
+                        const $fieldset = $('#' + id);
+                        const $body     = $('#body_' + id);
+                        const $btn      = $('[data-fieldset-id="' + id + '"]');
+
+                        if (count >= needed) {
+                            $fieldset.show();
+                            $body.slideDown(200);
+                            $btn.find('.toggle-icon').text('▲');
+                        } else {
+                            $fieldset.hide();
+                            $body.hide();
+                        }
+                    });
+
+                if ($('#nomineeCount').length) {
+                    $('#nomineeCount').val(count);
+                }
+            };
+
+
+        });
+    </script>
 @endpush
 

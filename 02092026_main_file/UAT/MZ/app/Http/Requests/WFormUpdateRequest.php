@@ -170,7 +170,11 @@ class WFormUpdateRequest extends FormRequest
                     }
 
                     if ($is_required == 1) {
-                        $tmp_rules .= '|required';
+                        if ($field_type == 'file') {
+                            $tmp_rules .= '|nullable';
+                        } else {
+                            $tmp_rules .= '|required';
+                        }
                     }
                     if (!empty($maximum_length) && $field_type !== 'number') {
                         $tmp_rules .= '|max:'.$maximum_length;
@@ -198,6 +202,9 @@ class WFormUpdateRequest extends FormRequest
                     }
                     if (!empty($field_type) && $field_type == 'ndate') {
                         $tmp_rules .= '|nullable|date|after_or_equal:today';
+                    }
+                    if (!empty($field_type) && $field_type == 'file') {
+                        $tmp_rules .= '|mimes:jpeg,png,jpg,pdf,heif,heic|max:3072';
                     }
 
                     // Quota field validation
@@ -318,6 +325,11 @@ class WFormUpdateRequest extends FormRequest
                 }
                 if (!empty($fixed_length)) {
                     $messages[$field_name.'.fixed_len'] = $field_name.' input length should be '.$fixed_length;
+                }
+                
+                if (!empty($field_type) && $field_type == 'file') {
+                    $messages[$field_name.'.mimes'] = 'This file is not supported; The supported formats are JPG, JPEG, PNG, PDF, HEIF, HEIC';
+                    $messages[$field_name.'.max'] = 'Max uploaded file size is 3 MB';
                 }
 
                 // For Quota field validation

@@ -383,7 +383,7 @@ if (!empty($issue_id)) {
                         @if($r->field_type==\App\Enum\FieldTypeEnum::TEXT)
                             <div class="input-wrapper mb-3 {{ $r->field_name }}" style="{{ $hideStyle }}">
                                 <label for="" class="input-label">{{ $r->label_name }}<span class="required">@if($r->is_required == 1) * @endif</span></label>
-                                <input type="{{ $r->field_type }}" class="input-field text_eng" placeholder="{{ $r->placeholder }}" name="{{ $r->field_name }}" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}">
+                                <input type="{{ $r->field_type }}" class="input-field text_eng" placeholder="{{ $r->placeholder }}"  @if($r->is_readonly == 1) readonly @endif  name="{{ $r->field_name }}" value="{{ array_key_exists($r->label_name, $arraySingle) ? $arraySingle[$r->label_name] : '' }}">
                                 <div class="{{ $r->field_name }}_err error-message"></div>
                             </div>
 

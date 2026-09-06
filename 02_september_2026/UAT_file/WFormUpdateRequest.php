@@ -326,7 +326,7 @@ class WFormUpdateRequest extends FormRequest
                 if (!empty($fixed_length)) {
                     $messages[$field_name.'.fixed_len'] = $field_name.' input length should be '.$fixed_length;
                 }
-
+                
                 if (!empty($field_type) && $field_type == 'file') {
                     $messages[$field_name.'.mimes'] = 'This file is not supported; The supported formats are JPG, JPEG, PNG, PDF, HEIF, HEIC';
                     $messages[$field_name.'.max'] = 'Max uploaded file size is 3 MB';
