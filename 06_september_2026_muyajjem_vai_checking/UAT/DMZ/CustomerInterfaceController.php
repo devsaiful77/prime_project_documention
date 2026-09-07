@@ -917,13 +917,7 @@ class CustomerInterfaceController extends Controller
             }
 
             $sameIssueRequest = $this->sameIssueRequestCheck($request->account_number, $request->w_form_type);
-            if($sameIssueRequest){
-                return response()->json([
-                    'errorType' => '2',
-                    'success' => false,
-                    'message' => 'You have already submit a request with this issue, Please wait for while we process your request.',
-                ], 404);
-            }
+
             $api_response = decrypt($request->api_response);
             $response = CICURLService::apiResponse($api_response, $request->account_number, $request->product_type);
             $response = $response->getContent();

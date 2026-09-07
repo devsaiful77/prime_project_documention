@@ -905,6 +905,17 @@ class CustomerInterfaceController extends Controller
         // }
         
         if ($check_token && $request->api_response && $request->account_number && $request->product_type) {
+            $bpid_reference_number = '';
+            if($request->w_form_type == getId('AUCTION_REQUEST')){
+                $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
+                if(!$bpid){
+                    flash('BPID Not Found!', 'danger');
+                    return redirect()->back();
+                }
+                $bpid_reference_number = $bpid->reference_number;
+
+            }
+
 	        $sameIssueRequest = $this->sameIssueRequestCheck($request->account_number, $request->w_form_type);
             if($sameIssueRequest){
                 return response()->json([
@@ -941,6 +952,23 @@ class CustomerInterfaceController extends Controller
             }
             $reference_number = "SA" . date("ymd") . $prodTypeAlpha . userIdPadLeftWith0($this->dayWiseSequence('sr'), 6, '0');
 	    
+
+            $bpid_reference_number = '';
+            if($request->w_form_type == getId('AUCTION_REQUEST')){
+                $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
+                if(!$bpid){
+                    flash('BPID Not Found!', 'danger');
+                    return redirect()->back();
+                }
+
+                if($request->bp_id != $bpid->bp_id){
+                    flash('BPID Number Invalid!', 'danger');
+                    return redirect()->back();
+                }
+
+                $bpid_reference_number = $bpid->reference_number;
+
+            }
             $docDestPath = base_path("../public/attachments");
 
             // BPID Attachment upload
@@ -951,7 +979,7 @@ class CustomerInterfaceController extends Controller
                     File::makeDirectory($docDestPath, 0755, true, true);
                 }
 
-                if ($request->w_form_type == getId('BPID')) {
+                if ($request->w_form_type == getId('BPID') || $request->w_form_type == getId('AUCTION_REQUEST')) {
 
                     foreach ($request->allFiles() as $field => $file) {
                         if (!$file->isValid()) {
@@ -974,7 +1002,8 @@ class CustomerInterfaceController extends Controller
 
                         Attachment::create([
                             'file_name'        => $fileName,
-                            'reference_number' => $reference_number,
+                            //'reference_number' => $reference_number,
+                            'reference_number' => $request->w_form_type == getId('AUCTION_REQUEST') ? $bpid_reference_number : $reference_number,
                             'attachment_date'  => now()->toDateString(),
                             'uploaded_by'      => auth()->id(),
                             'name'             => ucwords(str_replace('_', ' ', $field)),
@@ -1268,6 +1297,16 @@ class CustomerInterfaceController extends Controller
         $check_token = TokenValidatedService::validatedToken($ci_token);
 
         if ($check_token) {
+            $bpid_reference_number = '';
+            if($request->w_form_type == getId('AUCTION_REQUEST')){
+                $bpid = BpId::where('bp_id',$request->bp_id)->latest()->first();
+                if(!$bpid){
+                    flash('BPID Not Found!', 'danger');
+                    return redirect()->back();
+                }
+                $bpid_reference_number = $bpid->reference_number;
+
+            }
 
             $cif_number = $check_token->cif_number;
             $mobile_number = $check_token->mobile_no;
@@ -1377,7 +1416,7 @@ class CustomerInterfaceController extends Controller
                     DB::beginTransaction();
 
                     try {
-                        if ($request->w_form_type == getId('BPID')) {
+                        if ($request->w_form_type == getId('BPID') || $request->w_form_type == getId('AUCTION_REQUEST')) {
 
                             foreach ($request->allFiles() as $field => $file) {
                                 if (!$file->isValid()) {
@@ -1413,7 +1452,8 @@ class CustomerInterfaceController extends Controller
 
                                 Attachment::create([
                                     'file_name'        => $fileName,
-                                    'reference_number' => $reference_number,
+                                    //'reference_number' => $reference_number,
+                                    'reference_number' => $request->w_form_type == getId('AUCTION_REQUEST') ? $bpid_reference_number : $reference_number,
                                     'attachment_date'  => now()->toDateString(),
                                     'uploaded_by'      => auth()->id(),
                                     'name'             => ucwords(str_replace('_', ' ', $field)),

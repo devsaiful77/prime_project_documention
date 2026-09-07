@@ -220,7 +220,6 @@ class CIWFormRequest extends FormRequest
             $rules['bidding_amount'] = 'required|numeric|treasury_amount_multiple';
         }
 
-        // \Log::info('generated rules', $rules);
         return $rules;
     }
 
@@ -320,7 +319,6 @@ class CIWFormRequest extends FormRequest
             }
         }
 
-        // \Log::info('generated messages', $messages);
         return $messages;
     }
 }
